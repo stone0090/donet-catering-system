@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Dian.Web
@@ -76,7 +77,7 @@ namespace Dian.Web
         {
             try
             {
-                IRestaurant biz = new RestaurantBiz();               
+                IRestaurant biz = new RestaurantBiz();
 
                 var entity = new RestaurantEntity();
                 entity.RESTAURANT_NAME = this.tRestaurantName.Value;
@@ -84,28 +85,12 @@ namespace Dian.Web
                 entity.DESCREPTION = this.tDescription.Value;
                 entity.LEVEL = this.hLevel.Value;
                 entity.AREA = this.hArea.Value;
-                entity.PARKING_COUNT = base.ParseInt(this.hPackingCount.Value);
+                entity.PARKING_COUNT = base.ParseInt(this.hPackingCount.Value);                
 
-                if (!string.IsNullOrEmpty(fileMap.PostedFile.FileName))
-                {
-                    if (!fileMap.PostedFile.ContentType.Contains("image"))
-                    {
-                        this.lMsg.InnerText = "保存失败，原因：地图必须是图片格式！";
-                        return;
-                    }
-                    if (fileMap.PostedFile.ContentLength > (1024 * 1024 * 2))
-                    {
-                        this.lMsg.InnerText = "保存失败，原因：地图大小不能超过2M！";
-                        return;
-                    }
-                    if (!Directory.Exists(Server.MapPath(ConfigHelper.GetConfigString("RESTAURANT_MAP_PATH"))))
-                        Directory.CreateDirectory(Server.MapPath(ConfigHelper.GetConfigString("RESTAURANT_MAP_PATH")));
-                    var ext = Path.GetExtension(fileMap.PostedFile.FileName);
-                    var fileName = Guid.NewGuid().ToString();
-                    var filePath = Path.Combine(ConfigHelper.GetConfigString("RESTAURANT_MAP_PATH"), fileName) + ext;
-                    fileMap.SaveAs(Server.MapPath(filePath));
-                    entity.RESTAURANT_MAP = filePath.Replace(@"\", @"/");
-                }
+                string imgUrl = null;
+                if (!SetRestaurantMap(this.fileMap, this.imgMap, this.hDeleteImg.Value, ConfigHelper.GetConfigString("RESTAURANT_MAP_PATH"), ref imgUrl))
+                    return;
+                entity.RESTAURANT_MAP = imgUrl;
 
                 if (CurOperation == "add")
                     biz.InsertRestaurantEntity(entity);
@@ -120,6 +105,43 @@ namespace Dian.Web
             catch (Exception ex)
             {
                 this.lMsg.InnerText = "保存失败，原因：" + ex.ToString();
+            }
+        }
+        private bool SetRestaurantMap(FileUpload fileUpload, HtmlImage img, string deleteImg, string configPath, ref string imgUrl)
+        {
+            if (!string.IsNullOrEmpty(fileUpload.PostedFile.FileName))
+            {
+                if (!fileUpload.PostedFile.ContentType.Contains("image"))
+                {
+                    this.lMsg.InnerText = string.Format("保存失败，原因：文件{0}必须是图片格式！", fileUpload.PostedFile.FileName);
+                    return false;
+                }
+                if (fileUpload.PostedFile.ContentLength > (1024 * 1024 * 2))
+                {
+                    this.lMsg.InnerText = string.Format("保存失败，原因：文件{0}大小不能超过2M！", fileUpload.PostedFile.FileName);
+                    return false;
+                }
+                if (!Directory.Exists(Server.MapPath(configPath)))
+                    Directory.CreateDirectory(Server.MapPath(configPath));
+                var ext = Path.GetExtension(fileMap.PostedFile.FileName);
+                var fileName = Guid.NewGuid().ToString();
+                var filePath = Path.Combine(configPath, fileName) + ext;
+                fileMap.SaveAs(Server.MapPath(filePath));
+                imgUrl = filePath.Replace(@"\", @"/");
+                return true;
+            }
+            else
+            {
+                if (deleteImg.Contains(img.ClientID))
+                {
+                    imgUrl = string.Empty;
+                    if (img.Src != "Images/OriginalImages/pic-none.png")
+                    {
+                        try { File.Delete(Server.MapPath(img.Src)); }
+                        catch { }
+                    }
+                }
+                return true;
             }
         }
 

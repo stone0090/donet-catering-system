@@ -8,13 +8,13 @@ function initPagination(curPage, totalCount, pageCount, url) {
         $("#divPage").hide();
     } else {
         $("#labelPage").text("共 " + totalCount + " 条记录");
-        if (pageCount == 1)
+        if (pageCount === 1)
             $("#divPage").hide();
         else {
-            if (curPage == 1) {
+            if (curPage === 1) {
                 $("#aFirst").parent().addClass("am-disabled");
                 $("#aPrev").parent().addClass("am-disabled");
-            } else if (curPage == pageCount) {
+            } else if (curPage === pageCount) {
                 $("#aNext").parent().addClass("am-disabled");
                 $("#aLast").parent().addClass("am-disabled");
             }
@@ -24,5 +24,13 @@ function initPagination(curPage, totalCount, pageCount, url) {
             $("#aNext").attr("href", url + "?page=" + (curPage + 1))
             $("#aLast").attr("href", url + "?page=" + pageCount)
         }
+    }
+}
+
+// 删除图片
+function deleteImg(imgId, delId) {
+    $('#' + imgId).attr('src', 'Images/OriginalImages/pic-none.png');
+    if ($('#' + delId).val().indexOf(imgId) === -1) {
+        $('#' + delId).val($('#' + delId).val() + imgId + '|');
     }
 }

@@ -68,7 +68,7 @@ namespace Dian.Web
                 case "3": return "三级";
                 case "4": return "四级";
                 case "5": return "五级";
-                default: return "未定义的等级";
+                default: return "-";
             }
         }
         public string GetAreaName(string val)
@@ -80,7 +80,7 @@ namespace Dian.Web
                 case "3": return "华南";
                 case "4": return "华西";
                 case "5": return "华北";
-                default: return "未定义的区域";
+                default: return "-";
             }
         }
 

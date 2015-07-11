@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Web", "Dian.Web\Dian.Web.csproj", "{1E62FDDF-2E1D-4EAD-9B2B-0641A1EE4147}"
 EndProject
@@ -10,10 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Common.Entity", "Dian.Common\Dian.Common.Entity.csproj", "{27E879B2-D7B3-45EF-B5D8-43A311CAF829}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Dao", "Dian.Dao\Dian.Dao.csproj", "{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.RemoteAccess.Client", "Dian.Remote\Dian.RemoteAccess.Client.csproj", "{D5B75001-2D0A-4B23-8641-614065A5FEB5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.RemoteAccess.Server", "Dian.Remote.Server\Dian.RemoteAccess.Server.csproj", "{582A5534-6F40-483E-81F6-DCEAEA005469}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Common.Interface", "Dian.Common.Interface\Dian.Common.Interface.csproj", "{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}"
 EndProject
@@ -39,14 +35,6 @@ Global
 		{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5B75001-2D0A-4B23-8641-614065A5FEB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5B75001-2D0A-4B23-8641-614065A5FEB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5B75001-2D0A-4B23-8641-614065A5FEB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5B75001-2D0A-4B23-8641-614065A5FEB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{582A5534-6F40-483E-81F6-DCEAEA005469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{582A5534-6F40-483E-81F6-DCEAEA005469}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{582A5534-6F40-483E-81F6-DCEAEA005469}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{582A5534-6F40-483E-81F6-DCEAEA005469}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}.Release|Any CPU.ActiveCfg = Release|Any CPU

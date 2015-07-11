@@ -112,13 +112,14 @@
                     <div class="am-u-sm-10 am-u-md-6">
                         <asp:FileUpload ID="fileMap" runat="server" />
                     </div>
-                    <div class="am-hide-sm-only am-u-md-4">*选填，图片大小不能超过2M</div>
+                    <div class="am-hide-sm-only am-u-md-4">*图片大小不能超过2M</div>
                 </div>
 
                 <div class="am-g am-margin-top">
                     <div class="am-u-sm-2 am-u-md-2 am-text-right">预览</div>
                     <div class="am-u-sm-10 am-u-md-10">
-                        <img src="../Images/OriginalImages/default.jpg" class="am-img-responsive am-img-thumbnail" alt="" id="imgMap" runat="server" />
+                        <img src="Images/OriginalImages/pic-none.png" class="am-img-responsive am-img-thumbnail" alt="" id="imgMap" runat="server" />
+                        <button type="button" class="am-btn am-btn-warning am-btn-xs" onclick="deleteImg('<%= this.imgMap.ClientID %>', '<%= this.hDeleteImg.ClientID %>');">删除图片</button>
                     </div>
                 </div>
 
@@ -136,6 +137,7 @@
     <input type="hidden" id="hPackingCount" runat="server" />
     <input type="hidden" id="hLevel" runat="server" />
     <input type="hidden" id="hArea" runat="server" />
+    <input type="hidden" id="hDeleteImg" runat="server" />
 
     <script type="text/javascript">
 

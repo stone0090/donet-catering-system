@@ -18,7 +18,7 @@
                 <div class="am-g am-margin-top">
                     <div class="am-u-sm-2 am-u-md-2 am-text-right">店家</div>
                     <div class="am-u-sm-10 am-u-md-10">
-                        <asp:DropDownList ID="ddlRestaurant" runat="server" data-am-selected="{btnSize: 'sm'}">
+                        <asp:DropDownList ID="ddlRestaurant" runat="server" data-am-selected="{btnSize: 'sm'}" required>
                         </asp:DropDownList>
                     </div>
                 </div>

@@ -58,5 +58,19 @@ namespace Dian.Web
                 this.lMsg.InnerText = "删除失败，原因：" + ex.ToString();
             }
         }
+
+        public string GetTasteName(string val)
+        {
+            switch (val)
+            {
+                case "1": return "无";
+                case "2": return "酸";
+                case "3": return "甜";
+                case "4": return "苦";
+                case "5": return "辣";
+                case "6": return "咸";                
+                default: return "-";
+            }
+        }
     }
 }

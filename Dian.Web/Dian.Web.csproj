@@ -87,18 +87,17 @@
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\handlebars.min.js" />
     <Content Include="assets\js\jquery.min.js" />
+    <Content Include="BackgroudIndex.aspx" />
     <Content Include="ConfirmOrder.aspx" />
     <Content Include="CSS\Default.css" />
     <Content Include="Default.aspx" />
     <Content Include="EmployeeDetail.aspx" />
     <Content Include="EmployeeList.aspx" />
-    <Content Include="Food.aspx" />
     <Content Include="FoodDetail.aspx" />
     <Content Include="FoodList.aspx" />
     <Content Include="Images\OriginalImages\default.jpg" />
-    <Content Include="MainPage.aspx" />
+    <Content Include="Images\OriginalImages\pic-none.png" />
     <Content Include="Order.aspx" />
-    <Content Include="Restaurant.aspx" />
     <Content Include="FoodTypeDetail.aspx" />
     <Content Include="RestaurantDetail.aspx" />
     <Content Include="FoodTypeList.aspx" />
@@ -111,6 +110,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroudIndex.aspx.cs">
+      <DependentUpon>BackgroudIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackgroudIndex.aspx.designer.cs">
+      <DependentUpon>BackgroudIndex.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BackgroundManagement.Master.cs">
       <DependentUpon>BackgroundManagement.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -146,13 +152,6 @@
     <Compile Include="EmployeeList.aspx.designer.cs">
       <DependentUpon>EmployeeList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Food.aspx.cs">
-      <DependentUpon>Food.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Food.aspx.designer.cs">
-      <DependentUpon>Food.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FoodDetail.aspx.cs">
       <DependentUpon>FoodDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,13 +167,6 @@
       <DependentUpon>FoodList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utility\ImageHelper.cs" />
-    <Compile Include="MainPage.aspx.cs">
-      <DependentUpon>MainPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainPage.aspx.designer.cs">
-      <DependentUpon>MainPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Order.aspx.cs">
       <DependentUpon>Order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,13 +175,6 @@
       <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Restaurant.aspx.cs">
-      <DependentUpon>Restaurant.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Restaurant.aspx.designer.cs">
-      <DependentUpon>Restaurant.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FoodTypeDetail.aspx.cs">
       <DependentUpon>FoodTypeDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

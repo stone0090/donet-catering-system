@@ -10,6 +10,6 @@
 namespace Dian.Web {
     
     
-    public partial class MainPage {
+    public partial class BackgroudIndex {
     }
 }

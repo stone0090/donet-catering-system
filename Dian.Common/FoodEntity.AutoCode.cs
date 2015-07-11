@@ -22,8 +22,8 @@ namespace Dian.Common.Entity
         [Field("FOOD_TASTE", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public string FOOD_TASTE { get; set; }
 
-        [Field("DESCREPTION", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public string DESCREPTION { get; set; }
+        [Field("DESCRIPTION", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public string DESCRIPTION { get; set; }
 
         [Field("FOOD_IMAGE_NAIL1", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public string FOOD_IMAGE_NAIL1 { get; set; }

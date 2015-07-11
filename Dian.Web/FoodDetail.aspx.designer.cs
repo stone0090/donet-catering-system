@@ -22,15 +22,6 @@ namespace Dian.Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lTypeName;
         
         /// <summary>
-        /// tFoodTypeName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText tFoodTypeName;
-        
-        /// <summary>
         /// ddlRestaurant 控件。
         /// </summary>
         /// <remarks>
@@ -58,40 +49,31 @@ namespace Dian.Web {
         protected global::System.Web.UI.WebControls.DropDownList ddlTaste;
         
         /// <summary>
-        /// Text2 控件。
+        /// tFoodName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tFoodName;
         
         /// <summary>
-        /// fileMap 控件。
+        /// tDescription 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileMap;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea tDescription;
         
         /// <summary>
-        /// imgMap 控件。
+        /// fileMap1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgMap;
-        
-        /// <summary>
-        /// FileUpload1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload fileMap1;
         
         /// <summary>
         /// img1 控件。
@@ -103,13 +85,13 @@ namespace Dian.Web {
         protected global::System.Web.UI.HtmlControls.HtmlImage img1;
         
         /// <summary>
-        /// FileUpload2 控件。
+        /// fileMap2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
+        protected global::System.Web.UI.WebControls.FileUpload fileMap2;
         
         /// <summary>
         /// img2 控件。
@@ -121,13 +103,13 @@ namespace Dian.Web {
         protected global::System.Web.UI.HtmlControls.HtmlImage img2;
         
         /// <summary>
-        /// FileUpload3 控件。
+        /// fileMap3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload3;
+        protected global::System.Web.UI.WebControls.FileUpload fileMap3;
         
         /// <summary>
         /// img3 控件。
@@ -139,6 +121,24 @@ namespace Dian.Web {
         protected global::System.Web.UI.HtmlControls.HtmlImage img3;
         
         /// <summary>
+        /// fileMap4 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileMap4;
+        
+        /// <summary>
+        /// img4 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage img4;
+        
+        /// <summary>
         /// lMsg 控件。
         /// </summary>
         /// <remarks>
@@ -146,5 +146,14 @@ namespace Dian.Web {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lMsg;
+        
+        /// <summary>
+        /// hDeleteImg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hDeleteImg;
     }
 }

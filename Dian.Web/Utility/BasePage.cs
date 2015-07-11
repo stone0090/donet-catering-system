@@ -35,8 +35,15 @@ namespace Dian.Web.Utility
 
             if (!IsPostBack)
             {
-                if (ViewState["UrlReferrer"] == null)
-                    ViewState["UrlReferrer"] = Request.UrlReferrer.PathAndQuery;
+                try
+                {
+                    if (ViewState["UrlReferrer"] == null)
+                        ViewState["UrlReferrer"] = Request.UrlReferrer.PathAndQuery;
+                }
+                catch (Exception)
+                {
+                    Server.Transfer("MainPage.aspx");
+                }
             }
         }
 
