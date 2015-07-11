@@ -37,17 +37,15 @@ namespace Dian.Biz
             try
             {
                 GenericWhereEntity<EmployeeEntity> where_entity = new GenericWhereEntity<EmployeeEntity>();
-                if (condition_entity.EMPLOYEE_ID != null)                
-                    where_entity.Where(n => (n.EMPLOYEE_ID == condition_entity.EMPLOYEE_ID));                
-                if (!string.IsNullOrEmpty(condition_entity.EMPLOYEE_NAME))                
-                    where_entity.Where(n => (n.EMPLOYEE_NAME == condition_entity.EMPLOYEE_NAME));                
+                if (condition_entity.EMPLOYEE_ID != null)
+                    where_entity.Where(n => (n.EMPLOYEE_ID == condition_entity.EMPLOYEE_ID));
+                if (!string.IsNullOrEmpty(condition_entity.PASSWORD))
+                    where_entity.Where(n => (n.PASSWORD == condition_entity.PASSWORD));
                 return DianDao.ReadEntityList(where_entity);
             }
             catch (Exception ex)
             {
-
                 throw new DianBizException("获取员工的数据出错！", ex);
-
             }
         }
         public void InsertEmployeeEntity(EmployeeEntity condition_entity)

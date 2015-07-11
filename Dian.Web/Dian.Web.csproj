@@ -97,6 +97,8 @@
     <Content Include="FoodList.aspx" />
     <Content Include="Images\OriginalImages\default.jpg" />
     <Content Include="Images\OriginalImages\pic-none.png" />
+    <Content Include="Index.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Order.aspx" />
     <Content Include="FoodTypeDetail.aspx" />
     <Content Include="RestaurantDetail.aspx" />
@@ -166,6 +168,27 @@
     <Compile Include="FoodList.aspx.designer.cs">
       <DependentUpon>FoodList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TheFrontDeskShow.Master.cs">
+      <DependentUpon>TheFrontDeskShow.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TheFrontDeskShow.Master.designer.cs">
+      <DependentUpon>TheFrontDeskShow.Master</DependentUpon>
+    </Compile>
     <Compile Include="Utility\ImageHelper.cs" />
     <Compile Include="Order.aspx.cs">
       <DependentUpon>Order.aspx</DependentUpon>
@@ -211,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="FrontShow\" />
     <Folder Include="Images\NailImages\" />
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +247,7 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="BackgroundManagement.Master" />
+    <Content Include="TheFrontDeskShow.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

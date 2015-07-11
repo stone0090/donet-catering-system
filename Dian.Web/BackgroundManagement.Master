@@ -5,8 +5,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>后台管理</title>
-    <meta name="description" content="后台管理" />
+    <title>XX系统</title>
+    <meta name="description" content="XX系统" />
     <meta name="keywords" content="index" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="renderer" content="webkit" />
@@ -43,12 +43,12 @@
 
         <header class="am-topbar admin-header">
             <div class="am-topbar-brand">
-                <strong>后台管理</strong> <small></small>
+                <strong>XX系统</strong> <small>后台管理</small>
             </div>
             <button type="button" class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
             <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
                 <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-                    <li><a href="#"><span class="am-icon-user"></span>张三，您好</a></li>
+                    <li><a href="#"><%= EmployeeName %>，您好</a></li>
                 </ul>
             </div>
         </header>
@@ -62,8 +62,8 @@
                         <li><a href="RestaurantList.aspx">店家管理</a></li>
                         <li><a href="EmployeeList.aspx">用户管理</a></li>
                         <li><a href="FoodTypeList.aspx">菜品分类</a></li>
-                        <li><a href="FoodList.aspx">菜品详情</a></li>                        
-                        <li><a href="#"><span class="am-icon-sign-out"></span>注销</a></li>
+                        <li><a href="FoodList.aspx">菜品详情</a></li>
+                        <li><a href="javascript:logout();"><span class="am-icon-sign-out"></span>注销</a></li>
                     </ul>
                     <div class="am-panel am-panel-default admin-sidebar-panel">
                         <div class="am-panel-bd">
@@ -85,10 +85,27 @@
             <span class="am-icon-btn am-icon-th-list"></span>
         </a>
 
-        <footer>
-            <hr />
-            <%--<p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>--%>
+        <footer class="am-footer am-footer-default">
+            <hr>
+            <div class="am-footer-switch">
+                <div class="am-footer-miscs ">
+                    <p>Copyright © 2015 by stone. All rights reserved.</p>
+                </div>
+            </div>
         </footer>
+
+        <input type="hidden" id="hLogout" runat="server" />
+        <script type="text/javascript">
+
+            function logout() {
+                var hLogout = "<%= this.hLogout.ClientID %>";
+                var form1 = "<%= this.form1.ClientID %>";
+                $('#' + hLogout).val('1');
+                $('#' + form1).submit();
+            }
+
+        </script>
+
     </form>
 
 </body>

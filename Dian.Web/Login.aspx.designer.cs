@@ -10,33 +10,33 @@
 namespace Dian.Web {
     
     
-    public partial class BackgroundManagement {
+    public partial class Login {
         
         /// <summary>
-        /// form1 控件。
+        /// tName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tName;
         
         /// <summary>
-        /// ContentPlaceHolder1 控件。
+        /// tPassword 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword tPassword;
         
         /// <summary>
-        /// hLogout 控件。
+        /// lMsg 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hLogout;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lMsg;
     }
 }

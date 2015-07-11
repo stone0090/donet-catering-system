@@ -42,7 +42,7 @@ namespace Dian.Web.Utility
                 }
                 catch (Exception)
                 {
-                    Server.Transfer("MainPage.aspx");
+                    Server.Transfer("Index.aspx");
                 }
             }
         }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackgroundManagement.Master" AutoEventWireup="true" CodeBehind="FoodDetail.aspx.cs" Inherits="Dian.Web.FoodDetail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="BackgroundManagement.Master" AutoEventWireup="true" CodeBehind="FoodDetail.aspx.cs" Inherits="Dian.Web.FoodDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="admin-content">
