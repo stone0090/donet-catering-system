@@ -7,109 +7,40 @@ namespace Dian.Common.Entity
 {
     partial class RestaurantEntity
     {
-        private int? _RESTAURANT_ID;
         [Field("RESTAURANT_ID", FieldDBType = DbType.Int32, FieldDesc = "", IsIdentityField = true, IsPrimaryKey = true)]
-        public int? RESTAURANT_ID
-        {
-            get
-            {
-                return _RESTAURANT_ID;
-            }
-            set
-            {
-                _RESTAURANT_ID = value;
-            }
-        }
-        private string _RESTAURANT_NAME;
+        public int? RESTAURANT_ID { get; set; }
+
         [Field("RESTAURANT_NAME", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public string RESTAURANT_NAME
-        {
-            get
-            {
-                return _RESTAURANT_NAME;
-            }
-            set
-            {
-                _RESTAURANT_NAME = value;
-            }
-        }
-        private string _ADDRESS;
+        public string RESTAURANT_NAME { get; set; }
+
         [Field("ADDRESS", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public string ADDRESS
-        {
-            get
-            {
-                return _ADDRESS;
-            }
-            set
-            {
-                _ADDRESS = value;
-            }
-        }
-        private string _DESCREPTION;
+        public string ADDRESS { get; set; }
+
         [Field("DESCREPTION", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public string DESCREPTION
-        {
-            get
-            {
-                return _DESCREPTION;
-            }
-            set
-            {
-                _DESCREPTION = value;
-            }
-        }
-        private string _LEVEL;
+        public string DESCREPTION { get; set; }
+
         [Field("LEVEL", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public string LEVEL
-        {
-            get
-            {
-                return _LEVEL;
-            }
-            set
-            {
-                _LEVEL = value;
-            }
-        }
-        private string _AREA;
+        public string LEVEL { get; set; }
+
         [Field("AREA", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public string AREA
-        {
-            get
-            {
-                return _AREA;
-            }
-            set
-            {
-                _AREA = value;
-            }
-        }
-        private int? _PARKING_COUNT;
+        public string AREA { get; set; }
+
         [Field("PARKING_COUNT", FieldDBType = DbType.Int32, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public int? PARKING_COUNT
-        {
-            get
-            {
-                return _PARKING_COUNT;
-            }
-            set
-            {
-                _PARKING_COUNT = value;
-            }
-        }
-        private string _RESTAURANT_MAP;
+        public int? PARKING_COUNT { get; set; }
+
         [Field("RESTAURANT_MAP", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
-        public string RESTAURANT_MAP
-        {
-            get
-            {
-                return _RESTAURANT_MAP;
-            }
-            set
-            {
-                _RESTAURANT_MAP = value;
-            }
-        }
+        public string RESTAURANT_MAP { get; set; }
+
+        [Field("CREATE_TIME", FieldDBType = DbType.DateTime, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public DateTime? CREATE_TIME { get; set; }
+
+        [Field("CREATE_PERSON", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public string CREATE_PERSON { get; set; }
+
+        [Field("UPDATE_TIME", FieldDBType = DbType.DateTime, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public DateTime? UPDATE_TIME { get; set; }
+
+        [Field("UPDATE_PERSON", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public string UPDATE_PERSON { get; set; }
     }
 }

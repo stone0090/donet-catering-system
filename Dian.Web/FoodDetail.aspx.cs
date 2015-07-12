@@ -4,6 +4,7 @@ using Dian.Common.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -47,7 +48,10 @@ namespace Dian.Web
         private void BindControlData()
         {
             IRestaurant restaurantBiz = new RestaurantBiz();
-            this.ddlRestaurant.DataSource = restaurantBiz.GetRestaurantDataTable();
+            if ((bool)base.CurEmployeeEntity.IS_ADMIN)
+                this.ddlRestaurant.DataSource = restaurantBiz.GetRestaurantDataTable();
+            else
+                this.ddlRestaurant.DataSource = restaurantBiz.GetRestaurantDataTable(base.CurEmployeeEntity.EMPLOYEE_ID);
             this.ddlRestaurant.DataValueField = "RESTAURANT_ID";
             this.ddlRestaurant.DataTextField = "RESTAURANT_NAME";
             this.ddlRestaurant.DataBind();
@@ -137,10 +141,16 @@ namespace Dian.Web
                 entity.FOOD_IMAGE_NAIL4 = imgUrl_Nail;
 
                 if (CurOperation == "add")
+                {
+                    entity.CREATE_TIME = DateTime.Now;
+                    entity.CREATE_PERSON = base.CurEmployeeEntity.EMPLOYEE_ID;
                     biz.InsertFoodEntity(entity);
+                }
                 else if (CurOperation == "edit")
                 {
                     entity.FOOD_ID = CurId;
+                    entity.UPDATE_TIME = DateTime.Now;
+                    entity.UPDATE_PERSON = base.CurEmployeeEntity.EMPLOYEE_ID;
                     biz.UpdateFoodEntity(entity);
                 }
 

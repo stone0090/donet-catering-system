@@ -24,14 +24,22 @@ namespace Dian.Dao
         }
         #endregion
 
-        public DataTable GetRestaurantDataTable()
+        public DataTable GetRestaurantDataTable(string employeeId = "")
         {
             try
             {
-                string sql = @"SELECT * FROM RESTAURANT WHERE 1=1 ";
-                DbCommand dc = db.GetSqlStringCommand(sql);
-
-                return db.ExecuteDataTable(dc);
+                string sql = @"
+                    SELECT * FROM RESTAURANT A
+                    LEFT JOIN EMPLOYEE B ON A.RESTAURANT_ID = B.RESTAURANT_ID
+                    WHERE 1=1 ";
+                if (!string.IsNullOrEmpty(employeeId))
+                    sql += " AND b.EMPLOYEE_ID = @EMPLOYEE_ID ";
+                using (DbCommand dc = db.GetSqlStringCommand(sql))
+                {
+                    if (!string.IsNullOrEmpty(employeeId))
+                        db.AddInParameter(dc, "@EMPLOYEE_ID", DbType.AnsiString, employeeId);
+                    return db.ExecuteDataTable(dc);
+                }
             }
             catch (Exception ex)
             {
@@ -85,7 +93,7 @@ namespace Dian.Dao
             catch (Exception ex)
             {
 
-                throw new DianDaoException("获取员工的数据出错！", ex);
+                throw new DianDaoException("获取用户的数据出错！", ex);
             }
         }
     }

@@ -48,5 +48,17 @@ namespace Dian.Common.Entity
 
         [Field("FOOD_IMAGE4", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public string FOOD_IMAGE4 { get; set; }
+
+        [Field("CREATE_TIME", FieldDBType = DbType.DateTime, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public DateTime? CREATE_TIME { get; set; }
+
+        [Field("CREATE_PERSON", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public string CREATE_PERSON { get; set; }
+
+        [Field("UPDATE_TIME", FieldDBType = DbType.DateTime, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public DateTime? UPDATE_TIME { get; set; }
+
+        [Field("UPDATE_PERSON", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public string UPDATE_PERSON { get; set; }
     }
 }

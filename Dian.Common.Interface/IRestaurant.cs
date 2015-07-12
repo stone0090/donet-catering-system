@@ -10,7 +10,7 @@ namespace Dian.Common.Interface
 {
     public interface IRestaurant : IAppBizAvailableV2
     {
-        DataTable GetRestaurantDataTable();
+        DataTable GetRestaurantDataTable(string employeeId = "");
         List<RestaurantEntity> GetRestaurantEntityList(RestaurantEntity condition_entity);
         void InsertRestaurantEntity(RestaurantEntity condition_entity);
         void UpdateRestaurantEntity(RestaurantEntity condition_entity);

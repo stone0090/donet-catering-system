@@ -11,7 +11,7 @@
             <div class="am-u-sm-12 am-u-sm-centered">
                 <h2>感谢您使用我们的系统，衷心的祝福您，生意兴隆，财源滚滚。</h2>
             </div>
-            <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+            <div class="am-u-sm-12 am-u-sm-centered">
                 <hr />
                 <h3>Bug 反馈</h3>
                 <p>如遇到 Bug 或者使用问题，可以通过以下途径反馈给我们：</p>

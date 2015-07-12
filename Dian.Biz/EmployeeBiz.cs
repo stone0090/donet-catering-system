@@ -29,7 +29,7 @@ namespace Dian.Biz
             catch (Exception ex)
             {
 
-                throw new DianBizException("获取员工的数据出错！", ex);
+                throw new DianBizException("获取用户的数据出错！", ex);
             }
         }
         public List<EmployeeEntity> GetEmployeeEntityList(EmployeeEntity condition_entity)
@@ -45,7 +45,7 @@ namespace Dian.Biz
             }
             catch (Exception ex)
             {
-                throw new DianBizException("获取员工的数据出错！", ex);
+                throw new DianBizException("获取用户的数据出错！", ex);
             }
         }
         public void InsertEmployeeEntity(EmployeeEntity condition_entity)
@@ -56,8 +56,7 @@ namespace Dian.Biz
             }
             catch (Exception ex)
             {
-
-                throw new DianBizException("插入员工的数据出错！", ex);
+                throw new DianBizException("插入用户的数据出错！", ex);
             }
 
         }
@@ -70,7 +69,7 @@ namespace Dian.Biz
             catch (Exception ex)
             {
 
-                throw new DianBizException("更新员工的数据出错！", ex);
+                throw new DianBizException("更新用户的数据出错！", ex);
             }
 
         }
@@ -83,7 +82,7 @@ namespace Dian.Biz
             catch (Exception ex)
             {
 
-                throw new DianBizException("删除员工的数据出错！", ex);
+                throw new DianBizException("删除用户的数据出错！", ex);
             }
 
         }

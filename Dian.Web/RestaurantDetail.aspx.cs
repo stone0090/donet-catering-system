@@ -85,7 +85,7 @@ namespace Dian.Web
                 entity.DESCREPTION = this.tDescription.Value;
                 entity.LEVEL = this.hLevel.Value;
                 entity.AREA = this.hArea.Value;
-                entity.PARKING_COUNT = base.ParseInt(this.hPackingCount.Value);                
+                entity.PARKING_COUNT = base.ParseInt(this.hPackingCount.Value);
 
                 string imgUrl = null;
                 if (!SetRestaurantMap(this.fileMap, this.imgMap, this.hDeleteImg.Value, ConfigHelper.GetConfigString("RESTAURANT_MAP_PATH"), ref imgUrl))
@@ -93,10 +93,16 @@ namespace Dian.Web
                 entity.RESTAURANT_MAP = imgUrl;
 
                 if (CurOperation == "add")
+                {
+                    entity.CREATE_TIME = DateTime.Now;
+                    entity.CREATE_PERSON = base.CurEmployeeEntity.EMPLOYEE_ID;
                     biz.InsertRestaurantEntity(entity);
+                }
                 else if (CurOperation == "edit")
                 {
                     entity.RESTAURANT_ID = CurId;
+                    entity.UPDATE_TIME = DateTime.Now;
+                    entity.UPDATE_PERSON = base.CurEmployeeEntity.EMPLOYEE_ID;
                     biz.UpdateRestaurantEntity(entity);
                 }
 

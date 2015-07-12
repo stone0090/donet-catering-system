@@ -72,6 +72,7 @@ namespace Dian.Web
             this.tOfficePhone.Value = entity.OFFICE_PHONE;
             this.tMobilePhone.Value = entity.MOBILE_PHONE;
             this.hSex.Value = entity.SEX;
+            this.cIsAdmin.Checked = (bool)entity.IS_ADMIN;
 
             this.tEmployeeId.Disabled = true;
         }
@@ -100,12 +101,19 @@ namespace Dian.Web
                 entity.OFFICE_PHONE = this.tOfficePhone.Value;
                 entity.MOBILE_PHONE = this.tMobilePhone.Value;
                 entity.SEX = this.hSex.Value;
+                entity.IS_ADMIN = this.cIsAdmin.Checked;
 
                 if (CurOperation == "add")
+                {
+                    entity.CREATE_TIME = DateTime.Now;
+                    entity.CREATE_PERSON = base.CurEmployeeEntity.EMPLOYEE_ID;
                     biz.InsertEmployeeEntity(entity);
+                }
                 else if (CurOperation == "edit")
                 {
                     entity.EMPLOYEE_ID = CurId;
+                    entity.UPDATE_TIME = DateTime.Now;
+                    entity.UPDATE_PERSON = base.CurEmployeeEntity.EMPLOYEE_ID;
                     biz.UpdateEmployeeEntity(entity);
                 }
 

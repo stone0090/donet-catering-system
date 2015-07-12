@@ -21,11 +21,11 @@ namespace Dian.Biz
             }
         }
 
-        public DataTable GetRestaurantDataTable()
+        public DataTable GetRestaurantDataTable(string employeeId = "")
         {
             try
             {
-                return manual_dao.GetRestaurantDataTable();
+                return manual_dao.GetRestaurantDataTable(employeeId);
             }
             catch (Exception ex)
             {

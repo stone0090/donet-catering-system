@@ -88,6 +88,15 @@
                             <input type="radio" value="3" name="optionsSex">
                             保密
                         </label>
+
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top">
+                    <div class="am-u-sm-2 am-u-md-2 am-text-right">超管</div>
+                    <div class="am-u-sm-10 am-u-md-10">
+                        <input type="checkbox" id="cIsAdmin" runat="server" />
+                        <label class="am-text-danger" for="<%= this.cIsAdmin.ClientID %>">是否为超级管理员</label>
                     </div>
                 </div>
 

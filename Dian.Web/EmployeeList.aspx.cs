@@ -69,5 +69,15 @@ namespace Dian.Web
             }
         }
 
+        public string GetIsAdminName(string val)
+        {
+            switch (val)
+            {
+                case "False": return "否";
+                case "True": return "是";
+                default: return "-";
+            }
+        }
+
     }
 }

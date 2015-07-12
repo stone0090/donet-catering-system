@@ -26,10 +26,10 @@
                 <div class="am-form">
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
-                            <tr>
-                                <th class="table-Id">ID</th>
+                            <tr>                                
                                 <th class="table-Name">姓名</th>
                                 <th class="table-Sex">性别</th>
+                                <th class="table-IsAdmin">超管</th>
                                 <th class="table-RestaurantName">店名</th>
                                 <th class="table-MobilePhone">手机</th>
                                 <th class="table-Set">操作</th>
@@ -38,10 +38,10 @@
                         <tbody>
                             <asp:Repeater ID="repeater1" runat="server">
                                 <ItemTemplate>
-                                    <tr>
-                                        <td><%# Eval("EMPLOYEE_ID") %></td>
+                                    <tr>                                        
                                         <td><a href='EmployeeDetail.aspx?op=edit&id=<%# Eval("EMPLOYEE_ID") %>'><%# Eval("EMPLOYEE_NAME") %></a></td>
                                         <td><%# GetSexName(Eval("SEX").ToString()) %></td>
+                                        <td><%# GetIsAdminName(Eval("IS_ADMIN").ToString()) %></td>
                                         <td><%# Eval("RESTAURANT_NAME") %></td>
                                         <td><%# Eval("MOBILE_PHONE") %></td>
                                         <td>
