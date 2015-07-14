@@ -30,7 +30,10 @@ namespace Dian.Web
         {
             IFood biz = new FoodBiz();
             var pds = new PagedDataSource();
-            pds.DataSource = biz.GetFoodDataTable().DefaultView;
+            if ((bool)base.CurEmployeeEntity.IS_ADMIN)
+                pds.DataSource = biz.GetFoodDataTable().DefaultView;
+            else
+                pds.DataSource = biz.GetFoodDataTable(base.CurEmployeeEntity.RESTAURANT_ID).DefaultView;
             pds.AllowPaging = true;
             pds.PageSize = 8;
             if (CurPage < 1) CurPage = 1;
@@ -68,7 +71,7 @@ namespace Dian.Web
                 case "3": return "甜";
                 case "4": return "苦";
                 case "5": return "辣";
-                case "6": return "咸";                
+                case "6": return "咸";
                 default: return "-";
             }
         }

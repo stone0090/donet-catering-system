@@ -63,7 +63,7 @@ namespace Dian.Web.Utility
             {
                 try
                 {
-                    if (ViewState["UrlReferrer"] == null)
+                    if (ViewState["UrlReferrer"] == null && Request.UrlReferrer != null)
                         ViewState["UrlReferrer"] = Request.UrlReferrer.PathAndQuery;
                 }
                 catch (Exception)

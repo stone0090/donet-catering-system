@@ -93,6 +93,7 @@
     <Content Include="Default.aspx" />
     <Content Include="EmployeeDetail.aspx" />
     <Content Include="EmployeeList.aspx" />
+    <Content Include="Error404.aspx" />
     <Content Include="FoodDetail.aspx" />
     <Content Include="FoodList.aspx" />
     <Content Include="Images\OriginalImages\default.jpg" />
@@ -154,6 +155,13 @@
     </Compile>
     <Compile Include="EmployeeList.aspx.designer.cs">
       <DependentUpon>EmployeeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
     </Compile>
     <Compile Include="FoodDetail.aspx.cs">
       <DependentUpon>FoodDetail.aspx</DependentUpon>

@@ -1,5 +1,7 @@
 ﻿using Dian.Biz;
+using Dian.Common.Entity;
 using Dian.Common.Interface;
+using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,32 @@ using System.Web.UI.WebControls;
 
 namespace Dian.Web
 {
-    public partial class Index : System.Web.UI.Page
+    public partial class Index : BasePage
     {
+        public int RestaurantId { get; set; }
+        public int TableId { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            RestaurantId = base.ParseInt(Request.QueryString["rId"]);
+            TableId = base.ParseInt(Request.QueryString["tId"]);
+
+            if (RestaurantId == 0 || TableId == 0)
+            {
+                Server.Transfer("Error404.aspx");
+            }
+
             if (!IsPostBack)
+            {
                 BindData();
+
+                if (CurEmployeeEntity != null)
+                {
+                    this.aLogin.HRef = "BackgroudIndex.aspx";
+                    this.aLogin.InnerText = CurEmployeeEntity.EMPLOYEE_NAME + "，您好";
+                }
+            }
+
         }
 
         private void BindData()

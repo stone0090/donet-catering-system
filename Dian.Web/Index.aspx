@@ -43,7 +43,7 @@
             <button type="button" class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
             <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
                 <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-                    <li><a href="#">登陆</a></li>
+                    <li><a id="aLogin" runat="server" href="Login.aspx">登陆</a></li>
                 </ul>
             </div>
         </header>
@@ -53,10 +53,13 @@
             <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
                 <div class="am-offcanvas-bar admin-offcanvas-bar">
                     <ul class="am-list admin-sidebar-list">
-                        <li><a href="javascript:loadFoodTypeData();">全部</a></li>
+                        <li><a href="javascript:loadFoodTypeData('0');">全部</a></li>
                         <asp:Repeater ID="repeater1" runat="server">
                             <ItemTemplate>
-                                <li><a href="javascript:loadFoodTypeData('<%# Eval("FOOD_TYPE_ID") %>');"><%# Eval("FOOD_TYPE_NAME") %></a></li>
+                                <li><a href="javascript:loadFoodTypeData('<%# Eval("FOOD_TYPE_ID") %>');">
+                                    <%# Eval("FOOD_TYPE_NAME") %>
+                                    <label id="<%# "lFoodType" + Eval("FOOD_TYPE_ID").ToString() %>" class="am-badge am-badge-warning am-margin-right am-fr"></label>
+                                </a></li>
                             </ItemTemplate>
                         </asp:Repeater>
                     </ul>
@@ -74,16 +77,17 @@
                 <div class="admin-content">
                     <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
                         <div class="am-list-news-bd">
-                            <ul class="am-list am-avg-sm-1 am-avg-md-1 am-thumbnails">
+                            <ul class="am-list am-avg-sm-1 am-avg-md-1 am-thumbnails" id="uiFootList">
                                 <!--缩略图在标题左边-->
 
                                 <asp:Repeater ID="repeater2" runat="server">
                                     <ItemTemplate>
-                                        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                                        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" id="<%# "liFood" + Eval("FOOD_ID").ToString() %>" foodid="<%# Eval("FOOD_ID") %>" foodtypeid="<%# Eval("FOOD_TYPE_ID") %>" foodprice="<%# Eval("PRICE") %>" foodname="<%# Eval("FOOD_NAME") %>" foodimage="<%# Eval("FOOD_IMAGE1") %>">
                                             <div class="am-u-sm-4 am-list-thumb">
                                                 <a href="#">
                                                     <img src="<%# Eval("FOOD_IMAGE_NAIL1") %>" alt="<%# Eval("FOOD_NAME") %>" class="am-img-thumbnail">
                                                 </a>
+                                                &nbsp;
                                             </div>
                                             <div class="am-u-sm-8 am-list-main">
                                                 <h3 class="am-list-item-hd">
@@ -92,8 +96,14 @@
                                                 <div class="am-list-item-text"><%# Eval("DESCRIPTION") %></div>
                                                 <div style="margin-top: 10px;">
                                                     <label class="am-text-danger">￥<%# Eval("PRICE") %></label>
-                                                    <button type="button" class="am-btn am-btn-success am-btn-xs am-fr">加入购物车</button>
+                                                    <span class="am-fr">
+                                                        <button type="button" class="am-btn am-btn-success am-btn-xs" onclick="cutFood('<%# Eval("FOOD_ID") %>');">减</button>
+                                                        <label id="<%# "lFood" + Eval("FOOD_ID").ToString() %>">0</label>
+                                                        <button type="button" class="am-btn am-btn-success am-btn-xs" onclick="addFood('<%# Eval("FOOD_ID") %>');">加</button>
+                                                        <button type="button" class="am-btn am-btn-warning am-btn-xs js-modal-open" data-am-modal="{target: '#divRemark', width: 280, height: 450}" onclick="loadRemark('<%# Eval("FOOD_ID") %>');">备注</button>
+                                                    </span>
                                                 </div>
+                                                <input type="hidden" id="<%# "hFoodRemark" + Eval("FOOD_ID").ToString() %>" />
                                             </div>
                                         </li>
                                     </ItemTemplate>
@@ -110,58 +120,8 @@
 
                     <div class="am-g">
                         <div class="am-u-sm-12">
-                            <table class="am-table am-table-bd am-table-striped admin-content-table">
+                            <table id="tCart" class="am-table am-table-bd am-table-striped admin-content-table">
                                 <tbody>
-                                    <tr>
-                                        <td>鱼香肉丝</td>
-                                        <td>单价：<label>35</label></td>
-                                        <td>份数：
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">减</button>
-                                            <label>1</label>
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">加</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>白切鸡</td>
-                                        <td>单价：<label>28</label></td>
-                                        <td>份数：
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">减</button>
-                                            <label>1</label>
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">加</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>正宗北京烤鸭</td>
-                                        <td>单价：<label>68</label></td>
-                                        <td>份数：
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">减</button>
-                                            <label>1</label>
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">加</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>剁椒鱼头</td>
-                                        <td>单价：<label>42</label></td>
-                                        <td>份数：
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">减</button>
-                                            <label>1</label>
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">加</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>宫爆鸡丁</td>
-                                        <td>单价：<label>38</label></td>
-                                        <td>份数：
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">减</button>
-                                            <label>1</label>
-                                            <button type="button" class="am-btn am-btn-success am-btn-xs">加</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">
-                                            <label class="am-text-danger am-fr">合计：￥211元</label>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -169,8 +129,8 @@
 
                     <div class="am-g">
                         <div style="text-align: center;">
-                            <button type="button" class="am-btn am-btn-success am-btn-xl">清空购物车</button>
-                            <button type="button" class="am-btn am-btn-warning am-btn-xl">立即下单</button>
+                            <button type="button" class="am-btn am-btn-success am-btn-xl" onclick="clearCart();">清空购物车</button>
+                            <button type="button" class="am-btn am-btn-warning am-btn-xl"><span class="am-icon-shopping-cart"></span>&nbsp;立即下单</button>
                         </div>
                     </div>
                 </div>
@@ -190,35 +150,211 @@
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="">
         <ul class="am-navbar-nav am-cf am-avg-sm-2 am-thumbnails">
             <li>
-                <a href="javascript:showMenu();" style="line-height: 49px;">
-                    <span>菜单(88)</span>
+                <a href="javascript:showMenu();" style="line-height: 49px;">菜单
                 </a>
             </li>
             <li>
-                <a href="javascript:showCart();" style="line-height: 49px;">
-                    <span>购物车(5)</span>
+                <a href="javascript:showCart();" style="line-height: 49px;">购物车，合计&nbsp;<span id="sTotalPrice">0.00</span>&nbsp;元
                 </a>
             </li>
         </ul>
     </div>
 
+    <!-- remark -->
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="divRemark">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">
+                <input type="hidden" id="remarkFoodId" />
+                <span id="remarkFoodName"></span>
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd">
+                <hr />
+                <div>
+                    <img id="remarkFoodImage" src="" alt="" class="am-img-responsive am-img-thumbnail" style="height: 200px;">
+                    <br />
+                    <div class="am-form" style="text-align: left;">
+                        <div class="am-form-group">
+                            <div>口味</div>
+                            <div>
+                                <button type="button" class="am-btn am-btn-default am-btn-xs" id="btnTaste1" value="1" onclick="setTaste(this);">免辣</button>
+                                <button type="button" class="am-btn am-btn-default am-btn-xs" id="btnTaste2" value="2" onclick="setTaste(this);">微辣</button>
+                                <button type="button" class="am-btn am-btn-default am-btn-xs" id="btnTaste3" value="3" onclick="setTaste(this);">中辣</button>
+                                <button type="button" class="am-btn am-btn-default am-btn-xs" id="btnTaste4" value="4" onclick="setTaste(this);">特辣</button>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <div>备注</div>
+                            <div>
+                                <input type="text" id="remarkFoodDetail" class="am-input-sm" placeholder="给店家交代点什么" maxlength="50" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
 
+        //显示菜单
         function showMenu() {
             $('#divMenu').show();
             $('#divCart').hide();
         }
 
+        //显示购物车
         function showCart() {
             $('#divMenu').hide();
             $('#divCart').show();
         }
 
+        //按类型显示菜品
         function loadFoodTypeData(type) {
-
+            showMenu();
+            $('#uiFootList').find('li').each(function (index) {
+                $(this).show();
+                if (type !== '0' && type !== $(this).attr('foodtypeid'))
+                    $(this).hide();
+            });
         }
 
-    </script>
+        //简单一道菜
+        function cutFood(id) {
+            var count = parseInt($('#lFood' + id).text());
+            if (count > 0) {
+                $('#lFood' + id).text(count - 1);
+                recal();
+            }
+        }
 
+        //新增一道菜
+        function addFood(id) {
+            var count = parseInt($('#lFood' + id).text());
+            $('#lFood' + id).text(count + 1);
+            recal();
+        }
+
+        //重算所有数量和价格
+        function recal() {
+            //清除购物车
+            $('#tCart tbody').empty();
+            //清除总价格
+            $('#sTotalPrice').text('0.00');
+            //清除分类数量
+            $('label[id^=lFoodType]').each(function () {
+                $(this).text('');
+            });
+
+            var totalPrice = 0.00;
+            $('#uiFootList').find('li').each(function (index) {
+                var id = $(this).attr('foodid');
+                var name = $(this).attr('foodname');
+                var price = parseFloat($(this).attr('foodprice'));
+                var count = parseInt($('#lFood' + id).text());
+                if (count > 0) {
+                    var typeCount = 0;
+                    var type = $(this).attr('foodtypeid');
+                    if (!$.isEmpty($('#lFoodType' + type).text()))
+                        typeCount = parseInt($('#lFoodType' + type).text());
+                    $('#lFoodType' + type).text(typeCount + count);
+                    totalPrice += price * count;
+                    recalCart(id, name, price, count);
+                }
+            });
+            $('#sTotalPrice').text(totalPrice);
+            $('#tCart').append('<tr><td colspan="4"><label class="am-text-danger am-fr">合计：￥' + totalPrice + '元</label></td></tr>');
+        }
+
+        //重算购物车数据
+        function recalCart(id, name, price, count) {
+            $('#tCart').append(
+                "<tr>" +
+                "<td>" + name + "</td>" +
+                "<td>单价：&nbsp;<label>" + price + "</label>&nbsp;</td>" +
+                "<td>份数：" +
+                '<button type="button" class="am-btn am-btn-success am-btn-xs" onclick="cutFood(\'' + id + '\');">减</button>' +
+                "&nbsp;<label>" + count + "</label>&nbsp;" +
+                '<button type="button" class="am-btn am-btn-success am-btn-xs" onclick="addFood(\'' + id + '\');">加</button>' +
+                "</td>" +
+                "</tr>");
+
+            var strRemark = $('#hFoodRemark' + id).val();
+            if (!$.isEmpty(strRemark)) {
+                var oRemark = JSON.parse(strRemark);
+                var result = '';
+                if (!$.isEmpty(oRemark.taste)) {
+                    if (oRemark.taste === '1')
+                        result = "口味：免辣";
+                    else if (oRemark.taste === '2')
+                        result = "口味：微辣";
+                    else if (oRemark.taste === '3')
+                        result = "口味：中辣";
+                    else if (oRemark.taste === '4')
+                        result = "口味：特辣";
+                }
+                if (!$.isEmpty(oRemark.detail)) {
+                    if (!$.isEmpty(result))
+                        result += "，";
+                    result += "备注：" + oRemark.detail;
+                }
+                if (!$.isEmpty(result))
+                    $('#tCart').append('<tr><td></td><td colspan="3" class="am-list-item-text">' + result + '</td></tr>');
+            }
+        }
+
+        //清空购物车
+        function clearCart() {
+            $('label[id^=lFood]').each(function () {
+                $(this).text('0');
+            });
+            recal();
+        }
+
+        //备注窗口初始化
+        function loadRemark(id) {
+            $('#remarkFoodDetail').val('');
+            $('button[id^=btnTaste]').each(function () {
+                $(this).removeClass('am-active');
+            });
+
+            var id = $('#liFood' + id).attr('foodid');
+            var name = $('#liFood' + id).attr('foodname');
+            var price = parseFloat($('#liFood' + id).attr('foodprice'));
+            var count = parseInt($('#liFood' + id).text());
+            var image = $('#liFood' + id).attr('foodimage');
+            $('#remarkFoodId').val(id);
+            $('#remarkFoodName').text(name);
+            $('#remarkFoodImage').attr('src', image);
+            $('#remarkFoodImage').attr('alt', name);
+            var strRemark = $('#hFoodRemark' + id).val();
+            if (!$.isEmpty(strRemark)) {
+                var oRemark = JSON.parse(strRemark);
+                if (!$.isEmpty(oRemark.taste))
+                    $('#btnTaste' + oRemark.taste).addClass('am-active');
+                if (!$.isEmpty(oRemark.detail))
+                    $('#remarkFoodDetail').val(oRemark.detail);
+            }
+        }
+
+        function setTaste(that) {
+            $('button[id^=btnTaste]').each(function () {
+                $(this).removeClass('am-active');
+            });
+            $(that).addClass('am-active');
+        }
+
+        //备注窗口关闭事件
+        $('#divRemark').on('closed.modal.amui', function () {
+            var id = $('#remarkFoodId').val();
+            var oRemark = {};
+            oRemark.id = id;
+            oRemark.taste = $('.am-active').attr('value');
+            oRemark.detail = $('#remarkFoodDetail').val();
+            $('#hFoodRemark' + id).val(JSON.stringify(oRemark));
+            recal();
+        });
+
+    </script>
 </body>
 </html>

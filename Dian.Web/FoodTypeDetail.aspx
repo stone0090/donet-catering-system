@@ -29,7 +29,7 @@
         </div>
 
         <div class="am-margin">
-            <button type="submit" class="am-btn am-btn-primary am-btn-xs" onclick="beforeSave();">提交保存</button>
+            <button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
             <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="self.location.href = '<%= base.UrlReferrer %>'">放弃保存</button>
         </div>
 

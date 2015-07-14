@@ -29,7 +29,7 @@ namespace Dian.Dao
             try
             {
                 string sql = @"
-                    SELECT * FROM RESTAURANT A
+                    SELECT DISTINCT A.* FROM RESTAURANT A
                     LEFT JOIN EMPLOYEE B ON A.RESTAURANT_ID = B.RESTAURANT_ID
                     WHERE 1=1 ";
                 if (!string.IsNullOrEmpty(employeeId))
@@ -47,7 +47,8 @@ namespace Dian.Dao
                 throw new DianDaoException("获取店家的数据出错！", ex);
             }
         }
-        public DataTable GetFoodDataTable()
+
+        public DataTable GetFoodDataTable(int? restaurantId = null)
         {
             try
             {
@@ -55,9 +56,14 @@ namespace Dian.Dao
                                 LEFT JOIN FOOD_TYPE B ON A.FOOD_TYPE_ID = B.FOOD_TYPE_ID
                                 LEFT JOIN RESTAURANT C ON A.RESTAURANT_ID = C.RESTAURANT_ID
                                 WHERE 1=1 ";
-                DbCommand dc = db.GetSqlStringCommand(sql);
-
-                return db.ExecuteDataTable(dc);
+                if (restaurantId != null)
+                    sql += " AND c.RESTAURANT_ID = @RESTAURANT_ID ";
+                using (DbCommand dc = db.GetSqlStringCommand(sql))
+                {
+                    if (restaurantId != null)
+                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.AnsiString, restaurantId);
+                    return db.ExecuteDataTable(dc);
+                }
             }
             catch (Exception ex)
             {
@@ -65,6 +71,7 @@ namespace Dian.Dao
                 throw new DianDaoException("获取菜品的数据出错！", ex);
             }
         }
+
         public DataTable GetFoodTypeDataTable()
         {
             try
@@ -80,6 +87,7 @@ namespace Dian.Dao
                 throw new DianDaoException("获取菜品的数据出错！", ex);
             }
         }
+
         public DataTable GetEmployeeDataTable()
         {
             try
@@ -96,5 +104,6 @@ namespace Dian.Dao
                 throw new DianDaoException("获取用户的数据出错！", ex);
             }
         }
+
     }
 }

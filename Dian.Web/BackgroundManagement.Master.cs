@@ -44,6 +44,7 @@ namespace Dian.Web
                 {
                     this.liRestaurant.Visible = false;
                     this.liEmployee.Visible = false;
+                    this.liFoodType.Visible = false;
                 }
             }
             else
