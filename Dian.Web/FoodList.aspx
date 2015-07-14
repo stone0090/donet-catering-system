@@ -29,9 +29,9 @@
                             <tr>
                                 <th class="table-id">ID</th>
                                 <th class="table-name">菜名</th>
-                                <th class="table-name">分类</th>                                
-                                <th class="table-name">口味</th>
-                                <th class="table-name">店家</th>
+                                <th class="table-type">分类</th>                                
+                                <th class="table-taste">口味</th>
+                                <th class="table-price">单价</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,7 +42,7 @@
                                         <td><a href='FoodDetail.aspx?op=edit&id=<%# Eval("FOOD_ID") %>'><%# Eval("FOOD_NAME") %></a></td>                                        
                                         <td><%# Eval("FOOD_TYPE_NAME") %></td>
                                         <td><%# GetTasteName(Eval("FOOD_TASTE").ToString()) %></td>                                        
-                                        <td><%# Eval("RESTAURANT_NAME") %></td>
+                                        <td><%# Eval("PRICE") %></td>
                                         <td>
                                             <div class="am-btn-toolbar">
                                                 <div class="am-btn-group am-btn-group-xs">

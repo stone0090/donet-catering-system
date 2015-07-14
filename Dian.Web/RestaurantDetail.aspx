@@ -131,7 +131,7 @@
             <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="self.location.href = '<%= base.UrlReferrer %>'">放弃保存</button>
         </div>
 
-        <label id="lMsg" runat="server" class="am-text-warning"></label>
+        <label id="lMsg" runat="server" class="am-text-danger"></label>
     </div>
 
     <input type="hidden" id="hPackingCount" runat="server" />

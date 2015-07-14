@@ -83,6 +83,7 @@ namespace Dian.Web
             this.ddlFoodType.SelectedValue = entity.FOOD_TYPE_ID.ToString();
             this.ddlTaste.SelectedValue = entity.FOOD_TASTE;
             this.tDescription.InnerText = entity.DESCRIPTION;
+            this.hPrice.Value = entity.PRICE.ToString();
             if (!string.IsNullOrEmpty(entity.FOOD_IMAGE1))
                 this.img1.Src = entity.FOOD_IMAGE1;
             if (!string.IsNullOrEmpty(entity.FOOD_IMAGE2))
@@ -104,6 +105,13 @@ namespace Dian.Web
                 entity.FOOD_TYPE_ID = base.ParseInt(this.ddlFoodType.SelectedValue);
                 entity.FOOD_TASTE = this.ddlTaste.SelectedValue;
                 entity.DESCRIPTION = this.tDescription.InnerText;
+                decimal temp = 0;
+                if (!decimal.TryParse(this.hPrice.Value, out temp))
+                {
+                    this.lMsg.InnerText = "保存失败，原因：单价必须为数字！";
+                    return;
+                }
+                entity.PRICE = temp;
 
                 string imgUrl, imgUrl_Nail;
                 var foodImagePath = ConfigHelper.GetConfigString("FOOD_IMAGE_PATH");

@@ -114,6 +114,13 @@ namespace Dian.Web.Utility
             return temp;
         }
 
+        public decimal ParseDecimal(string str)
+        {
+            decimal temp = 0;
+            decimal.TryParse(str, out temp);
+            return temp;
+        }
+
         #endregion
 
     }

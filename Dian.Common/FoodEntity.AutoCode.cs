@@ -25,6 +25,9 @@ namespace Dian.Common.Entity
         [Field("DESCRIPTION", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public string DESCRIPTION { get; set; }
 
+        [Field("PRICE", FieldDBType = DbType.Decimal, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        public decimal? PRICE { get; set; }
+
         [Field("FOOD_IMAGE_NAIL1", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public string FOOD_IMAGE_NAIL1 { get; set; }
 
