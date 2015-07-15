@@ -98,6 +98,7 @@
     <Content Include="FoodList.aspx" />
     <Content Include="Images\OriginalImages\default.jpg" />
     <Content Include="Images\OriginalImages\pic-none.png" />
+    <Content Include="Index2.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Index.html" />
     <Content Include="Login.aspx" />
@@ -176,6 +177,13 @@
     </Compile>
     <Compile Include="FoodList.aspx.designer.cs">
       <DependentUpon>FoodList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index2.aspx.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index2.aspx.designer.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

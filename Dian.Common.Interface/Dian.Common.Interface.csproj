@@ -55,6 +55,7 @@
     <Compile Include="IAppBizAvailableV2.cs" />
     <Compile Include="IEmployee.cs" />
     <Compile Include="IFood.cs" />
+    <Compile Include="IOrder2.cs" />
     <Compile Include="IFoodType.cs" />
     <Compile Include="IRestaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

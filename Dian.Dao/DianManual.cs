@@ -43,7 +43,6 @@ namespace Dian.Dao
             }
             catch (Exception ex)
             {
-
                 throw new DianDaoException("获取店家的数据出错！", ex);
             }
         }
@@ -67,7 +66,6 @@ namespace Dian.Dao
             }
             catch (Exception ex)
             {
-
                 throw new DianDaoException("获取菜品的数据出错！", ex);
             }
         }
@@ -83,8 +81,7 @@ namespace Dian.Dao
             }
             catch (Exception ex)
             {
-
-                throw new DianDaoException("获取菜品的数据出错！", ex);
+                throw new DianDaoException("获取菜品类型的数据出错！", ex);
             }
         }
 
@@ -100,8 +97,35 @@ namespace Dian.Dao
             }
             catch (Exception ex)
             {
-
                 throw new DianDaoException("获取用户的数据出错！", ex);
+            }
+        }
+
+        public DataTable GetOrderMainDataTable()
+        {
+            try
+            {
+                string sql = @"SELECT * FROM ORDERMAIN2 WHERE 1=1 ";
+                DbCommand dc = db.GetSqlStringCommand(sql);
+                return db.ExecuteDataTable(dc);
+            }
+            catch (Exception ex)
+            {
+                throw new DianDaoException("获取订单的数据出错！", ex);
+            }
+        }
+
+        public DataTable GetOrderListDataTable()
+        {
+            try
+            {
+                string sql = @"SELECT * FROM ORDERLIST2 WHERE 1=1 ";
+                DbCommand dc = db.GetSqlStringCommand(sql);
+                return db.ExecuteDataTable(dc);
+            }
+            catch (Exception ex)
+            {
+                throw new DianDaoException("获取订单列表的数据出错！", ex);
             }
         }
 
