@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -54,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeBiz.cs" />
-    <Compile Include="OrderBiz.cs" />
+    <Compile Include="Order2Biz.cs" />
     <Compile Include="FoodTypeBiz.cs" />
     <Compile Include="FoodBiz.cs" />
     <Compile Include="RestaurantBiz.cs" />

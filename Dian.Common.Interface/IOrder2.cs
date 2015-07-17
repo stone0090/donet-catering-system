@@ -10,9 +10,13 @@ namespace Dian.Common.Interface
 {
     public interface IOrder2 : IAppBizAvailableV2
     {
+        int CreateOrder(int orderId, int restaurantId, int tableId, decimal price, List<OrderListEntity2> orderList); 
+        DataTable GetOrderData(int orderId);
+        void UpdateOrder(int orderId, string foodOp, OrderListEntity2 entity);
+
         DataTable GetOrderMainDataTable();
         List<OrderMainEntity2> GetOrderMainEntityList(OrderMainEntity2 condition_entity);
-        void InsertOrderMainEntity(OrderMainEntity2 condition_entity);
+        int InsertOrderMainEntity(OrderMainEntity2 condition_entity);
         void UpdateOrderMainEntity(OrderMainEntity2 condition_entity);
         void DeleteOrderMainEntity(OrderMainEntity2 condition_entity);
         OrderMainEntity2 GetOrderMainEntity(int? id);

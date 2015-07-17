@@ -71,6 +71,21 @@ namespace Dian.Dao
             }
 
         }
+
+        public static void DeleteEntity2<E>(Expression<Func<E, bool>> conditionExpression)
+        {
+            try
+            {
+                EntityOperations.DeleteEntity2(conditionExpression, DB);
+            }
+            catch (Exception ex)
+            {
+
+                throw new DianDaoException("删除实体出错！消息：" + ex.Message + "堆栈：" + ex.StackTrace, ex);
+            }
+
+        }
+
         #endregion
 
         #region 更新实体操作

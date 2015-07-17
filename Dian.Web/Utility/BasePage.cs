@@ -109,16 +109,12 @@ namespace Dian.Web.Utility
 
         public int ParseInt(string str)
         {
-            var temp = 0;
-            int.TryParse(str, out temp);
-            return temp;
+            return Helper.ParseInt(str);
         }
 
         public decimal ParseDecimal(string str)
         {
-            decimal temp = 0;
-            decimal.TryParse(str, out temp);
-            return temp;
+            return Helper.ParseDecimal(str);
         }
 
         #endregion

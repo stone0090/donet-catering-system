@@ -118,21 +118,29 @@
 
                     <div class="am-g">
                         <div class="am-u-sm-12">
+                            <div class="am-list-item-text">已确认的菜单</div>
                             <table id="tConfirmCart" class="am-table am-table-bd am-table-striped admin-content-table">
                                 <thead>
                                     <tr>
-                                        <th colspan="4">已确认的菜单</th>
+                                        <th>菜名</th>
+                                        <th>单价</th>
+                                        <th>份数</th>
+                                        <th>状态</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
                             </table>
+                            <hr />
                         </div>
                         <div class="am-u-sm-12">
+                            <div class="am-list-item-text">未确认的菜单</div>
                             <table id="tUnconfirmCart" class="am-table am-table-bd am-table-striped">
                                 <thead>
                                     <tr>
-                                        <th colspan="4">未确认的菜单</th>
+                                        <th>菜名</th>
+                                        <th>单价</th>
+                                        <th>份数</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -144,7 +152,7 @@
                     <div class="am-g">
                         <div style="text-align: center;">
                             <button type="button" id="btnClearCart" class="am-btn am-btn-success am-btn-xl" onclick="clearCart();">清空购物车</button>
-                            <button type="button" id="btnCreateOrder" class="am-btn am-btn-warning am-btn-xl" onclick="CreateOrder()"><span class="am-icon-shopping-cart"></span>&nbsp;立即下单</button>
+                            <button type="button" id="btnCreateOrder" class="am-btn am-btn-warning am-btn-xl" onclick="createOrder()"><span class="am-icon-shopping-cart"></span>&nbsp;<span id="sCreateOrder">立即下单</span></button>
                         </div>
                     </div>
                 </div>
@@ -159,7 +167,7 @@
         <!-- 订单ID -->
         <input type="hidden" id="hOrderId" runat="server" />
 
-        <!-- “已下单的数据”和“购物车所有数据”(json格式) -->
+        <!-- “已下单的数据”和“未确认的数据”(json格式) -->
         <input type="hidden" id="hOrderData" runat="server" />
         <input type="hidden" id="hUnconfirmData" runat="server" />
 
@@ -175,7 +183,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:showCart();" style="line-height: 49px;">购物车，合计&nbsp;<span id="sTotalPrice">0.00</span>&nbsp;元
+                <a href="javascript:showCart();" style="line-height: 49px;">购物车，合计&nbsp;<span id="sTotalPrice">0</span>&nbsp;元
                 </a>
             </li>
         </ul>
@@ -218,30 +226,10 @@
 
     <script type="text/javascript">
 
+
         $(function () {
-            //从“已下单”的数据中，过滤出“未确认”的数据，添加到hUnconfirmData中。(因为“未确认”的数据是可以修改的，所以要把“已下单”和“未确认”的数据区别开来操作)
-            var strOrderData = $('#<%= this.hOrderData.ClientID %>').val();
-            if (!$.isEmpty(strOrderData)) {
-                var oOrderData = JSON.parse(strOrderData);
-                var oUnconfirmData = {};
-                for (var oOrderDetail in oOrderData) {
-                    if ($.isEmpty(oOrderDetail.CONFIRM_TIME)) {
-                        oUnconfirmData[oOrderDetail.FOOD_ID] = {};
-                        oUnconfirmData[oOrderDetail.FOOD_ID].COUNT = oOrderDetail.COUNT;
-                        oUnconfirmData[oOrderDetail.FOOD_ID].PRICE = oOrderDetail.PRICE;
-                        oUnconfirmData[oOrderDetail.FOOD_ID].TASTE = oOrderDetail.TASTE;
-                        oUnconfirmData[oOrderDetail.FOOD_ID].REMARK = oOrderDetail.REMARK;
-                        oUnconfirmData[oOrderDetail.FOOD_ID].FOOD_NAME = oOrderDetail.FOOD_NAME;
-                    }
-                }
-                $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
-            }
-
-            //绑定点菜数量
-            bindMenu();
-
-            //绑定购物车数据
-            bindCart();
+            getOrderData();
+            setInterval('getOrderData()', 10000);
         });
 
         //显示菜单
@@ -274,6 +262,7 @@
                 $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
                 bindMenu();
                 bindCart();
+                updateOrder(id, 'cut');
             }
         }
 
@@ -285,12 +274,13 @@
             } else {
                 oUnconfirmData[id] = {};
                 oUnconfirmData[id].COUNT = 1;
-                oUnconfirmData[id].PRICE = $('#liFood' + id).attr('foodprice');
+                oUnconfirmData[id].PRICE = parseFloat($('#liFood' + id).attr('foodprice'));
                 oUnconfirmData[id].FOOD_NAME = $('#liFood' + id).attr('foodname');
             }
             $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
             bindMenu();
             bindCart();
+            updateOrder(id, 'add');
         }
 
         //清空购物车
@@ -298,6 +288,89 @@
             $('#<%= this.hUnconfirmData.ClientID %>').val('');
             bindMenu();
             bindCart();
+        }
+
+        function loadRemark(id) {
+            //清空备注窗口原有的值
+            $('#remarkFoodRemark').val('');
+            $('button[id^=btnTaste]').each(function () {
+                $(this).removeClass('am-active');
+            });
+
+            //初始化备注窗口新的值
+            var id = $('#liFood' + id).attr('foodid');
+            var name = $('#liFood' + id).attr('foodname');
+            var image = $('#liFood' + id).attr('foodimage');
+            $('#remarkFoodId').val(id);
+            $('#remarkFoodName').text(name);
+            $('#remarkFoodImage').attr('src', image);
+            $('#remarkFoodImage').attr('alt', name);
+
+            //从“未确认”的菜单中找taste和remark
+            var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+            if (oUnconfirmData[id] !== undefined) {
+                var taste = oUnconfirmData[id].TASTE;
+                var remark = oUnconfirmData[id].REMARK;
+                if (!$.isEmpty(taste))
+                    $('#btnTaste' + taste).addClass('am-active');
+                if (!$.isEmpty(remark))
+                    $('#remarkFoodRemark').val(remark);
+            }
+        }
+
+        //设置口味
+        function setTaste(that) {
+            if ($(that).hasClass('am-active')) {
+                $(that).removeClass('am-active');
+            } else {
+                $('button[id^=btnTaste]').each(function () {
+                    $(this).removeClass('am-active');
+                });
+                $(that).addClass('am-active');
+            }
+        }
+
+        //备注窗口关闭事件
+        $('#divRemark').on('closed.modal.amui', function () {
+            var id = $('#remarkFoodId').val();
+            var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+            if (oUnconfirmData[id] === undefined) {
+                oUnconfirmData[id] = {};
+                oUnconfirmData[id].COUNT = 0;
+                oUnconfirmData[id].PRICE = parseFloat($('#liFood' + id).attr('foodprice'));
+                oUnconfirmData[id].FOOD_NAME = $('#liFood' + id).attr('foodname');
+            }
+            oUnconfirmData[id].TASTE = $('.am-active').attr('value');
+            oUnconfirmData[id].REMARK = $('#remarkFoodRemark').val();
+            $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
+            bindCart();
+            updateOrder(id, 'remark');
+        });
+
+        function getJsonObject(id) {
+            var strOrderData = $('#' + id).val();
+            return $.isEmpty(strOrderData) ? {} : JSON.parse(strOrderData);
+        }
+
+
+
+
+        function initUnconfirmData() {
+            //从“已下单”的数据中，过滤出“未确认”的数据，添加到hUnconfirmData中。(因为“未确认”的数据是可以修改的，所以要把“已下单”和“未确认”的数据区别开来操作)
+            var oOrderData = getJsonObject('<%= this.hOrderData.ClientID %>');
+            var oUnconfirmData = {};
+            for (var index in oOrderData) {
+                if ($.isEmpty(oOrderData[index].CONFIRM_TIME)) {
+                    var foodId = oOrderData[index].FOOD_ID;
+                    oUnconfirmData[foodId] = {};
+                    oUnconfirmData[foodId].COUNT = parseInt(oOrderData[index].COUNT);
+                    oUnconfirmData[foodId].PRICE = parseFloat(oOrderData[index].PRICE);
+                    oUnconfirmData[foodId].TASTE = oOrderData[index].TASTE;
+                    oUnconfirmData[foodId].REMARK = oOrderData[index].REMARK;
+                    oUnconfirmData[foodId].FOOD_NAME = oOrderData[index].FOOD_NAME;
+                }
+            }
+            $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
         }
 
         function bindMenu() {
@@ -309,10 +382,11 @@
 
             //1、绑定“已确认”的菜单
             var foodCount = 0;
-            for (var oOrderDetail in getJsonObject('<%= this.hOrderData.ClientID %>')) {
-                if (!$.isEmpty(oOrderDetail.CONFIRM_TIME)) {
-                    foodCount = parseInt($('#lFoodCount' + oOrderData.FOOD_ID).text());
-                    $('#lFoodCount' + oOrderDetail.FOOD_ID).text(foodCount + oOrderDetail.COUNT);
+            var oOrderData = getJsonObject('<%= this.hOrderData.ClientID %>');
+            for (var index in oOrderData) {
+                if (!$.isEmpty(oOrderData[index].CONFIRM_TIME)) {
+                    foodCount = parseInt($('#lFoodCount' + oOrderData[index].FOOD_ID).text());
+                    $('#lFoodCount' + oOrderData[index].FOOD_ID).text(foodCount + parseInt(oOrderData[index].COUNT));
                 }
             }
 
@@ -359,21 +433,22 @@
             $('#sTotalPrice').text('0');
 
             //1、绑定“已确认”的购物车
-            for (var oOrderDetail in getJsonObject('<%= this.hOrderData.ClientID %>')) {
-                if (!$.isEmpty(oOrderDetail.CONFIRM_TIME)) {
+            var oOrderData = getJsonObject('<%= this.hOrderData.ClientID %>');
+            for (var index in oOrderData) {
+                if (!$.isEmpty(oOrderData[index].CONFIRM_TIME)) {
                     $('#tConfirmCart').append(
                         '<tr>' +
-                        '<td>' + oOrderDetail.FOOD_NAME + '</td>' +
-                        '<td>单价：&nbsp;<label>' + oOrderDetail.PRICE + '</label>&nbsp;</td>' +
-                        '<td>份数：&nbsp;<label>' + oOrderDetail.COUNT + '</label>&nbsp;</td>' +
-                        '<td>状态：&nbsp;<label>' + getStatus(oOrderDetail) + '</label>&nbsp;</td>' +
+                        '<td>' + oOrderData[index].FOOD_NAME + '</td>' +
+                        '<td>' + parseFloat(oOrderData[index].PRICE) + '</td>' +
+                        '<td>' + parseInt(oOrderData[index].COUNT) + '</td>' +
+                        '<td>' + getStatus(oOrderData[index]) + '</td>' +
                         '</tr>');
 
-                    var remark = getRemark(oOrderDetail);
+                    var remark = getRemark(oOrderData[index]);
                     if (!$.isEmpty(remark))
                         $('#tConfirmCart').append('<tr><td></td><td colspan="3" class="am-list-item-text">' + remark + '</td></tr>');
 
-                    totalPrice += oOrderDetail.PRICE * oOrderDetail.COUNT;
+                    totalPrice += parseFloat(oOrderData[index].PRICE) * parseInt(oOrderData[index].COUNT);
                 }
             }
 
@@ -381,8 +456,8 @@
             if (totalPrice === 0) {
                 $('#tConfirmCart').hide();
             } else {
-                $('btnClearCart').text('清空未确认的菜单');
-                $('btnCreateOrder').text('加菜');
+                $('#sCreateOrder').text('已经下单');
+                $('#btnCreateOrder').attr('disabled', 'disabled');
             }
 
             //2、绑定“未确认”的购物车
@@ -392,11 +467,10 @@
                     $('#tUnconfirmCart').append(
                         '<tr>' +
                         '<td><a data-am-modal="{target: \'#divRemark\', width: 260, height: 450}" href="javascript:loadRemark(\'' + foodId + '\')">' + oUnconfirmData[foodId].FOOD_NAME + '</a></td>' +
-                        '<td>单价：&nbsp;<label>' + oUnconfirmData[foodId].PRICE + '</label>&nbsp;</td>' +
+                        '<td>' + oUnconfirmData[foodId].PRICE + '</td>' +
                         '<td>' +
-                        '份数：' +
                         '<button type="button" class="am-btn am-btn-success am-btn-xs" onclick="cutFood(\'' + foodId + '\');">减</button>' +
-                        '&nbsp;<label>' + oUnconfirmData[foodId].COUNT + '</label>&nbsp;' +
+                        '&nbsp;' + oUnconfirmData[foodId].COUNT + '&nbsp;' +
                         '<button type="button" class="am-btn am-btn-success am-btn-xs" onclick="addFood(\'' + foodId + '\');">加</button>' +
                         '</td>' +
                         '</tr>');
@@ -450,83 +524,100 @@
             return result;
         }
 
-
-        function loadRemark(id) {
-
-            //清空备注窗口原有的值
-            $('#remarkFoodRemark').val('');
-            $('button[id^=btnTaste]').each(function () {
-                $(this).removeClass('am-active');
-            });
-
-            //初始化备注窗口新的值
-            var id = $('#liFood' + id).attr('foodid');
-            var name = $('#liFood' + id).attr('foodname');
-            var image = $('#liFood' + id).attr('foodimage');
-            $('#remarkFoodId').val(id);
-            $('#remarkFoodName').text(name);
-            $('#remarkFoodImage').attr('src', image);
-            $('#remarkFoodImage').attr('alt', name);
-
-            //从“未确认”的菜单中找taste和remark
-            var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
-            if (oUnconfirmData[id] !== undefined) {
-                var taste = oUnconfirmData[id].TASTE;
-                var remark = oUnconfirmData[id].REMARK;
-                if (!$.isEmpty(taste))
-                    $('#btnTaste' + taste).addClass('am-active');
-                if (!$.isEmpty(remark))
-                    $('#remarkFoodRemark').val(remark);
-            }
-        }
-
-        function setTaste(that) {
-            if ($(that).hasClass('am-active')) {
-                $(that).removeClass('am-active');
-            } else {
-                $('button[id^=btnTaste]').each(function () {
-                    $(this).removeClass('am-active');
-                });
-                $(that).addClass('am-active');
-            }
-        }
-
-        //备注窗口关闭事件
-        $('#divRemark').on('closed.modal.amui', function () {
-            var id = $('#remarkFoodId').val();
-            var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
-            if (oUnconfirmData[id] === undefined) {
-                oUnconfirmData[id] = {};
-                oUnconfirmData[id].COUNT = 0;
-                oUnconfirmData[id].PRICE = $('#liFood' + id).attr('foodprice');
-                oUnconfirmData[id].FOOD_NAME = $('#liFood' + id).attr('foodname');
-            }
-            oUnconfirmData[id].TASTE = $('.am-active').attr('value');
-            oUnconfirmData[id].REMARK = $('#remarkFoodRemark').val();
-            $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
-            bindCart();
-        });
-
-        function getJsonObject(id) {
-            var strOrderData = $('#' + id).val();
-            return $.isEmpty(strOrderData) ? {} : JSON.parse(strOrderData);
-        }
-
-        function CreateOrder() {
+        function createOrder() {
             var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
             var count = 0;
+            var oPostData = [];
             for (var foodId in oUnconfirmData) {
-                if (oUnconfirmData[foodId].COUNT = 0)
-                    delete oUnconfirmData[foodId];
-                else
-                    count++;
+                if (oUnconfirmData[foodId].COUNT !== 0)
+                    oPostData[count] = {};
+                oPostData[count].FOOD_ID = parseInt(foodId);
+                oPostData[count].COUNT = oUnconfirmData[foodId].COUNT;
+                oPostData[count].PRICE = oUnconfirmData[foodId].PRICE;
+                oPostData[count].TASTE = $.isEmpty(oUnconfirmData[foodId].TASTE) ? '' : oUnconfirmData[foodId].TASTE;
+                oPostData[count].REMARK = $.isEmpty(oUnconfirmData[foodId].REMARK) ? '' : oUnconfirmData[foodId].REMARK;
+                count++;
             }
+
             if (count > 0) {
-                $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
-                $('#<%= this.form1.ClientID %>').submit();
-            }
+                $.ajax({
+                    type: 'Post',
+                    url: 'Operation/CreateOrder.ashx?rid=<%= RestaurantId %>&tid=<%= TableId %>&oid=<%= this.hOrderId.Value %>&r=' + Math.random(),
+                    data: { orderData: JSON.stringify(oPostData), price: $('#sTotalPrice').text() },
+                    dataType: "json",
+                    async: false,
+                    success: function (result) {
+                        if (result.success) {
+                            $('#<%= this.hOrderId.ClientID %>').val(result.id);
+                        getOrderData();
+                        alert('下单成功！');
+                    } else {
+                        alert('下单失败，原因是：' + result.msg);
+                    }
+                },
+                    error: function (request, error, exception) {
+                        alert('下单失败2，原因是：' + error + '，' + exception);
+                    }
+                });
         }
+    }
+
+    function getOrderData() {
+        var orderId = $('#<%= this.hOrderId.ClientID %>').val();
+        if (!$.isEmpty(orderId)) {
+            $.ajax({
+                type: 'Post',
+                url: 'Operation/GetOrderData.ashx?r=' + Math.random(),
+                data: { oid: orderId },
+                dataType: "json",
+                async: true,
+                success: function (result) {
+                    $('#<%= this.hOrderData.ClientID %>').val(JSON.stringify(result));
+                            initUnconfirmData();
+                            bindMenu();
+                            bindCart();
+                        }
+                    });
+                    }
+                }
+
+                function updateOrder(foodId, op) {
+                    var orderId = $('#<%= this.hOrderId.ClientID %>').val();
+                    if (!$.isEmpty(orderId)) {
+
+                        var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+                    var count = 0;
+                    var oPostData = {};
+                    oPostData.FOOD_ID = foodId;
+                    if (oUnconfirmData[foodId] === undefined) {
+                        oPostData.COUNT = 0;
+                        oPostData.PRICE = 0;
+                        oPostData.TASTE = '';
+                        oPostData.REMARK = '';
+                    } else {
+                        oPostData.COUNT = oUnconfirmData[foodId].COUNT;
+                        oPostData.PRICE = oUnconfirmData[foodId].PRICE;
+                        oPostData.TASTE = $.isEmpty(oUnconfirmData[foodId].TASTE) ? '' : oUnconfirmData[foodId].TASTE;
+                        oPostData.REMARK = $.isEmpty(oUnconfirmData[foodId].REMARK) ? '' : oUnconfirmData[foodId].REMARK;
+                    }
+
+                    $.ajax({
+                        type: 'Post',
+                        url: 'Operation/UpdateOrder.ashx?r=' + Math.random(),
+                        data: { oid: orderId, fop: op, orderData: JSON.stringify(oPostData) },
+                        dataType: "json",
+                        async: true,
+                        success: function (result) {
+                            if (result.success)
+                                console.log('下单成功！');
+                            else
+                                console.log('下单失败，原因是：' + result.msg);
+                        }
+                    });
+                }
+            }
 
     </script>
+
 </body>
 </html>

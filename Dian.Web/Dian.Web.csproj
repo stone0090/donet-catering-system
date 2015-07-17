@@ -46,6 +46,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -98,15 +101,14 @@
     <Content Include="FoodList.aspx" />
     <Content Include="Images\OriginalImages\default.jpg" />
     <Content Include="Images\OriginalImages\pic-none.png" />
-    <Content Include="Index2.aspx" />
     <Content Include="Index.aspx" />
-    <Content Include="Index.html" />
     <Content Include="Login.aspx" />
     <Content Include="Order.aspx" />
     <Content Include="FoodTypeDetail.aspx" />
     <Content Include="RestaurantDetail.aspx" />
     <Content Include="FoodTypeList.aspx" />
     <Content Include="RestaurantList.aspx" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -178,13 +180,6 @@
     <Compile Include="FoodList.aspx.designer.cs">
       <DependentUpon>FoodList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Index2.aspx.cs">
-      <DependentUpon>Index2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Index2.aspx.designer.cs">
-      <DependentUpon>Index2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -199,6 +194,16 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Operation\CreateOrder.ashx.cs">
+      <DependentUpon>CreateOrder.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\GetOrderData.ashx.cs">
+      <DependentUpon>GetOrderData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\UpdateOrder.ashx.cs">
+      <DependentUpon>UpdateOrder.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\Helper.cs" />
     <Compile Include="TheFrontDeskShow.Master.cs">
       <DependentUpon>TheFrontDeskShow.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -206,6 +211,7 @@
     <Compile Include="TheFrontDeskShow.Master.designer.cs">
       <DependentUpon>TheFrontDeskShow.Master</DependentUpon>
     </Compile>
+    <Compile Include="Utility\DataTableHepler.cs" />
     <Compile Include="Utility\ImageHelper.cs" />
     <Compile Include="Order.aspx.cs">
       <DependentUpon>Order.aspx</DependentUpon>
@@ -248,6 +254,7 @@
     </Compile>
     <Compile Include="Utility\ConfigHelper.cs" />
     <Compile Include="Utility\DataCache.cs" />
+    <Compile Include="Utility\JsonHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,7 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DIAN.snk" />
-    <Content Include="RemoteAccess.config" />
     <Content Include="DataAccess.config" />
     <Content Include="assets\fonts\fontawesome-webfont.eot" />
     <Content Include="assets\fonts\fontawesome-webfont.ttf" />
@@ -265,6 +271,9 @@
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="BackgroundManagement.Master" />
     <Content Include="TheFrontDeskShow.Master" />
+    <Content Include="Operation\CreateOrder.ashx" />
+    <Content Include="Operation\UpdateOrder.ashx" />
+    <Content Include="Operation\GetOrderData.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -6,7 +6,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace Dian.Web
+namespace Dian.Web.Utility
 {
     public class ImageHelper
     {

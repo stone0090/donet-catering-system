@@ -4,7 +4,9 @@ using Dian.Common.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,6 +22,7 @@ namespace Dian.Web
         {
             RestaurantId = base.ParseInt(Request.QueryString["rId"]);
             TableId = base.ParseInt(Request.QueryString["tId"]);
+            this.hOrderId.Value = "";
 
             if (RestaurantId == 0 || TableId == 0)
             {
@@ -36,7 +39,6 @@ namespace Dian.Web
                     this.aLogin.InnerText = CurEmployeeEntity.EMPLOYEE_NAME + "，您好";
                 }
             }
-
         }
 
         private void BindData()
@@ -48,6 +50,19 @@ namespace Dian.Web
             IFood foodBiz = new FoodBiz();
             repeater2.DataSource = foodBiz.GetFoodDataTable();
             repeater2.DataBind();
+
+            IOrder2 orderBiz = new Order2Biz();
+            var condition = new OrderMainEntity2();
+            condition.RESTAURANT_ID = RestaurantId;
+            condition.TABLE_ID = TableId;
+            condition.ORDER_FLAG = "1";
+            var list = orderBiz.GetOrderMainEntityList(condition);
+            if (list != null && list.Count > 0)
+            {
+                this.hOrderId.Value = list[0].ORDER_ID.ToString();
+            }
         }
+
+
     }
 }
