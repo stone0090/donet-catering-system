@@ -23,7 +23,6 @@ namespace Dian.Biz
             }
         }
 
-
         #region 扩展方法
 
         public DataTable GetOrderData(int orderId)
@@ -38,23 +37,16 @@ namespace Dian.Biz
             }
         }
 
-        public int CreateOrder(int orderId, int restaurantId, int tableId, decimal price, List<OrderListEntity2> listOrderList)
+        public int CreateOrder(int restaurantId, int tableId, decimal price, List<OrderListEntity2> listOrderList)
         {
             using (TransactionScope ts = new TransactionScope())
             {
-                if (orderId == 0)
-                {
-                    var orderMainEntity = new OrderMainEntity2();
-                    orderMainEntity.RESTAURANT_ID = restaurantId;
-                    orderMainEntity.TABLE_ID = tableId;
-                    orderMainEntity.PRICE = price;
-                    orderMainEntity.ORDER_FLAG = "1";
-                    orderId = InsertOrderMainEntity(orderMainEntity);
-                }
-                else
-                {
-                    manual_dao.DeleteOrderListByConfirmTimeIsNull(orderId);
-                }
+                var orderMainEntity = new OrderMainEntity2();
+                orderMainEntity.RESTAURANT_ID = restaurantId;
+                orderMainEntity.TABLE_ID = tableId;
+                orderMainEntity.PRICE = price;
+                orderMainEntity.ORDER_FLAG = "1";
+                var orderId = InsertOrderMainEntity(orderMainEntity);
 
                 foreach (var orderList in listOrderList)
                 {
@@ -65,14 +57,14 @@ namespace Dian.Biz
                 }
 
                 ts.Complete();
-            }
 
-            return orderId;
+                return orderId;
+            }
         }
 
         public void UpdateOrder(int orderId, string foodOp, OrderListEntity2 entity)
         {
-            var dt = GetUnConfirmOrderDataByFood(orderId, (int)entity.FOOD_ID);
+            var dt = manual_dao.GetUnConfirmOrderData(orderId, entity.FOOD_ID);
 
             if (foodOp == "add")
             {
@@ -126,10 +118,24 @@ namespace Dian.Biz
 
         }
 
-        private DataTable GetUnConfirmOrderDataByFood(int orderId, int foodId)
+        public void ClearCart(int orderId)
         {
-            return manual_dao.GetUnConfirmOrderDataByFood(orderId, foodId);
+            var dt = manual_dao.GetUnConfirmOrderData(orderId);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                using (TransactionScope ts = new TransactionScope())
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        var condition = new OrderListEntity2();
+                        condition.LIST_ID = int.Parse(dr["LIST_ID"].ToString());
+                        DeleteOrderListEntity(condition);
+                    }
+                    ts.Complete();
+                }
+            }
         }
+
 
         #endregion
 

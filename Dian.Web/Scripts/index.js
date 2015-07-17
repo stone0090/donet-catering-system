@@ -1,6 +1,4 @@
 ﻿
-
-
 $(function () {
     getOrderData();
     setInterval('getOrderData()', 10000);
@@ -30,10 +28,10 @@ function loadFoodByType(type) {
 
 //减少一道菜
 function cutFood(id) {
-    var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+    var oUnconfirmData = getJsonObject(hUnconfirmData);
     if (oUnconfirmData[id] !== undefined && oUnconfirmData[id].COUNT > 0) {
         oUnconfirmData[id].COUNT = oUnconfirmData[id].COUNT - 1;
-        $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
+        $('#' + hUnconfirmData).val(JSON.stringify(oUnconfirmData));
         bindMenu();
         bindCart();
         updateOrder(id, 'cut');
@@ -42,7 +40,7 @@ function cutFood(id) {
 
 //新增一道菜
 function addFood(id) {
-    var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+    var oUnconfirmData = getJsonObject(hUnconfirmData);
     if (oUnconfirmData[id] !== undefined) {
         oUnconfirmData[id].COUNT = oUnconfirmData[id].COUNT + 1;
     } else {
@@ -51,7 +49,7 @@ function addFood(id) {
         oUnconfirmData[id].PRICE = parseFloat($('#liFood' + id).attr('foodprice'));
         oUnconfirmData[id].FOOD_NAME = $('#liFood' + id).attr('foodname');
     }
-    $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
+    $('#' + hUnconfirmData).val(JSON.stringify(oUnconfirmData));
     bindMenu();
     bindCart();
     updateOrder(id, 'add');
@@ -59,9 +57,26 @@ function addFood(id) {
 
 //清空购物车
 function clearCart() {
-    $('#<%= this.hUnconfirmData.ClientID %>').val('');
+    $('#' + hUnconfirmData).val('');
     bindMenu();
     bindCart();
+    var orderId = $('#' + hOrderId).val();
+    if (!$.isEmpty(orderId)) {
+        $.ajax({
+            type: 'Post',
+            url: 'Operation/ClearCart.ashx?r=' + Math.random(),
+            data: { oid: orderId },
+            dataType: "json",
+            async: true,
+            success: function (result) {
+                if (result.success)
+                    console.log('清空购物车成功！');
+                else
+                    console.log('清空购物车失败，原因是：' + result.msg);
+            }
+        });
+    }
+
 }
 
 function loadRemark(id) {
@@ -81,7 +96,7 @@ function loadRemark(id) {
     $('#remarkFoodImage').attr('alt', name);
 
     //从“未确认”的菜单中找taste和remark
-    var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+    var oUnconfirmData = getJsonObject(hUnconfirmData);
     if (oUnconfirmData[id] !== undefined) {
         var taste = oUnconfirmData[id].TASTE;
         var remark = oUnconfirmData[id].REMARK;
@@ -104,22 +119,7 @@ function setTaste(that) {
     }
 }
 
-//备注窗口关闭事件
-$('#divRemark').on('closed.modal.amui', function () {
-    var id = $('#remarkFoodId').val();
-    var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
-    if (oUnconfirmData[id] === undefined) {
-        oUnconfirmData[id] = {};
-        oUnconfirmData[id].COUNT = 0;
-        oUnconfirmData[id].PRICE = parseFloat($('#liFood' + id).attr('foodprice'));
-        oUnconfirmData[id].FOOD_NAME = $('#liFood' + id).attr('foodname');
-    }
-    oUnconfirmData[id].TASTE = $('.am-active').attr('value');
-    oUnconfirmData[id].REMARK = $('#remarkFoodRemark').val();
-    $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
-    bindCart();
-    updateOrder(id, 'remark');
-});
+
 
 function getJsonObject(id) {
     var strOrderData = $('#' + id).val();
@@ -127,11 +127,9 @@ function getJsonObject(id) {
 }
 
 
-
-
+//从“已下单”的数据中，过滤出“未确认”的数据，添加到hUnconfirmData中。(因为“未确认”的数据是可以修改的，所以要把“已下单”和“未确认”的数据区别开来操作)
 function initUnconfirmData() {
-    //从“已下单”的数据中，过滤出“未确认”的数据，添加到hUnconfirmData中。(因为“未确认”的数据是可以修改的，所以要把“已下单”和“未确认”的数据区别开来操作)
-    var oOrderData = getJsonObject('<%= this.hOrderData.ClientID %>');
+    var oOrderData = getJsonObject(hOrderData);
     var oUnconfirmData = {};
     for (var index in oOrderData) {
         if ($.isEmpty(oOrderData[index].CONFIRM_TIME)) {
@@ -144,7 +142,7 @@ function initUnconfirmData() {
             oUnconfirmData[foodId].FOOD_NAME = oOrderData[index].FOOD_NAME;
         }
     }
-    $('#<%= this.hUnconfirmData.ClientID %>').val(JSON.stringify(oUnconfirmData));
+    $('#' + hUnconfirmData).val(JSON.stringify(oUnconfirmData));
 }
 
 function bindMenu() {
@@ -156,7 +154,7 @@ function bindMenu() {
 
     //1、绑定“已确认”的菜单
     var foodCount = 0;
-    var oOrderData = getJsonObject('<%= this.hOrderData.ClientID %>');
+    var oOrderData = getJsonObject(hOrderData);
     for (var index in oOrderData) {
         if (!$.isEmpty(oOrderData[index].CONFIRM_TIME)) {
             foodCount = parseInt($('#lFoodCount' + oOrderData[index].FOOD_ID).text());
@@ -165,7 +163,7 @@ function bindMenu() {
     }
 
     //2、绑定“未确认”的菜单
-    var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+    var oUnconfirmData = getJsonObject(hUnconfirmData);
     for (var foodId in oUnconfirmData) {
         foodCount = parseInt($('#lFoodCount' + foodId).text());
         $('#lFoodCount' + foodId).text(foodCount + oUnconfirmData[foodId].COUNT);
@@ -207,7 +205,7 @@ function bindCart() {
     $('#sTotalPrice').text('0');
 
     //1、绑定“已确认”的购物车
-    var oOrderData = getJsonObject('<%= this.hOrderData.ClientID %>');
+    var oOrderData = getJsonObject(hOrderData);
     for (var index in oOrderData) {
         if (!$.isEmpty(oOrderData[index].CONFIRM_TIME)) {
             $('#tConfirmCart').append(
@@ -235,7 +233,7 @@ function bindCart() {
     }
 
     //2、绑定“未确认”的购物车
-    var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+    var oUnconfirmData = getJsonObject(hUnconfirmData);
     for (var foodId in oUnconfirmData) {
         if (oUnconfirmData[foodId].COUNT > 0) {
             $('#tUnconfirmCart').append(
@@ -268,7 +266,7 @@ function getStatus(oOrderDetail) {
     if (!$.isEmpty(oOrderDetail.FINISH_TIME))
         return '已上菜';
     if (!$.isEmpty(oOrderDetail.CONFIRM_TIME))
-        return '已确认';
+        return '<span class="am-text-danger">烹饪中...</span>';
     if (!$.isEmpty(oOrderDetail.ORDER_TIME))
         return '已下单';
     else return '';
@@ -299,7 +297,7 @@ function getRemark(oOrderDetail) {
 }
 
 function createOrder() {
-    var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+    var oUnconfirmData = getJsonObject(hUnconfirmData);
     var count = 0;
     var oPostData = [];
     for (var foodId in oUnconfirmData) {
@@ -316,13 +314,13 @@ function createOrder() {
     if (count > 0) {
         $.ajax({
             type: 'Post',
-            url: 'Operation/CreateOrder.ashx?rid=<%= RestaurantId %>&tid=<%= TableId %>&oid=<%= this.hOrderId.Value %>&r=' + Math.random(),
+            url: 'Operation/CreateOrder.ashx?rid=' + restaurantId + '&tid=' + tableId + '&r=' + Math.random(),
             data: { orderData: JSON.stringify(oPostData), price: $('#sTotalPrice').text() },
             dataType: "json",
             async: false,
             success: function (result) {
                 if (result.success) {
-                    $('#<%= this.hOrderId.ClientID %>').val(result.id);
+                    $('#' + hOrderId).val(result.id);
                     getOrderData();
                     alert('下单成功！');
                 } else {
@@ -337,7 +335,7 @@ function createOrder() {
 }
 
 function getOrderData() {
-    var orderId = $('#<%= this.hOrderId.ClientID %>').val();
+    var orderId = $('#' + hOrderId).val();
     if (!$.isEmpty(orderId)) {
         $.ajax({
             type: 'Post',
@@ -346,7 +344,7 @@ function getOrderData() {
             dataType: "json",
             async: true,
             success: function (result) {
-                $('#<%= this.hOrderData.ClientID %>').val(JSON.stringify(result));
+                $('#' + hOrderData).val(JSON.stringify(result));
                 initUnconfirmData();
                 bindMenu();
                 bindCart();
@@ -356,10 +354,10 @@ function getOrderData() {
 }
 
 function updateOrder(foodId, op) {
-    var orderId = $('#<%= this.hOrderId.ClientID %>').val();
+    var orderId = $('#' + hOrderId).val();
     if (!$.isEmpty(orderId)) {
 
-        var oUnconfirmData = getJsonObject('<%= this.hUnconfirmData.ClientID %>');
+        var oUnconfirmData = getJsonObject(hUnconfirmData);
         var count = 0;
         var oPostData = {};
         oPostData.FOOD_ID = foodId;
@@ -383,9 +381,9 @@ function updateOrder(foodId, op) {
             async: true,
             success: function (result) {
                 if (result.success)
-                    console.log('下单成功！');
+                    console.log('更新订单成功！');
                 else
-                    console.log('下单失败，原因是：' + result.msg);
+                    console.log('更新订单失败，原因是：' + result.msg);
             }
         });
     }

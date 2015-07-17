@@ -22,7 +22,6 @@ namespace Dian.Web.Operation
             try
             {
                 var tableId = Helper.ParseInt(context.Request.QueryString["tid"]);
-                var orderId = Helper.ParseInt(context.Request.QueryString["oid"]);
                 var restaurantId = Helper.ParseInt(context.Request.QueryString["rid"]);
                 var orderData = context.Request.Form["orderData"];
                 var price = Helper.ParseDecimal(context.Request.Form["price"]);
@@ -42,7 +41,7 @@ namespace Dian.Web.Operation
                 var list2 = JsonToObjects(orderData);
                 if (list2 != null && list2.Count > 0)
                 {
-                    orderId = orderBiz.CreateOrder(orderId, restaurantId, tableId, price, list2);
+                    var orderId = orderBiz.CreateOrder(restaurantId, tableId, price, list2);
                     context.Response.Write("{\"success\":1,\"id\":" + orderId.ToString() + "}");
                 }
             }

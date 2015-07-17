@@ -131,16 +131,6 @@ namespace Dian.Dao
             }
         }
 
-        public int DeleteOrderListByConfirmTimeIsNull(int orderId)
-        {
-            string sql = @"DELETE FROM ORDERLIST2 WHERE ORDER_ID = @ORDER_ID AND CONFIRM_TIME = '' ";
-            using (DbCommand dc = db.GetSqlStringCommand(sql))
-            {
-                db.AddInParameter(dc, "@ORDER_ID", DbType.Int32, orderId);
-                return db.ExecuteNonQuery(dc);
-            }
-        }
-
         public DataTable GetOrderData(int orderId)
         {
             string sql = @"SELECT A.*,B.FOOD_NAME FROM ORDERLIST2 A 
@@ -154,19 +144,21 @@ namespace Dian.Dao
             }
         }
 
-        public DataTable GetUnConfirmOrderDataByFood(int orderId, int foodId)
+        public DataTable GetUnConfirmOrderData(int orderId, int? foodId = null)
         {
             string sql = @"SELECT A.*,B.FOOD_NAME FROM ORDERLIST2 A 
                             LEFT JOIN FOOD B ON A.FOOD_ID = B.FOOD_ID 
                             WHERE (CANCEL_TIME = '' OR CANCEL_TIME IS NULL) 
                             AND (CONFIRM_TIME = '' OR CONFIRM_TIME IS NULL) 
                             AND (FINISH_TIME = '' OR FINISH_TIME IS NULL) 
-                            AND A.ORDER_ID = @ORDER_ID 
-                            AND A.FOOD_ID = @FOOD_ID ";
+                            AND A.ORDER_ID = @ORDER_ID ";
+            if (foodId != null)
+                sql += " AND A.FOOD_ID = @FOOD_ID ";
             using (DbCommand dc = db.GetSqlStringCommand(sql))
             {
                 db.AddInParameter(dc, "@ORDER_ID", DbType.Int32, orderId);
-                db.AddInParameter(dc, "@FOOD_ID", DbType.Int32, foodId);
+                if (foodId != null)
+                    db.AddInParameter(dc, "@FOOD_ID", DbType.Int32, foodId);
                 return db.ExecuteDataTable(dc);
             }
         }

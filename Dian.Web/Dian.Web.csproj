@@ -194,6 +194,9 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Operation\ClearCart.ashx.cs">
+      <DependentUpon>ClearCart.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Operation\CreateOrder.ashx.cs">
       <DependentUpon>CreateOrder.ashx</DependentUpon>
     </Compile>
@@ -274,6 +277,7 @@
     <Content Include="Operation\CreateOrder.ashx" />
     <Content Include="Operation\UpdateOrder.ashx" />
     <Content Include="Operation\GetOrderData.ashx" />
+    <Content Include="Operation\ClearCart.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
