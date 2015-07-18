@@ -24,7 +24,7 @@ namespace Dian.Web
             TableId = base.ParseInt(Request.QueryString["tId"]);
             this.hOrderId.Value = "";
 
-            if (RestaurantId == 0)
+            if (RestaurantId == 0 || TableId == 0)
             {
                 Server.Transfer("Error404.aspx");
             }
@@ -42,7 +42,7 @@ namespace Dian.Web
                 if (CurEmployeeEntity != null)
                 {
                     this.aLogin.HRef = "BackgroudIndex.aspx";
-                    this.aLogin.InnerText = CurEmployeeEntity.EMPLOYEE_NAME + "，您好";
+                    this.aLogin.InnerText = "后台管理";
                 }
             }
         }

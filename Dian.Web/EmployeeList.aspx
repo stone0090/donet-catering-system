@@ -85,7 +85,7 @@
 
     <script type="text/javascript">
 
-        $(function () {
+        $(window).bind('load', function () {
             initPagination('<%= CurPage %>', '<%= TotalCount %>', '<%= PageCount %>', '<%= this.Request.Url.AbsolutePath %>');
         });
 

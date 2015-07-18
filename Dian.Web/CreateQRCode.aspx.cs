@@ -55,7 +55,7 @@ namespace Dian.Web
                 if (hidden.Value == "1")
                     return;
 
-                var url = "http://" + Request.Url.Authority + "/Index.aspx?rid=" + this.ddlRestaurant.SelectedValue + "&tid=" + this.tTableId.Value;
+                var url = "http://" + Request.Url.Authority + "/Index.aspx?rid=" + this.ddlRestaurant.SelectedValue + "&tid=" + this.hTableId.Value;
 
                 var encoder = new QRCodeEncoder();
                 encoder.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;

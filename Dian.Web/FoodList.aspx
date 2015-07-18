@@ -85,9 +85,8 @@
 
     <script type="text/javascript">
 
-        $(function () {
+        $(window).bind('load', function () {
             initPagination('<%= CurPage %>', '<%= TotalCount %>', '<%= PageCount %>', '<%= this.Request.Url.AbsolutePath %>');
-            if ('<%= base.CurEmployeeEntity.IS_ADMIN %>' === 'False') $('.restaurant-name').hide();
         });
 
         function beforeAdd() {

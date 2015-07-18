@@ -17,7 +17,13 @@ namespace Dian.Web.Utility
 
         #region 属性
 
-        public string UrlReferrer { get { return ViewState["UrlReferrer"].ToString(); } }
+        public string UrlReferrer
+        {
+            get
+            {
+                return ViewState["UrlReferrer"] == null ? "/index.aspx" : ViewState["UrlReferrer"].ToString();
+            }
+        }
 
         protected EmployeeEntity CurEmployeeEntity
         {

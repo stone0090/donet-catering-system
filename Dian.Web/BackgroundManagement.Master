@@ -45,8 +45,9 @@
             <button type="button" class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
             <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
                 <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+                    <li><a href="Index.aspx?tid=1&rid=<%= CurEmployeeEntity.RESTAURANT_ID %>">前台菜单</a></li>
                     <li><a href="BackgroudIndex.aspx">hello
-                        <label><%= CurEmployeeEntity.EMPLOYEE_NAME %></label>，当前店铺为：<label><%= CurEmployeeEntity.RESTAURANT_NAME %></label></a></li>
+                        <label><%= CurEmployeeEntity.EMPLOYEE_NAME %></label>，当前店铺为：<label><%= CurEmployeeEntity.RESTAURANT_NAME %></label></a></li>                    
                 </ul>
             </div>
         </header>
@@ -98,12 +99,10 @@
         <script type="text/javascript">
             var form1 = "<%= this.form1.ClientID %>";
             var hLogout = "<%= this.hLogout.ClientID %>";
-
             function logout() {
                 $('#' + hLogout).val('1');
                 $('#' + form1).submit();
             }
-
         </script>
 
     </form>

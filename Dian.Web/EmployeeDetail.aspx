@@ -118,13 +118,13 @@
         //页面初始化
         var hSex = "<%= this.hSex.ClientID %>";
 
-        $(function () {
+        $(window).bind('load', function () {
             var temp = 0;
             if (!$.isEmpty($('#' + hSex).val())) {
                 temp = parseInt($('#' + hSex).val()) - 1
                 $('input:radio[name=optionsSex]')[temp].checked = true;
             }
-        })
+        });
 
         function beforeSave() {
             $('#' + hSex).val($('input:radio[name=optionsSex]:checked').val());

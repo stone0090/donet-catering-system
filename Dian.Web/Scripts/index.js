@@ -1,7 +1,7 @@
 ﻿
-$(function () {
+$(window).bind('load', function () {
     getOrderData();
-    //setInterval('getOrderData()', 10000);
+    setInterval('getOrderData()', 10000);
 });
 
 //显示菜单
@@ -32,9 +32,15 @@ function cutFood(id) {
     if (oUnconfirmData[id] !== undefined && oUnconfirmData[id].COUNT > 0) {
         oUnconfirmData[id].COUNT = oUnconfirmData[id].COUNT - 1;
         $('#' + hUnconfirmData).val(JSON.stringify(oUnconfirmData));
-        bindMenu();
-        bindCart();
-        updateOrder(id, 'cut');
+        var orderId = $('#' + hOrderId).val();
+        if ($.isEmpty(orderId)) {
+            createOrder();
+            getOrderData();
+        } else {
+            bindMenu();
+            bindCart();
+            updateOrder(id, 'cut');
+        }
     }
 }
 
@@ -50,9 +56,15 @@ function addFood(id) {
         oUnconfirmData[id].FOOD_NAME = $('#liFood' + id).attr('foodname');
     }
     $('#' + hUnconfirmData).val(JSON.stringify(oUnconfirmData));
-    bindMenu();
-    bindCart();
-    updateOrder(id, 'add');
+    var orderId = $('#' + hOrderId).val();
+    if ($.isEmpty(orderId)) {
+        createOrder();
+        getOrderData();
+    } else {
+        bindMenu();
+        bindCart();
+        updateOrder(id, 'add');
+    }
 }
 
 //清空购物车
@@ -223,7 +235,8 @@ function bindCart() {
         }
     }
 
-    if (totalPrice === 0) {
+    var orderId = $('#' + hOrderId).val();
+    if ($.isEmpty(orderId) || totalPrice === 0) {
         $('#divConfirmCart').hide();
     }
 
@@ -250,10 +263,7 @@ function bindCart() {
         }
     }
 
-    var orderId = $('#' + hOrderId).val();
-    if ($.isEmpty(orderId)) {
-        $('#divConfirmCart').hide();
-    } 
+
 
     //3、计算总价格
     $('#sTotalPrice').text(totalPrice);
@@ -326,14 +336,13 @@ function createOrder() {
             success: function (result) {
                 if (result.success) {
                     $('#' + hOrderId).val(result.id);
-                    getOrderData();
-                    alert('下单成功！');
+                    console.log('创建订单成功！');
                 } else {
-                    alert('下单失败，原因是：' + result.msg);
+                    console.log('创建订单失败，原因是：' + result.msg);
                 }
             },
             error: function (request, error, exception) {
-                alert('下单失败2，原因是：' + error + '，' + exception);
+                console.log('创建订单失败2，原因是：' + error + '，' + exception);
             }
         });
     }
@@ -353,19 +362,24 @@ function getOrderData() {
                 initUnconfirmData();
                 bindMenu();
                 bindCart();
+            },
+            error: function (request, error, exception) {
+                console.log('获取订单失败，原因是：' + error + '，' + exception);
             }
         });
+    } else {
+        bindCart();
     }
 }
 
 function updateOrder(foodId, op) {
     var orderId = $('#' + hOrderId).val();
     if (!$.isEmpty(orderId)) {
-
         var oUnconfirmData = getJsonObject(hUnconfirmData);
         var count = 0;
         var oPostData = {};
         oPostData.FOOD_ID = foodId;
+
         if (oUnconfirmData[foodId] === undefined) {
             oPostData.COUNT = 0;
             oPostData.PRICE = 0;
@@ -389,6 +403,9 @@ function updateOrder(foodId, op) {
                     console.log('更新订单成功！');
                 else
                     console.log('更新订单失败，原因是：' + result.msg);
+            },
+            error: function (request, error, exception) {
+                console.log('更新订单失败2，原因是：' + error + '，' + exception);
             }
         });
     }

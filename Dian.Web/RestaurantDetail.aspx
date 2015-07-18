@@ -142,12 +142,11 @@
     <script type="text/javascript">
 
         //页面初始化
-
         var hPackingCount = "<%= this.hPackingCount.ClientID %>";
         var hLevel = "<%= this.hLevel.ClientID %>";
         var hArea = "<%= this.hArea.ClientID %>";
 
-        $(function () {
+        $(window).bind('load', function () {
             var temp = 0;
             if (!$.isEmpty($('#tPackingCount').val()))
                 $('#tPackingCount').val($('#' + hPackingCount).val());
@@ -159,7 +158,7 @@
                 temp = parseInt($('#' + hArea).val()) - 1
                 $('input:radio[name=optionsArea]')[temp].checked = true;
             }
-        })
+        });
 
         function beforeSave() {
             $('#' + hPackingCount).val($('#tPackingCount').val());

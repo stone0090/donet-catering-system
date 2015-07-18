@@ -29,7 +29,7 @@
                         桌号
                     </div>
                     <div class="am-u-sm-10 am-u-md-6">
-                        <input type="text" class="am-input-sm" placeholder="必填" id="tTableId" runat="server" maxlength="25" required>
+                        <input type="number" class="am-input-sm" placeholder="必填" id="tTableId" min="1" max="1000" required>
                     </div>
                     <div class="am-hide-sm-only am-u-md-4">*必填</div>
                 </div>
@@ -38,11 +38,24 @@
         </div>
 
         <div class="am-margin">
-            <button type="submit" class="am-btn am-btn-primary am-btn-xs">生成二维码</button>
+            <button type="submit" class="am-btn am-btn-primary am-btn-xs" onclick="beforeCreateQRCode();">生成二维码</button>
             <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="self.location.href = '<%= base.UrlReferrer %>'">取消</button>
         </div>
 
         <label id="lMsg" runat="server" class="am-text-danger"></label>
+
+
+        <input type="hidden" id="hTableId" runat="server" />
+
+        <script type="text/javascript">
+
+            var hTableId = "<%= this.hTableId.ClientID %>";
+
+            function beforeCreateQRCode() {
+                $('#' + hTableId).val($('#tTableId').val());
+            }
+
+        </script>
 
         <br />
         <br />

@@ -85,14 +85,14 @@
                                     <ItemTemplate>
                                         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" id="<%# "liFood" + Eval("FOOD_ID").ToString() %>" foodid="<%# Eval("FOOD_ID") %>" foodtypeid="<%# Eval("FOOD_TYPE_ID") %>" foodname="<%# Eval("FOOD_NAME") %>" foodimage="<%# Eval("FOOD_IMAGE1") %>" foodprice="<%# Eval("PRICE") %>">
                                             <div class="am-u-sm-4 am-list-thumb">
-                                                <a data-am-modal="{target: '#divRemark', width: 260, height: 450}" href="javascript:loadRemark('<%# Eval("FOOD_ID") %>')">
+                                                <a data-am-modal="{target: '#divRemark', width: 260, height: 420}" href="javascript:loadRemark('<%# Eval("FOOD_ID") %>')">
                                                     <img src="<%# Eval("FOOD_IMAGE_NAIL1") %>" alt="<%# Eval("FOOD_NAME") %>" class="am-img-thumbnail">
                                                 </a>
                                                 &nbsp;
                                             </div>
                                             <div class="am-u-sm-8 am-list-main">
                                                 <h3 class="am-list-item-hd">
-                                                    <a data-am-modal="{target: '#divRemark', width: 260, height: 450}" href="javascript:loadRemark('<%# Eval("FOOD_ID") %>')"><%# Eval("FOOD_NAME") %></a>
+                                                    <a data-am-modal="{target: '#divRemark', width: 260, height: 420}" href="javascript:loadRemark('<%# Eval("FOOD_ID") %>')"><%# Eval("FOOD_NAME") %></a>
                                                 </h3>
                                                 <div class="am-list-item-text"><%# Eval("DESCRIPTION") %></div>
                                                 <div style="margin-top: 10px;">
@@ -200,11 +200,10 @@
             </div>
             <div class="am-modal-bd">
                 <hr />
-                <div>
+                <div style="margin-top: -15px;">
                     <img id="remarkFoodImage" src="" alt="" class="am-img-responsive am-img-thumbnail" style="height: 200px;">
-                    <br />
                     <div class="am-form" style="text-align: left;">
-                        <div class="am-form-group">
+                        <div class="am-form-group" style="margin-top: 2px;">
                             <div>口味</div>
                             <div>
                                 <button type="button" class="am-btn am-btn-default am-btn-xs" id="btnTaste1" value="1" onclick="setTaste(this);">免辣</button>
@@ -213,11 +212,14 @@
                                 <button type="button" class="am-btn am-btn-default am-btn-xs" id="btnTaste4" value="4" onclick="setTaste(this);">特辣</button>
                             </div>
                         </div>
-                        <div class="am-form-group">
+                        <div class="am-form-group" style="margin-top: -15px;">
                             <div>备注</div>
                             <div>
                                 <input type="text" id="remarkFoodRemark" class="am-input-sm" placeholder="给店家交代点什么" maxlength="50" required>
                             </div>
+                        </div>
+                        <div class="am-form-group" style="margin-top: -12px;">
+                            <button type="button" class="am-btn am-btn-primary am-btn-xs" data-am-modal-close>确定</button>
                         </div>
                     </div>
                 </div>
@@ -232,6 +234,8 @@
         var hOrderId = '<%= this.hOrderId.ClientID %>';
         var restaurantId = <%= RestaurantId %>;
         var tableId = <%= TableId %>;
+
+
 
         //备注窗口关闭事件
         $('#divRemark').on('closed.modal.amui', function () {

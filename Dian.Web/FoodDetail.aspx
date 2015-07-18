@@ -160,9 +160,9 @@
 
         var hPrice = "<%= this.hPrice.ClientID %>";
 
-        $(function () {
+        $(window).bind('load', function () {
             $('#tPrice').val($('#' + hPrice).val());
-        })
+        });
 
         function beforeSave() {
             $('#' + hPrice).val($('#tPrice').val());

@@ -173,27 +173,27 @@ namespace Dian.Dao
             }
         }
 
-        public DataTable GetTableDataTable(int? restaurantId = null)
-        {
-            try
-            {
-                string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM [TABLE] A
-                                LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID
-                                WHERE 1=1 ";
-                if (restaurantId != null)
-                    sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
-                using (DbCommand dc = db.GetSqlStringCommand(sql))
-                {
-                    if (restaurantId != null)
-                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.AnsiString, restaurantId);
-                    return db.ExecuteDataTable(dc);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new DianDaoException("获取菜品类型的数据出错！", ex);
-            }
-        }
+        //        public DataTable GetTableDataTable(int? restaurantId = null)
+        //        {
+        //            try
+        //            {
+        //                string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM [TABLE] A
+        //                                LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID
+        //                                WHERE 1=1 ";
+        //                if (restaurantId != null)
+        //                    sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
+        //                using (DbCommand dc = db.GetSqlStringCommand(sql))
+        //                {
+        //                    if (restaurantId != null)
+        //                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.AnsiString, restaurantId);
+        //                    return db.ExecuteDataTable(dc);
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw new DianDaoException("获取菜品类型的数据出错！", ex);
+        //            }
+        //        }
 
     }
 }

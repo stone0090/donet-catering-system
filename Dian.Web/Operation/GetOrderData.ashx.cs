@@ -27,6 +27,10 @@ namespace Dian.Web.Operation
                 var result = JsonHelper.DataTableToJson(dt);
                 context.Response.Write(result);
             }
+            else
+            {
+                context.Response.Write("{}");
+            }
         }
 
         public bool IsReusable

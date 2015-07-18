@@ -102,9 +102,7 @@
     <Content Include="Error404.aspx" />
     <Content Include="FoodDetail.aspx" />
     <Content Include="FoodList.aspx" />
-    <Content Include="TableDetail.aspx" />
     <Content Include="CreateQRCode.aspx" />
-    <Content Include="TableList.aspx" />
     <Content Include="Images\OriginalImages\default.jpg" />
     <Content Include="Images\OriginalImages\pic-none.png" />
     <Content Include="Index.aspx" />
@@ -185,26 +183,12 @@
     <Compile Include="FoodList.aspx.designer.cs">
       <DependentUpon>FoodList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TableDetail.aspx.cs">
-      <DependentUpon>TableDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TableDetail.aspx.designer.cs">
-      <DependentUpon>TableDetail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CreateQRCode.aspx.cs">
       <DependentUpon>CreateQRCode.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CreateQRCode.aspx.designer.cs">
       <DependentUpon>CreateQRCode.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TableList.aspx.cs">
-      <DependentUpon>TableList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TableList.aspx.designer.cs">
-      <DependentUpon>TableList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
