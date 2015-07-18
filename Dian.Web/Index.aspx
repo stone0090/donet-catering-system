@@ -13,6 +13,90 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="stylesheet" href="assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="assets/css/admin.css" />
+    <style>
+        #divHeader {
+            width: 100%;
+            z-index: 1091;
+            position: fixed;
+        }
+
+        #admin-offcanvas {
+            width: 80px;
+            display: block;
+            background: none;
+            min-height: 100%;
+            float: left;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1090;
+            box-sizing: border-box;
+            border-right: 0px solid #fff;
+            position: fixed;
+            top: 51px;
+            margin-bottom: 100px;
+            background: url(data:Images/OriginalImages/menu_bg.png) left top #f5f5f5;
+            background-image: url(data:Images/OriginalImages/menu_bg.png);
+            background-position-x: 0%;
+            background-position-y: 0%;
+            background-size: initial;
+            background-repeat-x: initial;
+            background-repeat-y: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(245, 245, 245);
+        }
+
+            #admin-offcanvas a {
+                padding-left: 5px;
+            }
+
+            #admin-offcanvas label {
+                min-width: 16px;
+                padding: 0;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                margin-right: 3px;
+                float: right;
+            }
+
+        #admin-offcanvas-bar {
+            position: static;
+            width: auto;
+            background: #fff;
+            transform: translate3d(0, 0, 0);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1091;
+            max-width: 100%;
+            overflow-y: hidden;
+            box-sizing: border-box;
+            border-right: 1px solid #cecece;
+            border-bottom: 1px solid #cecece;
+        }
+
+            #admin-offcanvas-bar:after {
+                background: #fff;
+            }
+
+        #divMenu {
+            margin-top: 50px;
+            margin-left: 80px;
+        }
+
+        #divCart {
+            margin-top: 50px;
+            margin-left: 80px;
+            padding-top: 10px;
+        }
+
+        #divNav {
+            z-index: 1091;
+        }
+    </style>
 </head>
 <body>
 
@@ -37,7 +121,7 @@
 
     <form id="form1" runat="server">
 
-        <header class="am-topbar admin-header">
+        <header class="am-topbar admin-header" id="divHeader">
             <div class="am-topbar-brand">
                 <strong>XX系统</strong> <small>菜单</small>
             </div>
@@ -49,27 +133,21 @@
             </div>
         </header>
 
-        <div class="am-cf admin-main">
+        <div class="am-cf admin-main" style="background: #fff;">
             <!-- sidebar start -->
-            <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
-                <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <div id="admin-offcanvas">
+                <div id="admin-offcanvas-bar">
                     <ul class="am-list admin-sidebar-list">
                         <li><a href="javascript:loadFoodByType('0');">全部</a></li>
                         <asp:Repeater ID="repeater1" runat="server">
                             <ItemTemplate>
                                 <li><a href="javascript:loadFoodByType('<%# Eval("FOOD_TYPE_ID") %>');">
                                     <%# Eval("FOOD_TYPE_NAME") %>
-                                    <label id="<%# "lFoodTypeCount" + Eval("FOOD_TYPE_ID").ToString() %>" class="am-badge am-badge-warning am-margin-right am-fr"></label>
+                                    <label id="<%# "lFoodTypeCount" + Eval("FOOD_TYPE_ID").ToString() %>" class="am-badge am-badge-warning am-margin-right"></label>
                                 </a></li>
                             </ItemTemplate>
                         </asp:Repeater>
                     </ul>
-                    <div class="am-panel am-panel-default admin-sidebar-panel">
-                        <div class="am-panel-bd">
-                            <p><span class="am-icon-bookmark"></span>公告</p>
-                            <p>祝您：健康饮食，健康生活。</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- sidebar end -->
@@ -115,7 +193,7 @@
             </div>
             <div id="divCart" style="display: none;">
 
-                <div class="admin-content" style="margin-top: 10px;">
+                <div class="admin-content">
 
                     <div class="am-g">
                         <div id="divConfirmCart" class="am-u-sm-12">
@@ -161,10 +239,6 @@
             <!-- content end -->
         </div>
 
-        <a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}" style="z-index: 9999;">
-            <span class="am-icon-btn am-icon-th-list"></span>
-        </a>
-
         <!-- 订单ID -->
         <input type="hidden" id="hOrderId" runat="server" />
 
@@ -174,10 +248,8 @@
 
     </form>
 
-    <br />
-
     <!-- Navbar -->
-    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="">
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="divNav">
         <ul class="am-navbar-nav am-cf am-avg-sm-2 am-thumbnails">
             <li>
                 <a href="javascript:showMenu();" style="line-height: 49px;">菜单
@@ -235,7 +307,23 @@
         var restaurantId = <%= RestaurantId %>;
         var tableId = <%= TableId %>;
 
-
+        
+        $(window).bind('load', function () {            
+            var c = 1,d = 2; //这里设定的是第1和第2
+            a.browser.msie && 6 == a.browser.version && !a.support.style || (
+            e = a("#admin-offcanvas").width(), f = a("#sidebar .widget"), g = f.length, g >= (c > 0) && g >= (d > 0) && a(window).scroll(function () {
+                var b = document.documentElement.scrollTop + document.body.scrollTop;
+                b > f.eq(g - 1).offset().top + f.eq(g - 1).height() ? 0 == a(".roller").length ? (f.parent().append('<div class="roller"></div>'),
+                 f.eq(c - 1).clone().appendTo(".roller"),
+                 c !== d && f.eq(d - 1).clone().appendTo(".roller"),
+                 a(".roller").css({
+                     position: "fixed",
+                     top: 50,
+                     zIndex: 0,
+                     width: 250
+                 }), a(".roller").width(e)) : a(".roller").fadeIn(300) : a(".roller").fadeOut(300)
+            }))
+        });
 
         //备注窗口关闭事件
         $('#divRemark').on('closed.modal.amui', function () {

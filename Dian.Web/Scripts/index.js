@@ -246,7 +246,7 @@ function bindCart() {
         if (oUnconfirmData[foodId].COUNT > 0) {
             $('#tUnconfirmCart').append(
                 '<tr>' +
-                '<td><a data-am-modal="{target: \'#divRemark\', width: 260, height: 450}" href="javascript:loadRemark(\'' + foodId + '\')">' + oUnconfirmData[foodId].FOOD_NAME + '</a></td>' +
+                '<td><a data-am-modal="{target: \'#divRemark\', width: 260, height: 420}" href="javascript:loadRemark(\'' + foodId + '\')">' + oUnconfirmData[foodId].FOOD_NAME + '</a></td>' +
                 '<td>' + oUnconfirmData[foodId].PRICE + '</td>' +
                 '<td>' +
                 '<button type="button" class="am-btn am-btn-success am-btn-xs" onclick="cutFood(\'' + foodId + '\');">减</button>' +
@@ -356,7 +356,7 @@ function getOrderData() {
             url: 'Operation/GetOrderData.ashx?r=' + Math.random(),
             data: { oid: orderId },
             dataType: "json",
-            async: true,
+            async: false,
             success: function (result) {
                 $('#' + hOrderData).val(JSON.stringify(result));
                 initUnconfirmData();
@@ -397,7 +397,7 @@ function updateOrder(foodId, op) {
             url: 'Operation/UpdateOrder.ashx?r=' + Math.random(),
             data: { oid: orderId, fop: op, orderData: JSON.stringify(oPostData) },
             dataType: "json",
-            async: true,
+            async: false,
             success: function (result) {
                 if (result.success)
                     console.log('更新订单成功！');
