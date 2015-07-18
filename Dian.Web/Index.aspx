@@ -118,7 +118,7 @@
                 <div class="admin-content" style="margin-top: 10px;">
 
                     <div class="am-g">
-                        <div class="am-u-sm-12">
+                        <div id="divConfirmCart" class="am-u-sm-12">
                             <div class="am-list-item-text">已确认的菜单</div>
                             <table id="tConfirmCart" class="am-table am-table-bd am-table-striped admin-content-table">
                                 <thead>
@@ -153,7 +153,7 @@
                     <div class="am-g">
                         <div style="text-align: center;">
                             <button type="button" id="btnClearCart" class="am-btn am-btn-success am-btn-xl" onclick="clearCart();">清空购物车</button>
-                            <button type="button" id="btnCreateOrder" class="am-btn am-btn-warning am-btn-xl" onclick="createOrder()"><span class="am-icon-shopping-cart"></span>&nbsp;<span id="sCreateOrder">立即下单</span></button>
+                            <button type="button" id="btnCreateOrder" class="am-btn am-btn-warning am-btn-xl" onclick="payOrder()"><span class="am-icon-shopping-cart"></span>&nbsp;<span id="sCreateOrder">立即结账</span></button>
                         </div>
                     </div>
                 </div>

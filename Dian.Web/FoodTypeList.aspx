@@ -27,8 +27,9 @@
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                             <tr>
-                                <th class="table-id">ID</th>
-                                <th class="table-name">菜品分类</th>
+                                <th>ID</th>
+                                <th>菜品分类</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,7 +42,7 @@
                                             <div class="am-btn-toolbar">
                                                 <div class="am-btn-group am-btn-group-xs">
                                                     <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only" onclick="beforeEdit('<%# Eval("FOOD_TYPE_ID") %>');"><span class="am-icon-pencil-square-o"></span>编辑</button>
-                                                    <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("FOOD_TYPE_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
+                                                    <button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("FOOD_TYPE_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
                                                 </div>
                                             </div>
                                         </td>
@@ -91,7 +92,10 @@
         }
 
         function beforeDelete(id) {
-            $('#<%= this.hDeleteId.ClientID %>').val(id);
+            if (confirm("您确定要删除本条记录吗？\r\n删除点击“确定”，不删除点击“取消”。")) {
+                $('#<%= this.hDeleteId.ClientID %>').val(id);
+                $('#' + form1).submit();
+            }
         }
 
     </script>

@@ -24,9 +24,15 @@ namespace Dian.Web
             TableId = base.ParseInt(Request.QueryString["tId"]);
             this.hOrderId.Value = "";
 
-            if (RestaurantId == 0 || TableId == 0)
+            if (RestaurantId == 0)
             {
                 Server.Transfer("Error404.aspx");
+            }
+            else
+            {
+                IRestaurant restaurantBiz = new RestaurantBiz();
+                if (restaurantBiz.GetRestaurantEntity(RestaurantId) == null)
+                    Server.Transfer("Error404.aspx");
             }
 
             if (!IsPostBack)
@@ -43,14 +49,34 @@ namespace Dian.Web
 
         private void BindData()
         {
-            IFoodType foodTypeBiz = new FoodTypeBiz();
-            repeater1.DataSource = foodTypeBiz.GetFoodTypeDataTable();
-            repeater1.DataBind();
-
+            //绑定菜单列表
             IFood foodBiz = new FoodBiz();
-            repeater2.DataSource = foodBiz.GetFoodDataTable();
+            var dt = foodBiz.GetFoodDataTable(RestaurantId);
+            repeater2.DataSource = dt;
             repeater2.DataBind();
 
+            //绑定菜单类型列表            
+            var strFoodId = string.Empty;
+            var listFoodType = new List<FoodTypeEntity>();
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (!strFoodId.Contains(dr["FOOD_TYPE_ID"].ToString() + "|"))
+                    {
+                        strFoodId += dr["FOOD_TYPE_ID"].ToString() + "|";
+                        listFoodType.Add(new FoodTypeEntity()
+                        {
+                            FOOD_TYPE_ID = base.ParseInt(dr["FOOD_TYPE_ID"].ToString()),
+                            FOOD_TYPE_NAME = dr["FOOD_TYPE_NAME"].ToString()
+                        });
+                    }
+                }
+            }
+            repeater1.DataSource = listFoodType;
+            repeater1.DataBind();
+
+            //获取是否已经点过菜
             IOrder2 orderBiz = new Order2Biz();
             var condition = new OrderMainEntity2();
             condition.RESTAURANT_ID = RestaurantId;
@@ -58,9 +84,8 @@ namespace Dian.Web
             condition.ORDER_FLAG = "1";
             var list = orderBiz.GetOrderMainEntityList(condition);
             if (list != null && list.Count > 0)
-            {
                 this.hOrderId.Value = list[0].ORDER_ID.ToString();
-            }
+
         }
 
 

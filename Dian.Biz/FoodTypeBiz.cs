@@ -22,11 +22,11 @@ namespace Dian.Biz
             }
         }
 
-        public DataTable GetFoodTypeDataTable()
+        public DataTable GetFoodTypeDataTable(int? restaurantId = null)
         {
             try
             {
-                return manual_dao.GetFoodTypeDataTable();
+                return manual_dao.GetFoodTypeDataTable(restaurantId);
             }
             catch (Exception ex)
             {

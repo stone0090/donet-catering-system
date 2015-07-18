@@ -11,16 +11,10 @@ using System.Web.UI.WebControls;
 
 namespace Dian.Web
 {
-    public partial class RestaurantList : BasePage
+    public partial class RestaurantList : BasePageList
     {
-        public int CurPage { get; set; }
-        public int TotalCount { get; set; }
-        public int PageCount { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            CurPage = base.ParseInt(Request.QueryString["page"]);
-
             if (IsPostBack)
                 DeleteData();
 
@@ -29,17 +23,8 @@ namespace Dian.Web
         private void BindData()
         {
             IRestaurant biz = new RestaurantBiz();
-            var pds = new PagedDataSource();
-            pds.DataSource = biz.GetRestaurantDataTable().DefaultView;
-            pds.AllowPaging = true;
-            pds.PageSize = 8;
-            if (CurPage < 1) CurPage = 1;
-            if (CurPage > pds.PageCount) CurPage = pds.PageCount;
-            pds.CurrentPageIndex = CurPage - 1;
-            repeater1.DataSource = pds;
+            repeater1.DataSource = GetPagedDataSource(biz.GetRestaurantDataTable().DefaultView);
             repeater1.DataBind();
-            TotalCount = pds.DataSourceCount;
-            PageCount = pds.PageCount;
         }
         private void DeleteData()
         {

@@ -6,7 +6,7 @@
 
         <div class="am-cf am-padding">
             <div class="am-fl am-cf">
-                <strong class="am-text-primary am-text-lg">菜品详情</strong> / <small>
+                <strong class="am-text-primary am-text-lg">菜品管理</strong> / <small>
                     <label>列表</label></small>
             </div>
         </div>
@@ -27,11 +27,12 @@
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                             <tr>
-                                <th class="table-id">ID</th>
-                                <th class="table-name">菜名</th>
-                                <th class="table-type">分类</th>                                
-                                <th class="table-taste">口味</th>
-                                <th class="table-price">单价</th>
+                                <th>ID</th>
+                                <th>菜名</th>
+                                <th>分类</th>                                
+                                <th>单价</th>
+                                <th class="restaurant-name">店名</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,14 +41,14 @@
                                     <tr>
                                         <td><%# Eval("FOOD_ID") %></td>
                                         <td><a href='FoodDetail.aspx?op=edit&id=<%# Eval("FOOD_ID") %>'><%# Eval("FOOD_NAME") %></a></td>                                        
-                                        <td><%# Eval("FOOD_TYPE_NAME") %></td>
-                                        <td><%# GetTasteName(Eval("FOOD_TASTE").ToString()) %></td>                                        
+                                        <td><%# Eval("FOOD_TYPE_NAME") %></td>                                   
                                         <td><%# Eval("PRICE") %></td>
+                                        <td class="restaurant-name"><%# Eval("RESTAURANT_NAME") %></td>
                                         <td>
                                             <div class="am-btn-toolbar">
                                                 <div class="am-btn-group am-btn-group-xs">
                                                     <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only" onclick="beforeEdit('<%# Eval("FOOD_ID") %>');"><span class="am-icon-pencil-square-o"></span>编辑</button>
-                                                    <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("FOOD_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
+                                                    <button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("FOOD_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
                                                 </div>
                                             </div>
                                         </td>
@@ -86,6 +87,7 @@
 
         $(function () {
             initPagination('<%= CurPage %>', '<%= TotalCount %>', '<%= PageCount %>', '<%= this.Request.Url.AbsolutePath %>');
+            if ('<%= base.CurEmployeeEntity.IS_ADMIN %>' === 'False') $('.restaurant-name').hide();
         });
 
         function beforeAdd() {
@@ -97,7 +99,10 @@
         }
 
         function beforeDelete(id) {
-            $('#<%= this.hDeleteId.ClientID %>').val(id);
+            if (confirm("您确定要删除本条记录吗？\r\n删除点击“确定”，不删除点击“取消”。")) {
+                $('#<%= this.hDeleteId.ClientID %>').val(id);
+                $('#' + form1).submit();
+            }
         }
 
     </script>

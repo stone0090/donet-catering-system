@@ -14,22 +14,10 @@ using System.Web.UI.WebControls;
 
 namespace Dian.Web
 {
-    public partial class FoodDetail : BasePage
+    public partial class FoodDetail : BasePageDetail
     {
-        public int CurId { get; set; }
-        public string CurOperation { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            CurId = base.ParseInt(Request.QueryString["id"]);
-            CurOperation = Request.QueryString["op"];
-
-            if (CurOperation != "add" && CurOperation != "edit")
-            {
-                AlertAndTransfer("无效的操作类型！", base.UrlReferrer);
-                return;
-            }
-
             if (!IsPostBack)
             {
                 BindControlData();
@@ -48,10 +36,9 @@ namespace Dian.Web
         private void BindControlData()
         {
             IRestaurant restaurantBiz = new RestaurantBiz();
-            if ((bool)base.CurEmployeeEntity.IS_ADMIN)
-                this.ddlRestaurant.DataSource = restaurantBiz.GetRestaurantDataTable();
-            else
-                this.ddlRestaurant.DataSource = restaurantBiz.GetRestaurantDataTable(base.CurEmployeeEntity.EMPLOYEE_ID);
+            this.ddlRestaurant.DataSource = (bool)base.CurEmployeeEntity.IS_ADMIN ?
+                restaurantBiz.GetRestaurantDataTable() :
+                restaurantBiz.GetRestaurantDataTable(base.CurEmployeeEntity.EMPLOYEE_ID);
             this.ddlRestaurant.DataValueField = "RESTAURANT_ID";
             this.ddlRestaurant.DataTextField = "RESTAURANT_NAME";
             this.ddlRestaurant.DataBind();

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeBiz.cs" />
+    <Compile Include="TableBiz.cs" />
     <Compile Include="Order2Biz.cs" />
     <Compile Include="FoodTypeBiz.cs" />
     <Compile Include="FoodBiz.cs" />

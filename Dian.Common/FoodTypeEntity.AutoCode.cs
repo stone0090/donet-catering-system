@@ -14,5 +14,8 @@ namespace Dian.Common.Entity
         [Field("FOOD_TYPE_NAME", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public string FOOD_TYPE_NAME { get; set; }
 
+        //[Field("RESTAURANT_ID", FieldDBType = DbType.Int32, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
+        //public int? RESTAURANT_ID { get; set; }
+
     }
 }

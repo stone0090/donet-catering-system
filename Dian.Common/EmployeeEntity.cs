@@ -9,5 +9,6 @@ namespace Dian.Common.Entity
     [Table("EMPLOYEE")]
     public partial class EmployeeEntity
     {
+        public string RESTAURANT_NAME { get; set; }
     }
 }

@@ -6,7 +6,7 @@
 
         <div class="am-cf am-padding">
             <div class="am-fl am-cf">
-                <strong class="am-text-primary am-text-lg">店家管理</strong> / <small>
+                <strong class="am-text-primary am-text-lg">店铺管理</strong> / <small>
                     <label>列表</label></small>
             </div>
         </div>
@@ -27,11 +27,11 @@
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                             <tr>
-                                <th class="table-id">ID</th>
-                                <th class="table-name">店名</th>
-                                <th class="table-level">等级</th>
-                                <th class="table-area">区域</th>
-                                <th class="table-set">操作</th>
+                                <th>ID</th>
+                                <th>店名</th>
+                                <th>等级</th>
+                                <th>区域</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,7 +46,7 @@
                                             <div class="am-btn-toolbar">
                                                 <div class="am-btn-group am-btn-group-xs">
                                                     <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only" onclick="beforeEdit('<%# Eval("RESTAURANT_ID") %>');"><span class="am-icon-pencil-square-o"></span>编辑</button>
-                                                    <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("RESTAURANT_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
+                                                    <button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("RESTAURANT_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
                                                 </div>
                                             </div>
                                         </td>
@@ -96,7 +96,10 @@
         }
 
         function beforeDelete(id) {
-            $('#<%= this.hDeleteId.ClientID %>').val(id);
+            if (confirm("您确定要删除本条记录吗？\r\n删除点击“确定”，不删除点击“取消”。")) {
+                $('#<%= this.hDeleteId.ClientID %>').val(id);
+                $('#' + form1).submit();
+            }
         }
 
     </script>

@@ -50,12 +50,14 @@
     <Compile Include="DianBizException.cs" />
     <Compile Include="EmployeeEntity.AutoCode.cs" />
     <Compile Include="EmployeeEntity.cs" />
+    <Compile Include="FoodTypeEntity.cs" />
+    <Compile Include="FoodTypeEntity.AutoCode.cs" />
     <Compile Include="OrderMainEntity2.cs" />
     <Compile Include="OrderMainEntity2.AutoCode.cs" />
     <Compile Include="OrderListEntity2.cs" />
     <Compile Include="OrderListEntity2.AutoCode.cs" />
-    <Compile Include="FoodTypeEntity.cs" />
-    <Compile Include="FoodTypeEntity.AutoCode.cs" />
+    <Compile Include="TableEntity.cs" />
+    <Compile Include="TableEntity.AutoCode.cs" />
     <Compile Include="FoodEntity.AutoCode.cs" />
     <Compile Include="FoodEntity.cs" />
     <Compile Include="RestaurantEntity.AutoCode.cs" />

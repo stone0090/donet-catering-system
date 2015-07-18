@@ -40,6 +40,7 @@ namespace Dian.Web
         {
             if (!IsPostBack)
             {
+                this.hLogout.Value = "0";
                 if (CurEmployeeEntity != null && (bool)CurEmployeeEntity.IS_ADMIN == false)
                 {
                     this.liRestaurant.Visible = false;
@@ -51,9 +52,10 @@ namespace Dian.Web
             {
                 if (this.hLogout.Value == "1")
                 {
-                    Session["CurEmployeeEntity"] = null;
                     FormsAuthentication.SignOut();
+                    Session.Clear();
                     Response.Redirect("Index.aspx");
+                    Response.End();
                 }
             }
 

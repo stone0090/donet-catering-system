@@ -10,7 +10,7 @@ namespace Dian.Common.Interface
 {
     public interface IFoodType : IAppBizAvailableV2
     {
-        DataTable GetFoodTypeDataTable();
+        DataTable GetFoodTypeDataTable(int? restaurantId = null);
         List<FoodTypeEntity> GetFoodTypeEntityList(FoodTypeEntity condition_entity);
         void InsertFoodTypeEntity(FoodTypeEntity condition_entity);
         void UpdateFoodTypeEntity(FoodTypeEntity condition_entity);

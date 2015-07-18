@@ -20,35 +20,35 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="am-g">
             <div class="am-u-sm-12">
                 <div class="am-form">
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
-                            <tr>                                
-                                <th class="table-Name">姓名</th>
-                                <th class="table-Sex">性别</th>
-                                <th class="table-IsAdmin">超管</th>
-                                <th class="table-RestaurantName">店名</th>
-                                <th class="table-MobilePhone">手机</th>
-                                <th class="table-Set">操作</th>
+                            <tr>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>手机</th>                                
+                                <th>店名</th>                                
+                                <th>超管</th>
+                                <th>操作</th>                                
                             </tr>
                         </thead>
                         <tbody>
                             <asp:Repeater ID="repeater1" runat="server">
                                 <ItemTemplate>
-                                    <tr>                                        
+                                    <tr>
                                         <td><a href='EmployeeDetail.aspx?op=edit&id=<%# Eval("EMPLOYEE_ID") %>'><%# Eval("EMPLOYEE_NAME") %></a></td>
                                         <td><%# GetSexName(Eval("SEX").ToString()) %></td>
-                                        <td><%# GetIsAdminName(Eval("IS_ADMIN").ToString()) %></td>
+                                        <td><%# Eval("MOBILE_PHONE") %></td>                                        
                                         <td><%# Eval("RESTAURANT_NAME") %></td>
-                                        <td><%# Eval("MOBILE_PHONE") %></td>
+                                        <td><%# GetIsAdminName(Eval("IS_ADMIN").ToString()) %></td>
                                         <td>
                                             <div class="am-btn-toolbar">
                                                 <div class="am-btn-group am-btn-group-xs">
                                                     <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary am-hide-sm-only" onclick="beforeEdit('<%# Eval("EMPLOYEE_ID") %>');"><span class="am-icon-pencil-square-o"></span>编辑</button>
-                                                    <button type="submit" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("EMPLOYEE_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
+                                                    <button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger" onclick="beforeDelete('<%# Eval("EMPLOYEE_ID") %>');"><span class="am-icon-trash-o"></span>删除</button>
                                                 </div>
                                             </div>
                                         </td>
@@ -98,7 +98,10 @@
         }
 
         function beforeDelete(id) {
-            $('#<%= this.hDeleteId.ClientID %>').val(id);
+            if (confirm("您确定要删除本条记录吗？\r\n删除点击“确定”，不删除点击“取消”。")) {
+                $('#<%= this.hDeleteId.ClientID %>').val(id);
+                $('#' + form1).submit();
+            }
         }
 
     </script>

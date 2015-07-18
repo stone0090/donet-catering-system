@@ -12,22 +12,10 @@ using System.Web.UI.WebControls;
 
 namespace Dian.Web
 {
-    public partial class FoodTypeDetail : BasePage
+    public partial class FoodTypeDetail : BasePageDetail
     {
-        public int CurId { get; set; }
-        public string CurOperation { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            CurId = base.ParseInt(Request.QueryString["id"]);
-            CurOperation = Request.QueryString["op"];
-
-            if (CurOperation != "add" && CurOperation != "edit")
-            {
-                AlertAndTransfer("无效的操作类型！", base.UrlReferrer);
-                return;
-            }
-
             if (!IsPostBack)
             {
                 BindControlData();

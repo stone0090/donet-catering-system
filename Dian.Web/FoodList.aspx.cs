@@ -4,6 +4,7 @@ using Dian.Common.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,38 +12,25 @@ using System.Web.UI.WebControls;
 
 namespace Dian.Web
 {
-    public partial class FoodList : BasePage
+    public partial class FoodList : BasePageList
     {
-        public int CurPage { get; set; }
-        public int TotalCount { get; set; }
-        public int PageCount { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            CurPage = base.ParseInt(Request.QueryString["page"]);
-
             if (IsPostBack)
                 DeleteData();
 
             BindData();
+
+            
         }
         private void BindData()
         {
-            IFood biz = new FoodBiz();
-            var pds = new PagedDataSource();
-            if ((bool)base.CurEmployeeEntity.IS_ADMIN)
-                pds.DataSource = biz.GetFoodDataTable().DefaultView;
-            else
-                pds.DataSource = biz.GetFoodDataTable(base.CurEmployeeEntity.RESTAURANT_ID).DefaultView;
-            pds.AllowPaging = true;
-            pds.PageSize = 8;
-            if (CurPage < 1) CurPage = 1;
-            if (CurPage > pds.PageCount) CurPage = pds.PageCount;
-            pds.CurrentPageIndex = CurPage - 1;
-            repeater1.DataSource = pds;
+            IFood biz = new FoodBiz();           
+            DataTable dt = (bool)base.CurEmployeeEntity.IS_ADMIN ?
+                biz.GetFoodDataTable() :
+                biz.GetFoodDataTable(base.CurEmployeeEntity.RESTAURANT_ID);
+            repeater1.DataSource = GetPagedDataSource(dt.DefaultView);
             repeater1.DataBind();
-            TotalCount = pds.DataSourceCount;
-            PageCount = pds.PageCount;
         }
         private void DeleteData()
         {

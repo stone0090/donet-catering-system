@@ -1,7 +1,7 @@
 ﻿
 $(function () {
     getOrderData();
-    setInterval('getOrderData()', 10000);
+    //setInterval('getOrderData()', 10000);
 });
 
 //显示菜单
@@ -120,7 +120,6 @@ function setTaste(that) {
 }
 
 
-
 function getJsonObject(id) {
     var strOrderData = $('#' + id).val();
     return $.isEmpty(strOrderData) ? {} : JSON.parse(strOrderData);
@@ -224,12 +223,8 @@ function bindCart() {
         }
     }
 
-
     if (totalPrice === 0) {
-        $('#tConfirmCart').hide();
-    } else {
-        $('#sCreateOrder').text('已经下单');
-        $('#btnCreateOrder').attr('disabled', 'disabled');
+        $('#divConfirmCart').hide();
     }
 
     //2、绑定“未确认”的购物车
@@ -254,6 +249,11 @@ function bindCart() {
             totalPrice += oUnconfirmData[foodId].PRICE * oUnconfirmData[foodId].COUNT;
         }
     }
+
+    var orderId = $('#' + hOrderId).val();
+    if ($.isEmpty(orderId)) {
+        $('#divConfirmCart').hide();
+    } 
 
     //3、计算总价格
     $('#sTotalPrice').text(totalPrice);
@@ -296,19 +296,24 @@ function getRemark(oOrderDetail) {
     return result;
 }
 
+function payOrder() {
+    alert('立即结账');
+}
+
 function createOrder() {
     var oUnconfirmData = getJsonObject(hUnconfirmData);
     var count = 0;
     var oPostData = [];
     for (var foodId in oUnconfirmData) {
-        if (oUnconfirmData[foodId].COUNT !== 0)
+        if (oUnconfirmData[foodId].COUNT !== 0) {
             oPostData[count] = {};
-        oPostData[count].FOOD_ID = parseInt(foodId);
-        oPostData[count].COUNT = oUnconfirmData[foodId].COUNT;
-        oPostData[count].PRICE = oUnconfirmData[foodId].PRICE;
-        oPostData[count].TASTE = $.isEmpty(oUnconfirmData[foodId].TASTE) ? '' : oUnconfirmData[foodId].TASTE;
-        oPostData[count].REMARK = $.isEmpty(oUnconfirmData[foodId].REMARK) ? '' : oUnconfirmData[foodId].REMARK;
-        count++;
+            oPostData[count].FOOD_ID = parseInt(foodId);
+            oPostData[count].COUNT = oUnconfirmData[foodId].COUNT;
+            oPostData[count].PRICE = oUnconfirmData[foodId].PRICE;
+            oPostData[count].TASTE = $.isEmpty(oUnconfirmData[foodId].TASTE) ? '' : oUnconfirmData[foodId].TASTE;
+            oPostData[count].REMARK = $.isEmpty(oUnconfirmData[foodId].REMARK) ? '' : oUnconfirmData[foodId].REMARK;
+            count++;
+        }
     }
 
     if (count > 0) {

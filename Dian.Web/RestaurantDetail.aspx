@@ -5,7 +5,7 @@
 
         <div class="am-cf am-padding">
             <div class="am-fl am-cf">
-                <strong class="am-text-primary am-text-lg">店家管理</strong> / <small>
+                <strong class="am-text-primary am-text-lg">店铺管理</strong> / <small>
                     <label id="lTypeName" runat="server">新增</label>
                 </small>
             </div>

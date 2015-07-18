@@ -70,14 +70,21 @@ namespace Dian.Dao
             }
         }
 
-        public DataTable GetFoodTypeDataTable()
+        public DataTable GetFoodTypeDataTable(int? restaurantId = null)
         {
             try
             {
-                string sql = @"SELECT * FROM FOOD_TYPE WHERE 1=1 ";
-                DbCommand dc = db.GetSqlStringCommand(sql);
-
-                return db.ExecuteDataTable(dc);
+                string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM FOOD_TYPE A
+                                LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID
+                                WHERE 1=1 ";
+                if (restaurantId != null)
+                    sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
+                using (DbCommand dc = db.GetSqlStringCommand(sql))
+                {
+                    if (restaurantId != null)
+                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.AnsiString, restaurantId);
+                    return db.ExecuteDataTable(dc);
+                }
             }
             catch (Exception ex)
             {
@@ -91,9 +98,10 @@ namespace Dian.Dao
             {
                 string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM EMPLOYEE A 
                                 LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID WHERE 1=1 ";
-                DbCommand dc = db.GetSqlStringCommand(sql);
-
-                return db.ExecuteDataTable(dc);
+                using (DbCommand dc = db.GetSqlStringCommand(sql))
+                {
+                    return db.ExecuteDataTable(dc);
+                }
             }
             catch (Exception ex)
             {
@@ -106,8 +114,10 @@ namespace Dian.Dao
             try
             {
                 string sql = @"SELECT * FROM ORDERMAIN2 WHERE 1=1 ";
-                DbCommand dc = db.GetSqlStringCommand(sql);
-                return db.ExecuteDataTable(dc);
+                using (DbCommand dc = db.GetSqlStringCommand(sql))
+                {
+                    return db.ExecuteDataTable(dc);
+                }
             }
             catch (Exception ex)
             {
@@ -160,6 +170,28 @@ namespace Dian.Dao
                 if (foodId != null)
                     db.AddInParameter(dc, "@FOOD_ID", DbType.Int32, foodId);
                 return db.ExecuteDataTable(dc);
+            }
+        }
+
+        public DataTable GetTableDataTable(int? restaurantId = null)
+        {
+            try
+            {
+                string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM [TABLE] A
+                                LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID
+                                WHERE 1=1 ";
+                if (restaurantId != null)
+                    sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
+                using (DbCommand dc = db.GetSqlStringCommand(sql))
+                {
+                    if (restaurantId != null)
+                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.AnsiString, restaurantId);
+                    return db.ExecuteDataTable(dc);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new DianDaoException("获取菜品类型的数据出错！", ex);
             }
         }
 

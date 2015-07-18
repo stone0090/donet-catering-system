@@ -20,7 +20,7 @@
                         类型
                     </div>
                     <div class="am-u-sm-10 am-u-md-6">
-                        <input type="text" class="am-input-sm" placeholder="必填" id="tFoodTypeName" runat="server" maxlength="50" required>
+                        <input type="text" class="am-input-sm" placeholder="必填" id="tFoodTypeName" runat="server" maxlength="25" required>
                     </div>
                     <div class="am-hide-sm-only am-u-md-4">*必填</div>
                 </div>
@@ -34,6 +34,17 @@
         </div>
 
         <label id="lMsg" runat="server" class="am-text-danger"></label>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
     </div>
 
 </asp:Content>
