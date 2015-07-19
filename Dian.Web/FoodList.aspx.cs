@@ -20,8 +20,6 @@ namespace Dian.Web
                 DeleteData();
 
             BindData();
-
-            
         }
         private void BindData()
         {

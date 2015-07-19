@@ -45,9 +45,9 @@
             <button type="button" class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
             <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
                 <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-                    <li><a href="Index.aspx?tid=1&rid=<%= CurEmployeeEntity.RESTAURANT_ID %>">前台菜单</a></li>
-                    <li><a href="BackgroudIndex.aspx">hello
-                        <label><%= CurEmployeeEntity.EMPLOYEE_NAME %></label>，当前店铺为：<label><%= CurEmployeeEntity.RESTAURANT_NAME %></label></a></li>                    
+                    <li><a href="Index.aspx?rid=<%= CurEmployeeEntity.RESTAURANT_ID %>&tid=1">前台菜单</a></li>
+                    <li><a href="OrderList.aspx">hello
+                        <label><%= CurEmployeeEntity.EMPLOYEE_NAME %></label>，当前为（<label><%= CurEmployeeEntity.IS_ADMIN==true?"超级管理员":CurEmployeeEntity.RESTAURANT_NAME %></label>）</a></li>
                 </ul>
             </div>
         </header>
@@ -62,6 +62,7 @@
                         <li id="liEmployee" runat="server"><a href="EmployeeList.aspx">用户管理</a></li>
                         <li id="liFoodType" runat="server"><a href="FoodTypeList.aspx">菜品分类</a></li>
                         <li id="liFood" runat="server"><a href="FoodList.aspx">菜品管理</a></li>
+                        <li id="liOrder" runat="server"><a href="OrderList.aspx">订单管理</a></li>
                         <li id="liCreateQRCode" runat="server"><a href="CreateQRCode.aspx">生成二维码</a></li>
                         <li><a href="javascript:logout();"><span class="am-icon-sign-out"></span>注销</a></li>
                     </ul>

@@ -1,7 +1,7 @@
 ﻿
 $(window).bind('load', function () {
     getOrderData();
-    setInterval('getOrderData()', 10000);
+    setInterval('getOrderData()', 30000);
 });
 
 //显示菜单
@@ -263,8 +263,6 @@ function bindCart() {
         }
     }
 
-
-
     //3、计算总价格
     $('#sTotalPrice').text(totalPrice);
     $('#tUnconfirmCart').append('<tr><td colspan="4"><label class="am-text-danger am-fr">合计：￥' + totalPrice + '元</label></td></tr>');
@@ -395,7 +393,7 @@ function updateOrder(foodId, op) {
         $.ajax({
             type: 'Post',
             url: 'Operation/UpdateOrder.ashx?r=' + Math.random(),
-            data: { oid: orderId, fop: op, orderData: JSON.stringify(oPostData) },
+            data: { oid: orderId, fop: op, orderData: JSON.stringify(oPostData), price: $('#sTotalPrice').text() },
             dataType: "json",
             async: false,
             success: function (result) {

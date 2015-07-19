@@ -95,6 +95,7 @@
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="BackgroudIndex.aspx" />
     <Content Include="ConfirmOrder.aspx" />
+    <Content Include="CSS\index.css" />
     <Content Include="CSS\Default.css" />
     <Content Include="Default.aspx" />
     <Content Include="EmployeeDetail.aspx" />
@@ -103,6 +104,8 @@
     <Content Include="FoodDetail.aspx" />
     <Content Include="FoodList.aspx" />
     <Content Include="CreateQRCode.aspx" />
+    <Content Include="OrderDetail.aspx" />
+    <Content Include="OrderList.aspx" />
     <Content Include="Images\OriginalImages\default.jpg" />
     <Content Include="Images\OriginalImages\pic-none.png" />
     <Content Include="Index.aspx" />
@@ -118,7 +121,6 @@
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-extend.js" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroudIndex.aspx.cs">
@@ -190,6 +192,20 @@
     </Compile>
     <Compile Include="CreateQRCode.aspx.designer.cs">
       <DependentUpon>CreateQRCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.aspx.cs">
+      <DependentUpon>OrderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderDetail.aspx.designer.cs">
+      <DependentUpon>OrderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderList.aspx.cs">
+      <DependentUpon>OrderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderList.aspx.designer.cs">
+      <DependentUpon>OrderList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -268,13 +284,6 @@
     <Compile Include="Utility\ConfigHelper.cs" />
     <Compile Include="Utility\DataCache.cs" />
     <Compile Include="Utility\JsonHelper.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -60,7 +60,7 @@ namespace Dian.Dao
                 using (DbCommand dc = db.GetSqlStringCommand(sql))
                 {
                     if (restaurantId != null)
-                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.AnsiString, restaurantId);
+                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
                     return db.ExecuteDataTable(dc);
                 }
             }
@@ -82,7 +82,7 @@ namespace Dian.Dao
                 using (DbCommand dc = db.GetSqlStringCommand(sql))
                 {
                     if (restaurantId != null)
-                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.AnsiString, restaurantId);
+                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
                     return db.ExecuteDataTable(dc);
                 }
             }
@@ -109,13 +109,45 @@ namespace Dian.Dao
             }
         }
 
-        public DataTable GetOrderMainDataTable()
+        public DataTable GetOrderMainDataTable(int? restaurantId = null, string type = null)
         {
             try
             {
-                string sql = @"SELECT * FROM ORDERMAIN2 WHERE 1=1 ";
+                string sql = @"SELECT A.*,B.RESTAURANT_NAME,
+                                ISNULL(C.ALLORDER,0) ALLORDER,
+                                ISNULL(D.FINISH,0) FINISH,
+                                ISNULL(E.CONFIRM,0) CONFIRM,
+                                ISNULL(F.UNCONFIRM,0) UNCONFIRM 
+                                FROM ORDERMAIN2 A
+                                LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID
+                                LEFT JOIN (SELECT ORDER_ID,SUM([COUNT]) ALLORDER FROM ORDERLIST2
+			                                WHERE (CANCEL_TIME = '' OR CANCEL_TIME IS NULL) 
+			                                GROUP BY ORDER_ID) C ON A.ORDER_ID = C.ORDER_ID
+                                LEFT JOIN (SELECT ORDER_ID,SUM([COUNT]) FINISH FROM ORDERLIST2
+			                                WHERE (CANCEL_TIME = '' OR CANCEL_TIME IS NULL) 
+			                                AND (FINISH_TIME <> '' AND FINISH_TIME IS NOT NULL) 
+			                                GROUP BY ORDER_ID) D ON A.ORDER_ID = D.ORDER_ID
+                                LEFT JOIN (SELECT ORDER_ID,SUM([COUNT]) CONFIRM FROM ORDERLIST2
+			                                WHERE (CANCEL_TIME = '' OR CANCEL_TIME IS NULL) 
+			                                AND (CONFIRM_TIME <> '' AND CONFIRM_TIME IS NOT NULL) 
+			                                AND (FINISH_TIME = '' OR FINISH_TIME IS NULL) 
+			                                GROUP BY ORDER_ID) E ON A.ORDER_ID = E.ORDER_ID
+                                LEFT JOIN (SELECT ORDER_ID,SUM([COUNT]) UNCONFIRM FROM ORDERLIST2
+			                                WHERE (CANCEL_TIME = '' OR CANCEL_TIME IS NULL) 
+			                                AND (CONFIRM_TIME = '' OR CONFIRM_TIME IS NULL) 
+			                                AND (FINISH_TIME = '' OR FINISH_TIME IS NULL) 
+			                                GROUP BY ORDER_ID) F ON A.ORDER_ID = F.ORDER_ID
+                                WHERE 1=1 ";
+                if (restaurantId != null)
+                    sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
+                if (!string.IsNullOrEmpty(type))
+                    sql += " AND A.ORDER_FLAG = @ORDER_FLAG ";
                 using (DbCommand dc = db.GetSqlStringCommand(sql))
                 {
+                    if (restaurantId != null)
+                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
+                    if (!string.IsNullOrEmpty(type))
+                        db.AddInParameter(dc, "@ORDER_FLAG", DbType.AnsiString, type);
                     return db.ExecuteDataTable(dc);
                 }
             }
@@ -125,13 +157,21 @@ namespace Dian.Dao
             }
         }
 
-        public DataTable GetOrderListDataTable()
+        public DataTable GetOrderListDataTable(int? restaurantId = null)
         {
             try
             {
-                string sql = @"SELECT * FOOD_NAME FROM ORDERLIST2 WHERE 1=1 ";
+                string sql = @"SELECT A.*,C.RESTAURANT_NAME,D.FOOD_NAME FROM ORDERLIST2 A
+                                LEFT JOIN ORDERMAIN2 B ON A.ORDER_ID = B.ORDER_ID
+                                LEFT JOIN RESTAURANT C ON B.RESTAURANT_ID = C.RESTAURANT_ID
+                                LEFT JOIN FOOD D ON A.FOOD_ID = D.FOOD_ID
+                                WHERE 1=1 ";
+                if (restaurantId != null)
+                    sql += " AND C.RESTAURANT_ID = @RESTAURANT_ID ";
                 using (DbCommand dc = db.GetSqlStringCommand(sql))
                 {
+                    if (restaurantId != null)
+                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
                     return db.ExecuteDataTable(dc);
                 }
             }
@@ -172,6 +212,8 @@ namespace Dian.Dao
                 return db.ExecuteDataTable(dc);
             }
         }
+
+
 
         //        public DataTable GetTableDataTable(int? restaurantId = null)
         //        {

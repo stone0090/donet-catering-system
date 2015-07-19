@@ -12,7 +12,7 @@
         </div>
 
         <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-6">
+            <div class="am-u-sm-12 am-u-md-12">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
                         <button type="button" class="am-btn am-btn-default" onclick="beforeAdd();"><span class="am-icon-plus"></span>新增</button>
@@ -28,10 +28,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th class="restaurant-name">店名</th>
                                 <th>菜名</th>
                                 <th>分类</th>                                
                                 <th>单价</th>
-                                <th class="restaurant-name">店名</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -40,10 +40,10 @@
                                 <ItemTemplate>
                                     <tr>
                                         <td><%# Eval("FOOD_ID") %></td>
+                                        <td class="restaurant-name"><%# Eval("RESTAURANT_NAME") %></td>
                                         <td><a href='FoodDetail.aspx?op=edit&id=<%# Eval("FOOD_ID") %>'><%# Eval("FOOD_NAME") %></a></td>                                        
                                         <td><%# Eval("FOOD_TYPE_NAME") %></td>                                   
                                         <td><%# Eval("PRICE") %></td>
-                                        <td class="restaurant-name"><%# Eval("RESTAURANT_NAME") %></td>
                                         <td>
                                             <div class="am-btn-toolbar">
                                                 <div class="am-btn-group am-btn-group-xs">

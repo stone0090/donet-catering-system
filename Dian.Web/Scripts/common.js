@@ -7,10 +7,9 @@ function initPagination(curPage, totalCount, pageCount, url) {
         $("#labelPage").text("暂无数据，请新增！");
         $("#divPage").hide();
     } else {
-        $("#labelPage").text("共 " + totalCount + " 条记录");
-        if (pageCount === 1)
+        if (pageCount === 1) {
             $("#divPage").hide();
-        else {
+        } else {
             if (curPage === 1) {
                 $("#aFirst").parent().addClass("am-disabled");
                 $("#aPrev").parent().addClass("am-disabled");
@@ -19,10 +18,15 @@ function initPagination(curPage, totalCount, pageCount, url) {
                 $("#aLast").parent().addClass("am-disabled");
             }
             $("#aCur").text(curPage + " / " + pageCount);
-            $("#aFirst").attr("href", url + "?page=1")
-            $("#aPrev").attr("href", url + "?page=" + (curPage - 1))
-            $("#aNext").attr("href", url + "?page=" + (curPage + 1))
-            $("#aLast").attr("href", url + "?page=" + pageCount)
+            $("#aFirst").attr("href", url + "?page=1");
+            $("#aPrev").attr("href", url + "?page=" + (curPage - 1));
+            $("#aNext").attr("href", url + "?page=" + (curPage + 1));
+            $("#aLast").attr("href", url + "?page=" + pageCount);
+        }
+        if (totalCount > 8) {
+            $("#labelPage").text("每页 8 条，共" + totalCount + "条记录");
+        } else {
+            $("#labelPage").text("共 " + totalCount + " 条记录");
         }
     }
 }

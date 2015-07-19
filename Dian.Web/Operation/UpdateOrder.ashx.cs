@@ -24,10 +24,11 @@ namespace Dian.Web.Operation
                 var orderId = Helper.ParseInt(context.Request.Form["oid"]);
                 var orderData = context.Request.Form["orderData"];
                 var foodOp = context.Request.Form["fop"];
+                var price = Helper.ParseDecimal(context.Request.Form["price"]);
                 var entity = JsonToObject(orderData);
 
                 IOrder2 orderBiz = new Order2Biz();
-                orderBiz.UpdateOrder(orderId, foodOp, entity);
+                orderBiz.UpdateOrder(orderId, price, foodOp, entity);
                 context.Response.Write("{\"success\":1}");
             }
             catch (Exception ex)

@@ -62,58 +62,69 @@ namespace Dian.Biz
             }
         }
 
-        public void UpdateOrder(int orderId, string foodOp, OrderListEntity2 entity)
+        public void UpdateOrder(int orderId, decimal price, string foodOp, OrderListEntity2 entity)
         {
-            var dt = manual_dao.GetUnConfirmOrderData(orderId, entity.FOOD_ID);
+            using (TransactionScope ts = new TransactionScope())
+            {
+                //更新主表价格
+                var orderMainEntity = new OrderMainEntity2();
+                orderMainEntity.ORDER_ID = orderId;
+                orderMainEntity.PRICE = price;
+                UpdateOrderMainEntity(orderMainEntity);
 
-            if (foodOp == "add")
-            {
-                if (dt != null && dt.Rows.Count > 0)
+                //更新子表明细
+                var dt = manual_dao.GetUnConfirmOrderData(orderId, entity.FOOD_ID);
+                if (foodOp == "add")
                 {
-                    var condition = new OrderListEntity2();
-                    condition.LIST_ID = int.Parse(dt.Rows[0]["LIST_ID"].ToString());
-                    condition.COUNT = int.Parse(dt.Rows[0]["COUNT"].ToString()) + 1;
-                    UpdateOrderListEntity(condition);
-                }
-                else
-                {
-                    entity.ORDER_ID = orderId;
-                    entity.COUNT = 1;
-                    entity.ORDER_FLAG = "1";
-                    entity.ORDER_TIME = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
-                    InsertOrderListEntity(entity);
-                }
-            }
-            else if (foodOp == "cut")
-            {
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    var count = int.Parse(dt.Rows[0]["COUNT"].ToString());
-                    if (count <= 1)
+                    if (dt != null && dt.Rows.Count > 0)
                     {
                         var condition = new OrderListEntity2();
                         condition.LIST_ID = int.Parse(dt.Rows[0]["LIST_ID"].ToString());
-                        DeleteOrderListEntity(condition);
+                        condition.COUNT = int.Parse(dt.Rows[0]["COUNT"].ToString()) + 1;
+                        UpdateOrderListEntity(condition);
                     }
                     else
                     {
+                        entity.ORDER_ID = orderId;
+                        entity.COUNT = 1;
+                        entity.ORDER_FLAG = "1";
+                        entity.ORDER_TIME = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
+                        InsertOrderListEntity(entity);
+                    }
+                }
+                else if (foodOp == "cut")
+                {
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        var count = int.Parse(dt.Rows[0]["COUNT"].ToString());
+                        if (count <= 1)
+                        {
+                            var condition = new OrderListEntity2();
+                            condition.LIST_ID = int.Parse(dt.Rows[0]["LIST_ID"].ToString());
+                            DeleteOrderListEntity(condition);
+                        }
+                        else
+                        {
+                            var condition = new OrderListEntity2();
+                            condition.LIST_ID = int.Parse(dt.Rows[0]["LIST_ID"].ToString());
+                            condition.COUNT = count - 1;
+                            UpdateOrderListEntity(condition);
+                        }
+                    }
+                }
+                else if (foodOp == "remark")
+                {
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
                         var condition = new OrderListEntity2();
                         condition.LIST_ID = int.Parse(dt.Rows[0]["LIST_ID"].ToString());
-                        condition.COUNT = count - 1;
+                        condition.TASTE = entity.TASTE;
+                        condition.REMARK = entity.REMARK;
                         UpdateOrderListEntity(condition);
                     }
                 }
-            }
-            else if (foodOp == "remark")
-            {
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    var condition = new OrderListEntity2();
-                    condition.LIST_ID = int.Parse(dt.Rows[0]["LIST_ID"].ToString());
-                    condition.TASTE = entity.TASTE;
-                    condition.REMARK = entity.REMARK;
-                    UpdateOrderListEntity(condition);
-                }
+
+                ts.Complete();
             }
 
         }
@@ -141,11 +152,11 @@ namespace Dian.Biz
 
         #region  基础方法
 
-        public DataTable GetOrderMainDataTable()
+        public DataTable GetOrderMainDataTable(int? restaurantId = null, string type = null)
         {
             try
             {
-                return manual_dao.GetOrderMainDataTable();
+                return manual_dao.GetOrderMainDataTable(restaurantId, type);
             }
             catch (Exception ex)
             {
@@ -218,7 +229,7 @@ namespace Dian.Biz
 
 
 
-        public DataTable GetOrderListDataTable()
+        public DataTable GetOrderListDataTable(int? restaurantId = null)
         {
             try
             {
@@ -235,6 +246,8 @@ namespace Dian.Biz
             try
             {
                 GenericWhereEntity<OrderListEntity2> where_entity = new GenericWhereEntity<OrderListEntity2>();
+                if (condition_entity.LIST_ID != null)
+                    where_entity.Where(n => (n.LIST_ID == condition_entity.LIST_ID));
                 if (condition_entity.ORDER_ID != null)
                     where_entity.Where(n => (n.ORDER_ID == condition_entity.ORDER_ID));
                 if (condition_entity.FOOD_ID != null)
@@ -286,7 +299,7 @@ namespace Dian.Biz
 
         public OrderListEntity2 GetOrderListEntity(int? id)
         {
-            return DianDao.ReadEntity2<OrderListEntity2>(n => n.ORDER_ID == id);
+            return DianDao.ReadEntity2<OrderListEntity2>(n => n.LIST_ID == id);
         }
 
         #endregion

@@ -54,7 +54,7 @@ namespace Dian.Web
                 {
                     FormsAuthentication.SignOut();
                     Session.Clear();
-                    Response.Redirect("Index.aspx");
+                    Response.Redirect("Login.aspx");
                     Response.End();
                 }
             }

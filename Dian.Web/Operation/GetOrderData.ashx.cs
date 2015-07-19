@@ -15,7 +15,6 @@ namespace Dian.Web.Operation
     public class GetOrderData : IHttpHandler
     {
 
-
         public void ProcessRequest(HttpContext context)
         {
             var orderId = Helper.ParseInt(context.Request.Form["oid"]);

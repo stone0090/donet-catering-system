@@ -20,7 +20,7 @@ namespace Dian.Common.Entity
         [Field("PRICE", FieldDBType = DbType.Decimal, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public decimal? PRICE { get; set; }
 
-        [Field("ORDER_FLAG", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = true, IsPrimaryKey = true)]
+        [Field("ORDER_FLAG", FieldDBType = DbType.AnsiString, FieldDesc = "", IsIdentityField = false, IsPrimaryKey = false)]
         public string ORDER_FLAG { get; set; }
 
     }

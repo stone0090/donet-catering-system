@@ -12,7 +12,7 @@
         </div>
 
         <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-6">
+            <div class="am-u-sm-12 am-u-md-12">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
                         <button type="button" class="am-btn am-btn-default" onclick="beforeAdd();"><span class="am-icon-plus"></span>新增</button>
@@ -26,11 +26,11 @@
                 <div class="am-form">
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
-                            <tr>
+                            <tr>                              
+                                <th>店名</th>  
                                 <th>姓名</th>
                                 <th>性别</th>
                                 <th>手机</th>                                
-                                <th>店名</th>                                
                                 <th>超管</th>
                                 <th>操作</th>                                
                             </tr>
@@ -38,11 +38,11 @@
                         <tbody>
                             <asp:Repeater ID="repeater1" runat="server">
                                 <ItemTemplate>
-                                    <tr>
+                                    <tr>                                  
+                                        <td><%# Eval("RESTAURANT_NAME") %></td>
                                         <td><a href='EmployeeDetail.aspx?op=edit&id=<%# Eval("EMPLOYEE_ID") %>'><%# Eval("EMPLOYEE_NAME") %></a></td>
                                         <td><%# GetSexName(Eval("SEX").ToString()) %></td>
-                                        <td><%# Eval("MOBILE_PHONE") %></td>                                        
-                                        <td><%# Eval("RESTAURANT_NAME") %></td>
+                                        <td><%# Eval("MOBILE_PHONE") %></td>      
                                         <td><%# GetIsAdminName(Eval("IS_ADMIN").ToString()) %></td>
                                         <td>
                                             <div class="am-btn-toolbar">
