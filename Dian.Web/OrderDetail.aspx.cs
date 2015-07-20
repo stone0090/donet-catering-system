@@ -52,7 +52,7 @@ namespace Dian.Web
             if (dt != null && dt.Rows.Count > 0)
             {
                 var data1 = dt.Clone();
-                var drs = dt.Select(" FINISH_TIME = '' and CONFIRM_TIME = '' ");
+                var drs = dt.Select(" ( FINISH_TIME = '' or FINISH_TIME is null ) and ( CONFIRM_TIME = '' or CONFIRM_TIME is null ) ");
                 foreach (DataRow row in drs)
                 {
                     data1.Rows.Add(row.ItemArray);
@@ -61,7 +61,7 @@ namespace Dian.Web
                 this.rUnconfirm.DataBind();
 
                 var data2 = dt.Clone();
-                drs = dt.Select(" FINISH_TIME = '' and CONFIRM_TIME <> '' ");
+                drs = dt.Select("( FINISH_TIME = '' or FINISH_TIME is null ) and ( CONFIRM_TIME <> '' and CONFIRM_TIME is not null ) ");
                 foreach (DataRow row in drs)
                 {
                     data2.Rows.Add(row.ItemArray);
@@ -70,7 +70,7 @@ namespace Dian.Web
                 this.rConfirm.DataBind();
 
                 var data3 = dt.Clone();
-                drs = dt.Select(" FINISH_TIME <> '' ");
+                drs = dt.Select(" FINISH_TIME <> '' and FINISH_TIME is not null ");
                 foreach (DataRow row in drs)
                 {
                     data3.Rows.Add(row.ItemArray);

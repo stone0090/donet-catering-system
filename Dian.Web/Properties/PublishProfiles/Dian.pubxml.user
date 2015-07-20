@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwTKSpgt3QEeUIgI9X4ufrwAAAAACAAAAAAAQZgAAAAEAACAAAADSEX/AxidG6YDCU52AIV4HMQpvPtb6sFsToQikPiC+9QAAAAAOgAAAAAIAACAAAAAHu/UCZCKa6sEOwrhUJ2umzIeg6Xe/paBKuhD7XaQKxyAAAAASbLfjENczfiIkplHcJ/0CMsKKkC9VVKOxFjeFMQMcvUAAAABcIhx9FLVCo4ENTOZutXahXEPJtGPppORCU+HU/Vxf4lejV4ak8vLCcJpT0Xwd96AxSc6vo71C0tGpZ56hAcaJ</EncryptedPassword>
+    <_PublishTargetUrl>ftp://qxw1146650223.my3w.com/</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/css/admin.css">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/css/amazeui.css">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/css/amazeui.flat.css">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/css/amazeui.flat.min.css">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/css/amazeui.min.css">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/css/app.css">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/fonts/fontawesome-webfont.eot">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/fonts/fontawesome-webfont.svg">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/fonts/fontawesome-webfont.ttf">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/fonts/fontawesome-webfont.woff">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/fonts/fontawesome-webfont.woff2">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/fonts/FontAwesome.otf">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/app-icon72x72%402x.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/admin-chrome.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/admin-firefox.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/admin-ie.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/admin-opera.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/admin-safari.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/adminPage.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/blogPage.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/landing.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/landingPage.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/loginPage.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/examples/sidebarPage.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/favicon.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/i/startup-640x1096.png">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/amazeui.ie8polyfill.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/amazeui.ie8polyfill.min.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/amazeui.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/amazeui.min.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/amazeui.widgets.helper.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/amazeui.widgets.helper.min.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/app.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/handlebars.min.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="assets/js/jquery.min.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="BackgroudIndex.aspx">
+      <publishTime>07/19/2015 08:18:47</publishTime>
+    </File>
+    <File Include="BackgroundManagement.Master">
+      <publishTime>07/19/2015 08:30:51</publishTime>
+    </File>
+    <File Include="bin/CSN.DotNetLibrary.Common.dll">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="bin/CSN.DotNetLibrary.Configuration.dll">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="bin/CSN.DotNetLibrary.Data.dll">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="bin/CSN.DotNetLibrary.EntityExpressions.Data.dll">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="bin/CSN.DotNetLibrary.EntityExpressions.Entitys.dll">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="bin/CSN.DotNetLibrary.EntityExpressions.Utilitys.dll">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="bin/Dian.Biz.dll">
+      <publishTime>07/19/2015 14:03:18</publishTime>
+    </File>
+    <File Include="bin/Dian.Common.Entity.dll">
+      <publishTime>07/19/2015 14:03:17</publishTime>
+    </File>
+    <File Include="bin/Dian.Common.Interface.dll">
+      <publishTime>07/19/2015 14:03:18</publishTime>
+    </File>
+    <File Include="bin/Dian.Dao.dll">
+      <publishTime>07/19/2015 14:03:17</publishTime>
+    </File>
+    <File Include="bin/Dian.Web.dll">
+      <publishTime>07/19/2015 14:03:19</publishTime>
+    </File>
+    <File Include="bin/ThoughtWorks.QRCode.dll">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="ConfirmOrder.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="CreateQRCode.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="CSS/Default.css">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="CSS/index.css">
+      <publishTime>07/18/2015 20:36:26</publishTime>
+    </File>
+    <File Include="DataAccess.config">
+      <publishTime>07/18/2015 20:31:51</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="EmployeeDetail.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="EmployeeList.aspx">
+      <publishTime>07/19/2015 10:44:31</publishTime>
+    </File>
+    <File Include="Error404.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="FoodDetail.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="FoodList.aspx">
+      <publishTime>07/19/2015 10:44:12</publishTime>
+    </File>
+    <File Include="FoodTypeDetail.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="FoodTypeList.aspx">
+      <publishTime>07/19/2015 10:44:40</publishTime>
+    </File>
+    <File Include="Images/OriginalImages/default.jpg">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="Images/OriginalImages/pic-none.png">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="Index.aspx">
+      <publishTime>07/18/2015 20:36:54</publishTime>
+    </File>
+    <File Include="Login.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="Operation/ClearCart.ashx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="Operation/CreateOrder.ashx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="Operation/GetOrderData.ashx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="Operation/UpdateOrder.ashx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="OrderDetail.aspx">
+      <publishTime>07/19/2015 13:54:22</publishTime>
+    </File>
+    <File Include="OrderList.aspx">
+      <publishTime>07/19/2015 12:53:24</publishTime>
+    </File>
+    <File Include="RestaurantDetail.aspx">
+      <publishTime>07/18/2015 20:28:06</publishTime>
+    </File>
+    <File Include="RestaurantList.aspx">
+      <publishTime>07/19/2015 10:44:50</publishTime>
+    </File>
+    <File Include="Scripts/common.js">
+      <publishTime>07/18/2015 22:25:36</publishTime>
+    </File>
+    <File Include="Scripts/index.js">
+      <publishTime>07/18/2015 23:52:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.intellisense.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.min.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-extend.js">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="TheFrontDeskShow.Master">
+      <publishTime>07/18/2015 20:28:07</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/19/2015 14:25:37</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

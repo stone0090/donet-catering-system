@@ -90,7 +90,7 @@
             <hr>
             <div class="am-footer-switch">
                 <div class="am-footer-miscs ">
-                    <p>Copyright © 2015 by stone. All rights reserved.</p>
+                    <p>Copyright &copy; 2013 - <span id="divCurrentYear"></span> by stone. All rights reserved.</p>
                 </div>
             </div>
         </footer>
@@ -98,12 +98,17 @@
         <input type="hidden" id="hLogout" runat="server" />
 
         <script type="text/javascript">
+
             var form1 = "<%= this.form1.ClientID %>";
             var hLogout = "<%= this.hLogout.ClientID %>";
+
             function logout() {
                 $('#' + hLogout).val('1');
                 $('#' + form1).submit();
             }
+
+            var div = document.getElementById("divCurrentYear").innerText = new Date().getFullYear();
+
         </script>
 
     </form>

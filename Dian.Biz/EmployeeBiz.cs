@@ -89,7 +89,9 @@ namespace Dian.Biz
         public EmployeeEntity GetEmployeeEntity(string id)
         {
             var entity = DianDao.ReadEntity2<EmployeeEntity>(n => n.EMPLOYEE_ID == id);
-            entity.RESTAURANT_NAME = new RestaurantBiz().GetRestaurantEntity(entity.RESTAURANT_ID).RESTAURANT_NAME;
+            var restaurantEntity = new RestaurantBiz().GetRestaurantEntity(entity.RESTAURANT_ID);
+            if(restaurantEntity!=null)
+                entity.RESTAURANT_NAME = restaurantEntity.RESTAURANT_NAME;
             return entity;
         }
 

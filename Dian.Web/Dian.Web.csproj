@@ -303,6 +303,7 @@
     <Content Include="Operation\UpdateOrder.ashx" />
     <Content Include="Operation\GetOrderData.ashx" />
     <Content Include="Operation\ClearCart.ashx" />
+    <None Include="Properties\PublishProfiles\Dian.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
