@@ -19,8 +19,12 @@
 
 点菜界面如下：（因为有顾客已经下单，所以购物车中是有数据的，此时可以查看上菜进度、加菜）
 
-![image](https://github.com/stone0090/CateringSystem/blob/master/menu2.PNG)
-![image](https://github.com/stone0090/CateringSystem/blob/master/menu1.PNG)
+![image](https://github.com/stone0090/CateringSystem/blob/master/menu_1.png)
+![image](https://github.com/stone0090/CateringSystem/blob/master/menu_2.png)
 
+管理界面如下：
+
+![image](https://github.com/stone0090/CateringSystem/blob/master/background_1.jpg)
+![image](https://github.com/stone0090/CateringSystem/blob/master/background_2.jpg)
 
 ## 系统详细介绍
