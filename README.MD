@@ -1,15 +1,15 @@
-# ����ϵͳ
+# 餐厅系统
 
-���������Ĳ���ϵͳ����Ҫ��Ϊ�������û��ڲ�����ɨ���˵�����
+帮朋友做的餐厅系统，主要是为了满足用户在餐桌上扫码点菜的需求。
 
+餐厅系统分为前台和后台两个部分：
 
-����ϵͳ��Ϊǰ̨�ͺ�̨�������֣�
+- 前台是用户点菜界面，无需登录即可点菜，但必须在url里带上“店铺id”和“桌号id”，不然会报404错误。
+- 后台是店家管理界面，必须登录才能操作，主要有 店铺管理、用户管理、菜品管理、菜品分类、订单管理、生成二维码 等6大模块。
 
-- ǰ̨���û���˽��棬�����¼���ɵ�ˣ���������url����ϡ�����id���͡�����id������Ȼ�ᱨ404����
-- ��̨�ǵ�ҹ������棬�����¼���ܲ�������Ҫ�� ���̹������û���������Ʒ��������Ʒ���ࡢ�������������ɶ�ά�� ��6��ģ�顣
+系统演示地址：[**jialisi.net**](http://jialisi.net)，账户名和密码均为：admin（**您可以随意新建用户，但请不要删除admin用户**）
 
-ϵͳ��ʾ��ַ��[**jialisi.net**](http://jialisi.net)���˻����������Ϊ��admin��**�����������½��û������벻Ҫɾ��admin�û�**��
+您还可以扫描以下二维码直接进入点菜界面，扫描二维码的效果等同于输入网址：[**jialisi.net/index.aspx?rid=1&tid=1**](http://jialisi.net/Index.aspx?rid=1&tid=1)
 
-��������ɨ�����¶�ά��ֱ�ӽ����˽��棬ɨ���ά���Ч����ͬ��������ַ��[**jialisi.net/index.aspx?rid=1&tid=1**](http://jialisi.net/Index.aspx?rid=1&tid=1)
+![image](https://github.com/stone0090/CateringSystem/blob/master/menu_rid1_tid1.jpg)
 
-![image](https://github.com/stone0090/CateringSystem/menu_rid1_tid1.jpg)
