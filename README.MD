@@ -16,7 +16,6 @@
 用微信扫描二维码可直接进入点菜页面，效果等同于访问网址：[**jialisi.net/index.aspx?rid=1&tid=1**](http://jialisi.net/Index.aspx?rid=1&tid=1)
 
 ![image](https://github.com/stone0090/CateringSystem/blob/master/menu_rid1_tid1.jpg)
-
 -
 
 点菜页面如下：（因为有顾客已经下单，所以购物车中是有数据的，此时可以查看上菜进度、加菜）
@@ -27,7 +26,6 @@
 备注1：因为顾客已经下单，所以此时扫码是加菜模式，在购物车中可以查看已点菜的状态。
 
 备注2：点菜页面只适配了 iphone6，如果其他分辨率有问题，请到XXX页面进行反馈。
-
 -
 
 管理页面如下：
