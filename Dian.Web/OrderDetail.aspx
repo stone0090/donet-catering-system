@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="BackgroundManagement.Master" AutoEventWireup="true" CodeBehind="OrderDetail.aspx.cs" Inherits="Dian.Web.OrderDetail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Background.Master" AutoEventWireup="true" CodeBehind="OrderDetail.aspx.cs" Inherits="Dian.Web.OrderDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="admin-content">
@@ -99,15 +99,13 @@
         });
 
         function beforeConfirmAll() {
-            //$('#<%= this.hOperation.ClientID %>').val('confirmall');
-            //$('#' + form1).submit();
-            alert("全部确认");
+            $('#<%= this.hOperation.ClientID %>').val('confirmall');
+            $('#' + form1).submit();
         }
 
         function beforeFinishAll() {
-            //$('#<%= this.hOperation.ClientID %>').val('finishall');
-            //$('#' + form1).submit();
-            alert("全部上菜");
+            $('#<%= this.hOperation.ClientID %>').val('finishall');
+            $('#' + form1).submit();
         }
 
         function beforeCancel(id) {

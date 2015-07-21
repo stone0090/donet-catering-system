@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BackgroundManagement.master.cs" Inherits="Dian.Web.BackgroundManagement" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Background.Master.cs" Inherits="Dian.Web.Background" %>
 
 <!doctype html>
 <html class="no-js">
@@ -57,7 +57,7 @@
             <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
                 <div class="am-offcanvas-bar admin-offcanvas-bar">
                     <ul class="am-list admin-sidebar-list">
-                        <li><a href="BackgroudIndex.aspx"><span class="am-icon-home"></span>首页</a></li>
+                        <li><a href="BackgroundIndex.aspx"><span class="am-icon-home"></span>首页</a></li>
                         <li id="liRestaurant" runat="server"><a href="RestaurantList.aspx">店铺管理</a></li>
                         <li id="liEmployee" runat="server"><a href="EmployeeList.aspx">用户管理</a></li>
                         <li id="liFoodType" runat="server"><a href="FoodTypeList.aspx">菜品分类</a></li>
@@ -90,7 +90,7 @@
             <hr>
             <div class="am-footer-switch">
                 <div class="am-footer-miscs ">
-                    <p>Copyright &copy; 2013 - <span id="divCurrentYear"></span> by stone. All rights reserved.</p>
+                    <p>Copyright &copy; 2013 - <span id="sCurrentYear"></span> by stone. All rights reserved.</p>
                 </div>
             </div>
         </footer>
@@ -107,7 +107,7 @@
                 $('#' + form1).submit();
             }
 
-            var div = document.getElementById("divCurrentYear").innerText = new Date().getFullYear();
+            var div = document.getElementById("sCurrentYear").innerText = new Date().getFullYear();
 
         </script>
 

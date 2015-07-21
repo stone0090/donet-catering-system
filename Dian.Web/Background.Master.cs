@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace Dian.Web
 {
-    public partial class BackgroundManagement : System.Web.UI.MasterPage
+    public partial class Background : System.Web.UI.MasterPage
     {
 
         protected EmployeeEntity CurEmployeeEntity

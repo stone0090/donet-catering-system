@@ -147,6 +147,11 @@ namespace Dian.Biz
             }
         }
 
+        public void BatchProcessOrder(int orderId, string opreation)
+        {
+            manual_dao.BatchProcessOrder(orderId, opreation);
+        }
+
 
         #endregion
 

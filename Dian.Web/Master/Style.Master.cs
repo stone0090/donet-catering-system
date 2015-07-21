@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Dian.Web
+namespace Dian.Web.Master
 {
-    public partial class TheFrontDeskShow : System.Web.UI.MasterPage
+    public partial class Style : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="BackgroundManagement.Master" AutoEventWireup="true" CodeBehind="CreateQRCode.aspx.cs" Inherits="Dian.Web.CreateQRCode" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Background.Master" AutoEventWireup="true" CodeBehind="CreateQRCode.aspx.cs" Inherits="Dian.Web.CreateQRCode" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

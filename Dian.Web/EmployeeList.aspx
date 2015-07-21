@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="BackgroundManagement.Master" AutoEventWireup="true" CodeBehind="EmployeeList.aspx.cs" Inherits="Dian.Web.EmployeeList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Background.Master" AutoEventWireup="true" CodeBehind="EmployeeList.aspx.cs" Inherits="Dian.Web.EmployeeList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

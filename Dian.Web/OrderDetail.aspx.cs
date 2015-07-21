@@ -207,13 +207,9 @@ namespace Dian.Web
                     }
                     else
                     {
-                        if (this.hOperation.Value == "confirmall")
+                        if (this.hOperation.Value == "confirmall" || this.hOperation.Value == "finishall")
                         {
-
-                        }
-                        else if (this.hOperation.Value == "finishall")
-                        {
-
+                            orderBiz.BatchProcessOrder(OrderId, this.hOperation.Value);
                         }
                     }
                 }

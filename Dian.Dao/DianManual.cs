@@ -213,6 +213,22 @@ namespace Dian.Dao
             }
         }
 
+        public void BatchProcessOrder(int orderId, string opreation)
+        {
+            string sql = "UPDATE ORDERLIST2 SET {0} = CONVERT(varchar(100), GETDATE(), 120) WHERE ORDER_ID = @ORDER_ID AND ({0} IS NULL OR {0} = '')";
+            if (opreation == "confirmall")
+                sql = string.Format(sql, "CONFIRM_TIME");
+            if (opreation == "finishall")
+            {
+                sql = string.Format(sql, "FINISH_TIME");
+                sql += " AND (CONFIRM_TIME IS NOT NULL AND CONFIRM_TIME <> '') ";
+            }
+            using (DbCommand dc = db.GetSqlStringCommand(sql))
+            {
+                db.AddInParameter(dc, "@ORDER_ID", DbType.Int32, orderId);
+                db.ExecuteNonQuery(dc);
+            }
+        }
 
 
         //        public DataTable GetTableDataTable(int? restaurantId = null)

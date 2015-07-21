@@ -222,25 +222,7 @@
         var hOrderData = '<%= this.hOrderData.ClientID %>';
         var hOrderId = '<%= this.hOrderId.ClientID %>';
         var restaurantId = <%= RestaurantId %>;
-        var tableId = <%= TableId %>;
-
-        
-        $(window).bind('load', function () {            
-            var c = 1,d = 2; //这里设定的是第1和第2
-            a.browser.msie && 6 == a.browser.version && !a.support.style || (
-            e = a("#admin-offcanvas").width(), f = a("#sidebar .widget"), g = f.length, g >= (c > 0) && g >= (d > 0) && a(window).scroll(function () {
-                var b = document.documentElement.scrollTop + document.body.scrollTop;
-                b > f.eq(g - 1).offset().top + f.eq(g - 1).height() ? 0 == a(".roller").length ? (f.parent().append('<div class="roller"></div>'),
-                 f.eq(c - 1).clone().appendTo(".roller"),
-                 c !== d && f.eq(d - 1).clone().appendTo(".roller"),
-                 a(".roller").css({
-                     position: "fixed",
-                     top: 50,
-                     zIndex: 0,
-                     width: 250
-                 }), a(".roller").width(e)) : a(".roller").fadeIn(300) : a(".roller").fadeOut(300)
-            }))
-        });
+        var tableId = <%= TableId %>;        
 
         //备注窗口关闭事件
         $('#divRemark').on('closed.modal.amui', function () {

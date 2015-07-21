@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Dian.Web
 {
-    public partial class _Default : System.Web.UI.Page
+    public partial class BackgroundIndex : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

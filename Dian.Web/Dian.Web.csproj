@@ -93,11 +93,9 @@
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\handlebars.min.js" />
     <Content Include="assets\js\jquery.min.js" />
-    <Content Include="BackgroudIndex.aspx" />
-    <Content Include="ConfirmOrder.aspx" />
+    <Content Include="BackgroundIndex.aspx" />
     <Content Include="CSS\index.css" />
     <Content Include="CSS\Default.css" />
-    <Content Include="Default.aspx" />
     <Content Include="EmployeeDetail.aspx" />
     <Content Include="EmployeeList.aspx" />
     <Content Include="Error404.aspx" />
@@ -123,33 +121,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackgroudIndex.aspx.cs">
-      <DependentUpon>BackgroudIndex.aspx</DependentUpon>
+    <Compile Include="BackgroundIndex.aspx.cs">
+      <DependentUpon>BackgroundIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackgroudIndex.aspx.designer.cs">
-      <DependentUpon>BackgroudIndex.aspx</DependentUpon>
+    <Compile Include="BackgroundIndex.aspx.designer.cs">
+      <DependentUpon>BackgroundIndex.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackgroundManagement.Master.cs">
-      <DependentUpon>BackgroundManagement.Master</DependentUpon>
+    <Compile Include="Background.Master.cs">
+      <DependentUpon>Background.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackgroundManagement.Master.designer.cs">
-      <DependentUpon>BackgroundManagement.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ConfirmOrder.aspx.cs">
-      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ConfirmOrder.aspx.designer.cs">
-      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Background.Master.designer.cs">
+      <DependentUpon>Background.Master</DependentUpon>
     </Compile>
     <Compile Include="EmployeeDetail.aspx.cs">
       <DependentUpon>EmployeeDetail.aspx</DependentUpon>
@@ -192,6 +176,13 @@
     </Compile>
     <Compile Include="CreateQRCode.aspx.designer.cs">
       <DependentUpon>CreateQRCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Style.Master.cs">
+      <DependentUpon>Style.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Style.Master.designer.cs">
+      <DependentUpon>Style.Master</DependentUpon>
     </Compile>
     <Compile Include="OrderDetail.aspx.cs">
       <DependentUpon>OrderDetail.aspx</DependentUpon>
@@ -240,13 +231,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Utility\Helper.cs" />
-    <Compile Include="TheFrontDeskShow.Master.cs">
-      <DependentUpon>TheFrontDeskShow.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TheFrontDeskShow.Master.designer.cs">
-      <DependentUpon>TheFrontDeskShow.Master</DependentUpon>
-    </Compile>
     <Compile Include="Utility\DataTableHepler.cs" />
     <Compile Include="Utility\ImageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -297,12 +281,12 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
-    <Content Include="BackgroundManagement.Master" />
-    <Content Include="TheFrontDeskShow.Master" />
+    <Content Include="Background.Master" />
     <Content Include="Operation\CreateOrder.ashx" />
     <Content Include="Operation\UpdateOrder.ashx" />
     <Content Include="Operation\GetOrderData.ashx" />
     <Content Include="Operation\ClearCart.ashx" />
+    <Content Include="Master\Style.Master" />
     <None Include="Properties\PublishProfiles\Dian.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

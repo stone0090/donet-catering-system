@@ -14,6 +14,7 @@ namespace Dian.Common.Interface
         DataTable GetOrderData(int orderId);
         void UpdateOrder(int orderId, decimal price, string foodOp, OrderListEntity2 entity);
         void ClearCart(int orderId);
+        void BatchProcessOrder(int orderId, string opreation);
 
         DataTable GetOrderMainDataTable(int? restaurantId = null, string type = null);
         List<OrderMainEntity2> GetOrderMainEntityList(OrderMainEntity2 condition_entity);

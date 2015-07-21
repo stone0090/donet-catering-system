@@ -10,7 +10,7 @@
 namespace Dian.Web {
     
     
-    public partial class BackgroundManagement {
+    public partial class Background {
         
         /// <summary>
         /// form1 控件。
