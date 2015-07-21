@@ -109,8 +109,10 @@
         }
 
         function beforeCancel(id) {
-            $('#<%= this.hOperation.ClientID %>').val('cancel|' + id);
-            $('#' + form1).submit();
+            if (confirm("您确定要删除本条记吗？\r\n删除点击“确定”，不删除点击“取消”。")) {
+                $('#<%= this.hOperation.ClientID %>').val('cancel|' + id);
+                $('#' + form1).submit();
+            }
         }
 
         function beforeConfirm(id) {
@@ -126,13 +128,6 @@
         function beforeCancelFinish(id) {
             $('#<%= this.hOperation.ClientID %>').val('cancelfinish|' + id);
             $('#' + form1).submit();
-        }
-
-        function beforeDelete(id) {
-            if (confirm("您确定要删除本条记录吗？\r\n删除点击“确定”，不删除点击“取消”。")) {
-                $('#<%= this.hDeleteId.ClientID %>').val(id);
-                $('#' + form1).submit();
-            }
         }
 
     </script>
