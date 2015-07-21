@@ -25,24 +25,31 @@ namespace Dian.Web
             {
                 if (!string.IsNullOrEmpty(this.tName.Value) && !string.IsNullOrEmpty(this.tPassword.Value))
                 {
-                    IEmployee biz = new EmployeeBiz();
-                    EmployeeEntity condition_entity = new EmployeeEntity();
-                    condition_entity.EMPLOYEE_ID = this.tName.Value;
-                    condition_entity.PASSWORD = this.tPassword.Value;
-                    var list = biz.GetEmployeeEntityList(condition_entity);
-                    if (list != null && list.Count > 0)
+                    try
                     {
-                        //登陆成功，把用户编号保存到票据中    
-                        FormsAuthentication.SetAuthCookie(this.tName.Value, false);
-                        var ticket = new FormsAuthenticationTicket(1, list[0].EMPLOYEE_NAME, DateTime.Now, DateTime.Now.AddMonths(2), false, this.tName.Value, FormsAuthentication.FormsCookiePath);
-                        var encTicket = FormsAuthentication.Encrypt(ticket);
-                        var newCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
-                        HttpContext.Current.Response.Cookies.Add(newCookie);
-                        Response.Redirect(ReturnUrl);
+                        IEmployee biz = new EmployeeBiz();
+                        EmployeeEntity condition_entity = new EmployeeEntity();
+                        condition_entity.EMPLOYEE_ID = this.tName.Value;
+                        condition_entity.PASSWORD = this.tPassword.Value;
+                        var list = biz.GetEmployeeEntityList(condition_entity);
+                        if (list != null && list.Count > 0)
+                        {
+                            //登陆成功，把用户编号保存到票据中    
+                            FormsAuthentication.SetAuthCookie(this.tName.Value, false);
+                            var ticket = new FormsAuthenticationTicket(1, list[0].EMPLOYEE_NAME, DateTime.Now, DateTime.Now.AddMonths(2), false, this.tName.Value, FormsAuthentication.FormsCookiePath);
+                            var encTicket = FormsAuthentication.Encrypt(ticket);
+                            var newCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+                            HttpContext.Current.Response.Cookies.Add(newCookie);
+                            Response.Redirect(ReturnUrl);
+                        }
+                        else
+                        {
+                            this.lMsg.InnerText = "登陆失败，账户或密码错误！";
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        this.lMsg.InnerText = "登陆失败，账户或密码错误！";
+                        this.lMsg.InnerText = "登陆失败，原因是：" + ex.ToString();
                     }
                 }
             }

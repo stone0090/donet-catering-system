@@ -23,70 +23,28 @@ namespace Dian.Biz
 
         public DataTable GetRestaurantDataTable(string employeeId = "")
         {
-            try
-            {
-                return manual_dao.GetRestaurantDataTable(employeeId);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianBizException("获取店的数据出错！", ex);
-            }
+            return manual_dao.GetRestaurantDataTable(employeeId);
         }
         public List<RestaurantEntity> GetRestaurantEntityList(RestaurantEntity condition_entity)
         {
-            try
-            {
-                GenericWhereEntity<RestaurantEntity> where_entity = new GenericWhereEntity<RestaurantEntity>();
-                if (condition_entity.RESTAURANT_ID != null)
-                    where_entity.Where(n => (n.RESTAURANT_ID == condition_entity.RESTAURANT_ID));
-                if (condition_entity.RESTAURANT_NAME != null)
-                    where_entity.Where(n => (n.RESTAURANT_NAME == condition_entity.RESTAURANT_NAME));
-                return DianDao.ReadEntityList(where_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("获取店数据出错！", ex);
-            }
+            GenericWhereEntity<RestaurantEntity> where_entity = new GenericWhereEntity<RestaurantEntity>();
+            if (condition_entity.RESTAURANT_ID != null)
+                where_entity.Where(n => (n.RESTAURANT_ID == condition_entity.RESTAURANT_ID));
+            if (condition_entity.RESTAURANT_NAME != null)
+                where_entity.Where(n => (n.RESTAURANT_NAME == condition_entity.RESTAURANT_NAME));
+            return DianDao.ReadEntityList(where_entity);
         }
         public void InsertRestaurantEntity(RestaurantEntity condition_entity)
         {
-            try
-            {
-                DianDao.InsertEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianBizException("插入店数据出错！", ex);
-            }
-
+            DianDao.InsertEntity(condition_entity);
         }
         public void UpdateRestaurantEntity(RestaurantEntity condition_entity)
         {
-            try
-            {
-                DianDao.UpdateEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianBizException("更新店数据出错！", ex);
-            }
-
+            DianDao.UpdateEntity(condition_entity);
         }
         public void DeleteRestaurantEntity(RestaurantEntity condition_entity)
         {
-            try
-            {
-                DianDao.DeleteEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianBizException("删除店数据出错！", ex);
-            }
-
+            DianDao.DeleteEntity(condition_entity);
         }
         public RestaurantEntity GetRestaurantEntity(int? id)
         {

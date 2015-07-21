@@ -135,7 +135,6 @@ namespace Dian.Web
                             var condition = new OrderListEntity2();
                             condition.FOOD_ID = curOrderListEntity.FOOD_ID;
                             condition.ORDER_ID = OrderId;
-                            int oldListId = 0;
                             var list = orderBiz.GetOrderListEntityList(condition);
 
                             condition = null;
@@ -173,7 +172,6 @@ namespace Dian.Web
                             var condition = new OrderListEntity2();
                             condition.FOOD_ID = curOrderListEntity.FOOD_ID;
                             condition.ORDER_ID = OrderId;
-                            int oldListId = 0;
                             var list = orderBiz.GetOrderListEntityList(condition);
 
                             condition = null;

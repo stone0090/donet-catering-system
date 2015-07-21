@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Background.Master" AutoEventWireup="true" CodeBehind="RestaurantDetail.aspx.cs" Inherits="Dian.Web.RestaurantDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="admin-content">
 
         <div class="am-cf am-padding">

@@ -1,11 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/TheFront.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Dian.Web.Index" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="CSS/index.css" rel="stylesheet" />
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="CSS/index.css" rel="stylesheet" />
     <script src="Scripts/index.js"></script>
+
     <div class="am-cf admin-main" style="background: #fff;">
 
         <!-- sidebar start -->

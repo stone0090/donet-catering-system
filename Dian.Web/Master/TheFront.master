@@ -1,13 +1,8 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Master/Style.Master" AutoEventWireup="true" CodeBehind="TheFront.master.cs" Inherits="Dian.Web.Master.TheFront" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <header class="am-topbar admin-header">
+    <header class="am-topbar admin-header" id="divHeader">
         <div class="am-topbar-brand">
             <strong>XX系统</strong> <small id="sTitle" runat="server">登陆</small>
         </div>

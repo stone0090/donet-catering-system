@@ -26,16 +26,7 @@ namespace Dian.Dao
         #region 插入实体操作
         public static void InsertEntity<E>(E entity)
         {
-            try
-            {
-                EntityOperations.InsertEntity(entity, DB);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianDaoException("插入实体出错！消息：" + ex.Message + "堆栈：" + ex.StackTrace,ex);
-            }
-
+            EntityOperations.InsertEntity(entity, DB);
         }
         /// <summary>
         /// 插入实体，并返回标识列的值
@@ -45,45 +36,19 @@ namespace Dian.Dao
         /// <returns>标识列的值</returns>
         public static object InsertEntityWithIdentity<E>(E entity)
         {
-            try
-            {
-                return EntityOperations.InsertEntityWithIdentity(entity, DB);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-
+            return EntityOperations.InsertEntityWithIdentity(entity, DB);
         }
         #endregion
 
         #region 删除实体操作
         public static void DeleteEntity<E>(E entity)
         {
-            try
-            {
-                EntityOperations.DeleteEntity(entity, DB);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianDaoException("删除实体出错！消息：" + ex.Message + "堆栈：" + ex.StackTrace,ex);
-            }
-
+            EntityOperations.DeleteEntity(entity, DB);
         }
 
         public static void DeleteEntity2<E>(Expression<Func<E, bool>> conditionExpression)
         {
-            try
-            {
-                EntityOperations.DeleteEntity2(conditionExpression, DB);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianDaoException("删除实体出错！消息：" + ex.Message + "堆栈：" + ex.StackTrace, ex);
-            }
-
+            EntityOperations.DeleteEntity2(conditionExpression, DB);
         }
 
         #endregion
@@ -91,39 +56,16 @@ namespace Dian.Dao
         #region 更新实体操作
         public static void UpdateEntity<E>(E entity)
         {
-            try
-            {
-                EntityOperations.UpdateEntity(entity, DB);
-            }
-            catch (Exception ex)
-            {
-
-                throw new DianDaoException("更新实体出错！消息：" + ex.Message + "堆栈：" + ex.StackTrace,ex);
-            }
-
+            EntityOperations.UpdateEntity(entity, DB);
         }
         public static void UpdateEntity<E>(GenericWhereEntity<E> whereEntity, E theEntity)
         {
-            try
-            {
-                EntityOperations.UpdateEntity(whereEntity, theEntity, DB);
-            }
-            catch (Exception ex)
-            {
-                throw new DianDaoException("更新实体出错！消息：" + ex.Message + "堆栈：" + ex.StackTrace,ex);
-            }
+            EntityOperations.UpdateEntity(whereEntity, theEntity, DB);
         }
 
         public static void UpdateEntity2<E>(Expression<Func<E, bool>> conditionExpression, E theEntity)
         {
-            try
-            {
-                EntityOperations.UpdateEntity2(conditionExpression, theEntity, DB);
-            }
-            catch (Exception ex)
-            {
-                throw new DianDaoException("更新实体出错！消息：" + ex.Message + "堆栈：" + ex.StackTrace,ex);
-            }
+            EntityOperations.UpdateEntity2(conditionExpression, theEntity, DB);
         }
         #endregion
 

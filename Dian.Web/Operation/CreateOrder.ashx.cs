@@ -47,7 +47,7 @@ namespace Dian.Web.Operation
             }
             catch (Exception ex)
             {
-                context.Response.Write("{\"success\":0,\"msg\":\"订单数据有误，请重新提交订单！\"}");
+                context.Response.Write("{\"success\":0,\"msg\":\"订单数据有误，原因是" + ex.ToString() + "！\"}");
             }
         }
 

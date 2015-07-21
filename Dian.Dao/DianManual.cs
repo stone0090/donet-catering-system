@@ -26,94 +26,64 @@ namespace Dian.Dao
 
         public DataTable GetRestaurantDataTable(string employeeId = "")
         {
-            try
-            {
-                string sql = @"
+            string sql = @"
                     SELECT DISTINCT A.* FROM RESTAURANT A
                     LEFT JOIN EMPLOYEE B ON A.RESTAURANT_ID = B.RESTAURANT_ID
                     WHERE 1=1 ";
-                if (!string.IsNullOrEmpty(employeeId))
-                    sql += " AND b.EMPLOYEE_ID = @EMPLOYEE_ID ";
-                using (DbCommand dc = db.GetSqlStringCommand(sql))
-                {
-                    if (!string.IsNullOrEmpty(employeeId))
-                        db.AddInParameter(dc, "@EMPLOYEE_ID", DbType.AnsiString, employeeId);
-                    return db.ExecuteDataTable(dc);
-                }
-            }
-            catch (Exception ex)
+            if (!string.IsNullOrEmpty(employeeId))
+                sql += " AND b.EMPLOYEE_ID = @EMPLOYEE_ID ";
+            using (DbCommand dc = db.GetSqlStringCommand(sql))
             {
-                throw new DianDaoException("获取店家的数据出错！", ex);
+                if (!string.IsNullOrEmpty(employeeId))
+                    db.AddInParameter(dc, "@EMPLOYEE_ID", DbType.AnsiString, employeeId);
+                return db.ExecuteDataTable(dc);
             }
         }
 
         public DataTable GetFoodDataTable(int? restaurantId = null)
         {
-            try
-            {
-                string sql = @"SELECT A.*,B.FOOD_TYPE_NAME,C.RESTAURANT_NAME FROM FOOD A
+            string sql = @"SELECT A.*,B.FOOD_TYPE_NAME,C.RESTAURANT_NAME FROM FOOD A
                                 LEFT JOIN FOOD_TYPE B ON A.FOOD_TYPE_ID = B.FOOD_TYPE_ID
                                 LEFT JOIN RESTAURANT C ON A.RESTAURANT_ID = C.RESTAURANT_ID
                                 WHERE 1=1 ";
-                if (restaurantId != null)
-                    sql += " AND c.RESTAURANT_ID = @RESTAURANT_ID ";
-                using (DbCommand dc = db.GetSqlStringCommand(sql))
-                {
-                    if (restaurantId != null)
-                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
-                    return db.ExecuteDataTable(dc);
-                }
-            }
-            catch (Exception ex)
+            if (restaurantId != null)
+                sql += " AND c.RESTAURANT_ID = @RESTAURANT_ID ";
+            using (DbCommand dc = db.GetSqlStringCommand(sql))
             {
-                throw new DianDaoException("获取菜品的数据出错！", ex);
+                if (restaurantId != null)
+                    db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
+                return db.ExecuteDataTable(dc);
             }
         }
 
         public DataTable GetFoodTypeDataTable(int? restaurantId = null)
         {
-            try
-            {
-                string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM FOOD_TYPE A
+            string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM FOOD_TYPE A
                                 LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID
                                 WHERE 1=1 ";
-                if (restaurantId != null)
-                    sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
-                using (DbCommand dc = db.GetSqlStringCommand(sql))
-                {
-                    if (restaurantId != null)
-                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
-                    return db.ExecuteDataTable(dc);
-                }
-            }
-            catch (Exception ex)
+            if (restaurantId != null)
+                sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
+            using (DbCommand dc = db.GetSqlStringCommand(sql))
             {
-                throw new DianDaoException("获取菜品类型的数据出错！", ex);
+                if (restaurantId != null)
+                    db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
+                return db.ExecuteDataTable(dc);
             }
         }
 
         public DataTable GetEmployeeDataTable()
         {
-            try
-            {
-                string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM EMPLOYEE A 
+            string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM EMPLOYEE A 
                                 LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID WHERE 1=1 ";
-                using (DbCommand dc = db.GetSqlStringCommand(sql))
-                {
-                    return db.ExecuteDataTable(dc);
-                }
-            }
-            catch (Exception ex)
+            using (DbCommand dc = db.GetSqlStringCommand(sql))
             {
-                throw new DianDaoException("获取用户的数据出错！", ex);
+                return db.ExecuteDataTable(dc);
             }
         }
 
         public DataTable GetOrderMainDataTable(int? restaurantId = null, string type = null)
         {
-            try
-            {
-                string sql = @"SELECT A.*,B.RESTAURANT_NAME,
+            string sql = @"SELECT A.*,B.RESTAURANT_NAME,
                                 ISNULL(C.ALLORDER,0) ALLORDER,
                                 ISNULL(D.FINISH,0) FINISH,
                                 ISNULL(E.CONFIRM,0) CONFIRM,
@@ -138,46 +108,34 @@ namespace Dian.Dao
 			                                AND (FINISH_TIME = '' OR FINISH_TIME IS NULL) 
 			                                GROUP BY ORDER_ID) F ON A.ORDER_ID = F.ORDER_ID
                                 WHERE 1=1 ";
-                if (restaurantId != null)
-                    sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
-                if (!string.IsNullOrEmpty(type))
-                    sql += " AND A.ORDER_FLAG = @ORDER_FLAG ";
-                using (DbCommand dc = db.GetSqlStringCommand(sql))
-                {
-                    if (restaurantId != null)
-                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
-                    if (!string.IsNullOrEmpty(type))
-                        db.AddInParameter(dc, "@ORDER_FLAG", DbType.AnsiString, type);
-                    return db.ExecuteDataTable(dc);
-                }
-            }
-            catch (Exception ex)
+            if (restaurantId != null)
+                sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
+            if (!string.IsNullOrEmpty(type))
+                sql += " AND A.ORDER_FLAG = @ORDER_FLAG ";
+            using (DbCommand dc = db.GetSqlStringCommand(sql))
             {
-                throw new DianDaoException("获取订单的数据出错！", ex);
+                if (restaurantId != null)
+                    db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
+                if (!string.IsNullOrEmpty(type))
+                    db.AddInParameter(dc, "@ORDER_FLAG", DbType.AnsiString, type);
+                return db.ExecuteDataTable(dc);
             }
         }
 
         public DataTable GetOrderListDataTable(int? restaurantId = null)
         {
-            try
-            {
-                string sql = @"SELECT A.*,C.RESTAURANT_NAME,D.FOOD_NAME FROM ORDERLIST2 A
+            string sql = @"SELECT A.*,C.RESTAURANT_NAME,D.FOOD_NAME FROM ORDERLIST2 A
                                 LEFT JOIN ORDERMAIN2 B ON A.ORDER_ID = B.ORDER_ID
                                 LEFT JOIN RESTAURANT C ON B.RESTAURANT_ID = C.RESTAURANT_ID
                                 LEFT JOIN FOOD D ON A.FOOD_ID = D.FOOD_ID
                                 WHERE 1=1 ";
-                if (restaurantId != null)
-                    sql += " AND C.RESTAURANT_ID = @RESTAURANT_ID ";
-                using (DbCommand dc = db.GetSqlStringCommand(sql))
-                {
-                    if (restaurantId != null)
-                        db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
-                    return db.ExecuteDataTable(dc);
-                }
-            }
-            catch (Exception ex)
+            if (restaurantId != null)
+                sql += " AND C.RESTAURANT_ID = @RESTAURANT_ID ";
+            using (DbCommand dc = db.GetSqlStringCommand(sql))
             {
-                throw new DianDaoException("获取订单列表的数据出错！", ex);
+                if (restaurantId != null)
+                    db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
+                return db.ExecuteDataTable(dc);
             }
         }
 

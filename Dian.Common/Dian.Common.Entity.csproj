@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DianBizException.cs" />
     <Compile Include="EmployeeEntity.AutoCode.cs" />
     <Compile Include="EmployeeEntity.cs" />
     <Compile Include="FoodTypeEntity.cs" />
@@ -60,8 +59,6 @@
     <Compile Include="FoodEntity.cs" />
     <Compile Include="RestaurantEntity.AutoCode.cs" />
     <Compile Include="RestaurantEntity.cs" />
-    <Compile Include="DianDaoException.cs" />
-    <Compile Include="DianWebException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

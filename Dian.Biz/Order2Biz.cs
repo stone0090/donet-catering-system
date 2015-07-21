@@ -27,14 +27,7 @@ namespace Dian.Biz
 
         public DataTable GetOrderData(int orderId)
         {
-            try
-            {
-                return manual_dao.GetOrderData(orderId);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("获取订单列表的数据出错！", ex);
-            }
+            return manual_dao.GetOrderData(orderId);
         }
 
         public int CreateOrder(int restaurantId, int tableId, decimal price, List<OrderListEntity2> listOrderList)
@@ -159,72 +152,37 @@ namespace Dian.Biz
 
         public DataTable GetOrderMainDataTable(int? restaurantId = null, string type = null)
         {
-            try
-            {
-                return manual_dao.GetOrderMainDataTable(restaurantId, type);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("获取订单的数据出错！", ex);
-            }
+            return manual_dao.GetOrderMainDataTable(restaurantId, type);
         }
 
         public List<OrderMainEntity2> GetOrderMainEntityList(OrderMainEntity2 condition_entity)
         {
-            try
-            {
-                GenericWhereEntity<OrderMainEntity2> where_entity = new GenericWhereEntity<OrderMainEntity2>();
-                if (condition_entity.ORDER_ID != null)
-                    where_entity.Where(n => (n.ORDER_ID == condition_entity.ORDER_ID));
-                if (condition_entity.RESTAURANT_ID != null)
-                    where_entity.Where(n => (n.RESTAURANT_ID == condition_entity.RESTAURANT_ID));
-                if (condition_entity.TABLE_ID != null)
-                    where_entity.Where(n => (n.TABLE_ID == condition_entity.TABLE_ID));
-                if (condition_entity.ORDER_FLAG != null)
-                    where_entity.Where(n => (n.ORDER_FLAG == condition_entity.ORDER_FLAG));
-                return DianDao.ReadEntityList(where_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("获取订单的数据出错！", ex);
-            }
+            GenericWhereEntity<OrderMainEntity2> where_entity = new GenericWhereEntity<OrderMainEntity2>();
+            if (condition_entity.ORDER_ID != null)
+                where_entity.Where(n => (n.ORDER_ID == condition_entity.ORDER_ID));
+            if (condition_entity.RESTAURANT_ID != null)
+                where_entity.Where(n => (n.RESTAURANT_ID == condition_entity.RESTAURANT_ID));
+            if (condition_entity.TABLE_ID != null)
+                where_entity.Where(n => (n.TABLE_ID == condition_entity.TABLE_ID));
+            if (condition_entity.ORDER_FLAG != null)
+                where_entity.Where(n => (n.ORDER_FLAG == condition_entity.ORDER_FLAG));
+            return DianDao.ReadEntityList(where_entity);
         }
 
         public int InsertOrderMainEntity(OrderMainEntity2 condition_entity)
         {
-            try
-            {
-                var result = DianDao.InsertEntityWithIdentity(condition_entity);
-                return int.Parse(result.ToString());
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("插入订单数据出错！", ex);
-            }
+            var result = DianDao.InsertEntityWithIdentity(condition_entity);
+            return int.Parse(result.ToString());
         }
 
         public void UpdateOrderMainEntity(OrderMainEntity2 condition_entity)
         {
-            try
-            {
-                DianDao.UpdateEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("更新订单数据出错！", ex);
-            }
+            DianDao.UpdateEntity(condition_entity);
         }
 
         public void DeleteOrderMainEntity(OrderMainEntity2 condition_entity)
         {
-            try
-            {
-                DianDao.DeleteEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("删除订单数据出错！", ex);
-            }
+            DianDao.DeleteEntity(condition_entity);
         }
 
         public OrderMainEntity2 GetOrderMainEntity(int? id)
@@ -236,69 +194,34 @@ namespace Dian.Biz
 
         public DataTable GetOrderListDataTable(int? restaurantId = null)
         {
-            try
-            {
-                return manual_dao.GetOrderListDataTable();
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("获取订单列表的数据出错！", ex);
-            }
+            return manual_dao.GetOrderListDataTable();
         }
 
         public List<OrderListEntity2> GetOrderListEntityList(OrderListEntity2 condition_entity)
         {
-            try
-            {
-                GenericWhereEntity<OrderListEntity2> where_entity = new GenericWhereEntity<OrderListEntity2>();
-                if (condition_entity.LIST_ID != null)
-                    where_entity.Where(n => (n.LIST_ID == condition_entity.LIST_ID));
-                if (condition_entity.ORDER_ID != null)
-                    where_entity.Where(n => (n.ORDER_ID == condition_entity.ORDER_ID));
-                if (condition_entity.FOOD_ID != null)
-                    where_entity.Where(n => (n.FOOD_ID == condition_entity.FOOD_ID));
-                return DianDao.ReadEntityList(where_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("获取订单列表的数据出错！", ex);
-            }
+            GenericWhereEntity<OrderListEntity2> where_entity = new GenericWhereEntity<OrderListEntity2>();
+            if (condition_entity.LIST_ID != null)
+                where_entity.Where(n => (n.LIST_ID == condition_entity.LIST_ID));
+            if (condition_entity.ORDER_ID != null)
+                where_entity.Where(n => (n.ORDER_ID == condition_entity.ORDER_ID));
+            if (condition_entity.FOOD_ID != null)
+                where_entity.Where(n => (n.FOOD_ID == condition_entity.FOOD_ID));
+            return DianDao.ReadEntityList(where_entity);
         }
 
         public void InsertOrderListEntity(OrderListEntity2 condition_entity)
         {
-            try
-            {
-                DianDao.InsertEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("插入订单列表数据出错！", ex);
-            }
+            DianDao.InsertEntity(condition_entity);
         }
 
         public void UpdateOrderListEntity(OrderListEntity2 condition_entity)
         {
-            try
-            {
-                DianDao.UpdateEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("更新订单列表数据出错！", ex);
-            }
+            DianDao.UpdateEntity(condition_entity);
         }
 
         public void DeleteOrderListEntity(OrderListEntity2 condition_entity)
         {
-            try
-            {
-                DianDao.DeleteEntity(condition_entity);
-            }
-            catch (Exception ex)
-            {
-                throw new DianBizException("删除订单列表数据出错！", ex);
-            }
+            DianDao.DeleteEntity(condition_entity);
         }
 
 
