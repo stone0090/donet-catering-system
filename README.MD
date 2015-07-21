@@ -17,10 +17,10 @@
 
 ![image](https://github.com/stone0090/CateringSystem/blob/master/menu_rid1_tid1.jpg)
 
-菜单效果图如下：（因为有顾客已经下单，所以购物车中是有数据的，此时可以查看上菜进度、加菜）
+点菜界面如下：（因为有顾客已经下单，所以购物车中是有数据的，此时可以查看上菜进度、加菜）
 
-![image](https://github.com/stone0090/CateringSystem/blob/master/menu1.PNG)
 ![image](https://github.com/stone0090/CateringSystem/blob/master/menu2.PNG)
+![image](https://github.com/stone0090/CateringSystem/blob/master/menu1.PNG)
 
 
 ## 系统详细介绍
