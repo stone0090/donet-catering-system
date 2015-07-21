@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Background.Master" AutoEventWireup="true" CodeBehind="FoodList.aspx.cs" Inherits="Dian.Web.FoodList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Background.Master" AutoEventWireup="true" CodeBehind="FoodList.aspx.cs" Inherits="Dian.Web.FoodList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

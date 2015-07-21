@@ -38,12 +38,6 @@ namespace Dian.Web
             if (!IsPostBack)
             {
                 BindData();
-
-                if (CurEmployeeEntity != null)
-                {
-                    this.aLogin.HRef = "OrderList.aspx";
-                    this.aLogin.InnerText = "后台管理";
-                }
             }
         }
 

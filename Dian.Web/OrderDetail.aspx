@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Background.Master" AutoEventWireup="true" CodeBehind="OrderDetail.aspx.cs" Inherits="Dian.Web.OrderDetail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Background.Master" AutoEventWireup="true" CodeBehind="OrderDetail.aspx.cs" Inherits="Dian.Web.OrderDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="admin-content">
@@ -126,6 +126,13 @@
         function beforeCancelFinish(id) {
             $('#<%= this.hOperation.ClientID %>').val('cancelfinish|' + id);
             $('#' + form1).submit();
+        }
+
+        function beforeDelete(id) {
+            if (confirm("您确定要删除本条记录吗？\r\n删除点击“确定”，不删除点击“取消”。")) {
+                $('#<%= this.hDeleteId.ClientID %>').val(id);
+                $('#' + form1).submit();
+            }
         }
 
     </script>

@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TheFrontDeskShow.Master" AutoEventWireup="true" CodeBehind="Error404.aspx.cs" Inherits="Dian.Web.Error404" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/TheFront.Master" AutoEventWireup="true" CodeBehind="Error404.aspx.cs" Inherits="Dian.Web.Error404" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="admin-content">
 

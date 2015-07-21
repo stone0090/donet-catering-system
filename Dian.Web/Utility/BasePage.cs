@@ -21,7 +21,7 @@ namespace Dian.Web.Utility
         {
             get
             {
-                return ViewState["UrlReferrer"] == null ? "/index.aspx" : ViewState["UrlReferrer"].ToString();
+                return ViewState["UrlReferrer"] == null ? "~/Index.aspx" : ViewState["UrlReferrer"].ToString(); ;
             }
         }
 
@@ -74,7 +74,7 @@ namespace Dian.Web.Utility
                 }
                 catch (Exception)
                 {
-                    Server.Transfer("Index.aspx");
+                    ViewState["UrlReferrer"] = "~/Index.aspx";
                 }
             }
         }

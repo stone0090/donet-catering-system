@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Background.Master" AutoEventWireup="true" CodeBehind="FoodTypeDetail.aspx.cs" Inherits="Dian.Web.FoodTypeDetail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Background.Master" AutoEventWireup="true" CodeBehind="FoodTypeDetail.aspx.cs" Inherits="Dian.Web.FoodTypeDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="admin-content">
@@ -35,9 +35,6 @@
 
         <label id="lMsg" runat="server" class="am-text-danger"></label>
 
-        <br />
-        <br />
-        <br />
         <br />
         <br />
         <br />

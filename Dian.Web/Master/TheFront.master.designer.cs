@@ -7,54 +7,54 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Dian.Web {
+namespace Dian.Web.Master {
     
     
-    public partial class Index {
+    public partial class TheFront {
         
         /// <summary>
-        /// repeater1 控件。
+        /// head 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
-        /// repeater2 控件。
+        /// sTitle 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sTitle;
         
         /// <summary>
-        /// hOrderId 控件。
+        /// liBackgroundManage 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hOrderId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liBackgroundManage;
         
         /// <summary>
-        /// hOrderData 控件。
+        /// liLogin 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hOrderData;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liLogin;
         
         /// <summary>
-        /// hUnconfirmData 控件。
+        /// ContentPlaceHolder1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hUnconfirmData;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
     }
 }

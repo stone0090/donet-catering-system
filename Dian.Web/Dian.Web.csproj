@@ -95,16 +95,15 @@
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="BackgroundIndex.aspx" />
     <Content Include="CSS\index.css" />
-    <Content Include="CSS\Default.css" />
     <Content Include="EmployeeDetail.aspx" />
     <Content Include="EmployeeList.aspx" />
     <Content Include="Error404.aspx" />
     <Content Include="FoodDetail.aspx" />
     <Content Include="FoodList.aspx" />
     <Content Include="CreateQRCode.aspx" />
+    <Content Include="Images\OriginalImages\menu_bg.png" />
     <Content Include="OrderDetail.aspx" />
     <Content Include="OrderList.aspx" />
-    <Content Include="Images\OriginalImages\default.jpg" />
     <Content Include="Images\OriginalImages\pic-none.png" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
@@ -127,13 +126,6 @@
     </Compile>
     <Compile Include="BackgroundIndex.aspx.designer.cs">
       <DependentUpon>BackgroundIndex.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Background.Master.cs">
-      <DependentUpon>Background.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Background.Master.designer.cs">
-      <DependentUpon>Background.Master</DependentUpon>
     </Compile>
     <Compile Include="EmployeeDetail.aspx.cs">
       <DependentUpon>EmployeeDetail.aspx</DependentUpon>
@@ -177,12 +169,26 @@
     <Compile Include="CreateQRCode.aspx.designer.cs">
       <DependentUpon>CreateQRCode.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\Background.master.cs">
+      <DependentUpon>Background.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Background.master.designer.cs">
+      <DependentUpon>Background.master</DependentUpon>
+    </Compile>
     <Compile Include="Master\Style.Master.cs">
       <DependentUpon>Style.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\Style.Master.designer.cs">
       <DependentUpon>Style.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\TheFront.master.cs">
+      <DependentUpon>TheFront.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\TheFront.master.designer.cs">
+      <DependentUpon>TheFront.master</DependentUpon>
     </Compile>
     <Compile Include="OrderDetail.aspx.cs">
       <DependentUpon>OrderDetail.aspx</DependentUpon>
@@ -223,6 +229,9 @@
     </Compile>
     <Compile Include="Operation\UpdateOrder.ashx.cs">
       <DependentUpon>UpdateOrder.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\BaseMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Utility\BasePageDetail.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -281,12 +290,13 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
-    <Content Include="Background.Master" />
     <Content Include="Operation\CreateOrder.ashx" />
     <Content Include="Operation\UpdateOrder.ashx" />
     <Content Include="Operation\GetOrderData.ashx" />
     <Content Include="Operation\ClearCart.ashx" />
     <Content Include="Master\Style.Master" />
+    <Content Include="Master\Background.master" />
+    <Content Include="Master\TheFront.master" />
     <None Include="Properties\PublishProfiles\Dian.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

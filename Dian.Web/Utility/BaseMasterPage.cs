@@ -3,16 +3,27 @@ using Dian.Common.Entity;
 using Dian.Common.Interface;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Dian.Web
+namespace Dian.Web.Utility
 {
-    public partial class Background : System.Web.UI.MasterPage
+    public class BaseMasterPage : System.Web.UI.MasterPage
     {
+
+        #region 属性
+
+        public string UrlReferrer
+        {
+            get
+            {
+                return ViewState["UrlReferrer"] == null ? "~/Index.aspx" : ViewState["UrlReferrer"].ToString(); ;
+            }
+        }
 
         protected EmployeeEntity CurEmployeeEntity
         {
@@ -36,29 +47,41 @@ namespace Dian.Web
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        #endregion
+
+        #region 页面事件
+
+        protected override void OnInit(EventArgs e)
         {
+            base.OnInit(e);
+
             if (!IsPostBack)
             {
-                this.hLogout.Value = "0";
-                if (CurEmployeeEntity != null && (bool)CurEmployeeEntity.IS_ADMIN == false)
+                try
                 {
-                    this.liRestaurant.Visible = false;
-                    this.liEmployee.Visible = false;
-                    this.liFoodType.Visible = false;
+                    if (ViewState["UrlReferrer"] == null && Request.UrlReferrer != null)
+                        ViewState["UrlReferrer"] = Request.UrlReferrer.PathAndQuery;
                 }
-            }
-            else
-            {
-                if (this.hLogout.Value == "1")
+                catch (Exception)
                 {
-                    FormsAuthentication.SignOut();
-                    Session.Clear();
-                    Response.Redirect("Login.aspx");
-                    Response.End();
+                    ViewState["UrlReferrer"] = "~/Index.aspx";
                 }
             }
 
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+
+        }
+
+        #endregion
+
     }
 }
