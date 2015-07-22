@@ -28,6 +28,9 @@ namespace Dian.Web
             }
             else
             {
+                var hStyleMasterOperation = Master.Master.FindControl("hStyleMasterOperation") as HtmlInputHidden;
+                if (hStyleMasterOperation.Value == "logout")
+                    return;
                 GenerateQRCode();
             }
         }
@@ -50,11 +53,6 @@ namespace Dian.Web
         {
             try
             {
-
-                HtmlInputHidden hidden = Master.FindControl("hLogout") as HtmlInputHidden;
-                if (hidden.Value == "1")
-                    return;
-
                 var url = "http://" + Request.Url.Authority + "/Index.aspx?rid=" + this.ddlRestaurant.SelectedValue + "&tid=" + this.hTableId.Value;
 
                 var encoder = new QRCodeEncoder();

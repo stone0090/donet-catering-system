@@ -49,10 +49,8 @@
 
         <script type="text/javascript">
 
-            var hTableId = "<%= this.hTableId.ClientID %>";
-
             function beforeCreateQRCode() {
-                $('#' + hTableId).val($('#tTableId').val());
+                $('#<%= this.hTableId.ClientID %>').val($('#tTableId').val());
             }
 
         </script>

@@ -37,14 +37,19 @@
     <script src="Scripts/common.js"></script>
 
     <form id="form1" runat="server">
+
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
+        <input type="hidden" runat="server" id="hStyleMasterOperation" />
+
     </form>
 
     <script type="text/javascript">
         var form1 = "<%= this.form1.ClientID %>";
+        var hStyleMasterOperation = "<%= this.hStyleMasterOperation.ClientID %>";
     </script>
 </body>
 </html>

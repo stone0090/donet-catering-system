@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Dian.Web.Master
@@ -13,9 +14,11 @@ namespace Dian.Web.Master
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var hStyleMasterOperation = Master.FindControl("hStyleMasterOperation") as HtmlInputHidden;
+
             if (!IsPostBack)
             {
-                this.hLogout.Value = "0";
+                hStyleMasterOperation.Value = string.Empty;
                 if (CurEmployeeEntity != null && (bool)CurEmployeeEntity.IS_ADMIN == false)
                 {
                     this.liRestaurant.Visible = false;
@@ -25,7 +28,7 @@ namespace Dian.Web.Master
             }
             else
             {
-                if (this.hLogout.Value == "1")
+                if (hStyleMasterOperation.Value == "logout")
                 {
                     FormsAuthentication.SignOut();
                     Session.Clear();

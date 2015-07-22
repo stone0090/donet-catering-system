@@ -59,14 +59,10 @@
         </div>
     </footer>
 
-    <input type="hidden" id="hLogout" runat="server" />
-
     <script type="text/javascript">
 
-        var hLogout = "<%= this.hLogout.ClientID %>";
-
         function logout() {
-            $('#' + hLogout).val('1');
+            $('#' + hStyleMasterOperation).val('logout');
             $('#' + form1).submit();
         }
 
