@@ -30,8 +30,8 @@ namespace Dian.Web.Master
             {
                 if (hStyleMasterOperation.Value == "logout")
                 {
-                    FormsAuthentication.SignOut();
                     Session.Clear();
+                    FormsAuthentication.SignOut();
                     Response.Redirect("Login.aspx");
                     Response.End();
                 }

@@ -11,265 +11,265 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="assets/css/admin.css">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/css/amazeui.css">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/css/amazeui.flat.css">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/css/amazeui.flat.min.css">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/css/amazeui.min.css">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/css/app.css">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/fonts/fontawesome-webfont.eot">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/fonts/fontawesome-webfont.svg">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/fonts/fontawesome-webfont.ttf">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/fonts/fontawesome-webfont.woff">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/fonts/fontawesome-webfont.woff2">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/fonts/FontAwesome.otf">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/app-icon72x72%402x.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/admin-chrome.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/admin-firefox.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/admin-ie.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/admin-opera.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/admin-safari.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/adminPage.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/blogPage.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/landing.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/landingPage.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/loginPage.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/examples/sidebarPage.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/favicon.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/i/startup-640x1096.png">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/amazeui.ie8polyfill.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/amazeui.ie8polyfill.min.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/amazeui.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/amazeui.min.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/amazeui.widgets.helper.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/amazeui.widgets.helper.min.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/app.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/handlebars.min.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="assets/js/jquery.min.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="BackgroudIndex.aspx">
       <publishTime>07/19/2015 08:18:47</publishTime>
     </File>
     <File Include="BackgroundIndex.aspx">
-      <publishTime>07/21/2015 21:13:12</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="BackgroundManagement.Master">
       <publishTime>07/19/2015 08:30:51</publishTime>
     </File>
     <File Include="bin/CSN.DotNetLibrary.Common.dll">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:47</publishTime>
     </File>
     <File Include="bin/CSN.DotNetLibrary.Configuration.dll">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:47</publishTime>
     </File>
     <File Include="bin/CSN.DotNetLibrary.Data.dll">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:47</publishTime>
     </File>
     <File Include="bin/CSN.DotNetLibrary.EntityExpressions.Data.dll">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:47</publishTime>
     </File>
     <File Include="bin/CSN.DotNetLibrary.EntityExpressions.Entitys.dll">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:47</publishTime>
     </File>
     <File Include="bin/CSN.DotNetLibrary.EntityExpressions.Utilitys.dll">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:47</publishTime>
     </File>
     <File Include="bin/Dian.Biz.dll">
-      <publishTime>07/21/2015 22:51:09</publishTime>
+      <publishTime>07/22/2015 20:18:10</publishTime>
     </File>
     <File Include="bin/Dian.Common.Entity.dll">
-      <publishTime>07/21/2015 22:19:39</publishTime>
+      <publishTime>07/22/2015 20:18:09</publishTime>
     </File>
     <File Include="bin/Dian.Common.Interface.dll">
-      <publishTime>07/21/2015 22:19:40</publishTime>
+      <publishTime>07/22/2015 20:18:09</publishTime>
     </File>
     <File Include="bin/Dian.Dao.dll">
       <publishTime>07/21/2015 22:51:09</publishTime>
     </File>
     <File Include="bin/Dian.Web.dll">
-      <publishTime>07/21/2015 22:51:10</publishTime>
+      <publishTime>07/22/2015 20:37:38</publishTime>
     </File>
     <File Include="bin/ThoughtWorks.QRCode.dll">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:47</publishTime>
     </File>
     <File Include="ConfirmOrder.aspx">
       <publishTime>07/18/2015 20:28:06</publishTime>
     </File>
     <File Include="CreateQRCode.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="CSS/Default.css">
       <publishTime>07/18/2015 20:28:06</publishTime>
     </File>
     <File Include="CSS/index.css">
-      <publishTime>07/18/2015 20:36:26</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="DataAccess.config">
-      <publishTime>07/21/2015 22:31:07</publishTime>
+      <publishTime>07/22/2015 20:17:24</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>07/18/2015 20:28:06</publishTime>
     </File>
     <File Include="EmployeeDetail.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="EmployeeList.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Error404.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="FoodDetail.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="FoodList.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="FoodTypeDetail.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="FoodTypeList.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Images/OriginalImages/default.jpg">
       <publishTime>07/18/2015 20:28:06</publishTime>
     </File>
     <File Include="Images/OriginalImages/menu_bg.png">
-      <publishTime>07/18/2015 20:28:06</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Images/OriginalImages/pic-none.png">
-      <publishTime>07/18/2015 20:28:06</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Index.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Master/Background.master">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Master/Style.Master">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Master/TheFront.master">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Operation/ClearCart.ashx">
-      <publishTime>07/18/2015 20:28:06</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Operation/CreateOrder.ashx">
-      <publishTime>07/18/2015 20:28:06</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Operation/GetOrderData.ashx">
-      <publishTime>07/18/2015 20:28:06</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Operation/UpdateOrder.ashx">
-      <publishTime>07/18/2015 20:28:06</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="OrderDetail.aspx">
-      <publishTime>07/21/2015 21:18:29</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="OrderList.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="RestaurantDetail.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="RestaurantList.aspx">
-      <publishTime>07/21/2015 21:09:57</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Scripts/common.js">
-      <publishTime>07/18/2015 22:25:36</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Scripts/index.js">
-      <publishTime>07/18/2015 23:52:10</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Scripts/jquery-1.7.1.intellisense.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Scripts/jquery-1.7.1.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Scripts/jquery-1.7.1.min.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="Scripts/jquery-extend.js">
-      <publishTime>07/18/2015 20:28:07</publishTime>
+      <publishTime>07/22/2015 20:16:46</publishTime>
     </File>
     <File Include="TheFrontDeskShow.Master">
       <publishTime>07/18/2015 20:28:07</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/19/2015 14:25:37</publishTime>
+      <publishTime>07/22/2015 20:18:13</publishTime>
     </File>
   </ItemGroup>
 </Project>
