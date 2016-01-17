@@ -8,7 +8,7 @@
 
 ## 演示
 系统演示地址：[**dian.shijiajie.com**](http://dian.shijiajie.com)，账户名和密码均为：admin（**请不要删除admin用户**）  
-用微信扫描二维码可直接进入点菜页面，效果等同于访问网址：[**dian.shijiajie.com/index.aspx?rid=1&tid=1**](http://dian.shijiajie.com/Index.aspx?rid=1&tid=1)  
+请用5寸以上手机微信扫描二维码，即可直接进入点菜页面，效果等同于访问网址：[**dian.shijiajie.com/index.aspx?rid=1&tid=1**](http://dian.shijiajie.com/Index.aspx?rid=1&tid=1)  
 ![image](http://7xkhp9.com1.z0.glb.clouddn.com/github.com/stone0090/DianQRCode.jpg)
 
 ### 点菜页面如下：
