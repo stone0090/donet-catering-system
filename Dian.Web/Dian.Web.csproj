@@ -101,7 +101,38 @@
     <Content Include="FoodDetail.aspx" />
     <Content Include="FoodList.aspx" />
     <Content Include="CreateQRCode.aspx" />
+    <Content Include="Images\FOOD_IMAGE_PATH\0f208684-b724-4d2e-a92f-699e24d8502b.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\0f208684-b724-4d2e-a92f-699e24d8502b_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\59e2dd41-4322-4a8a-a121-329d84989dae.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\59e2dd41-4322-4a8a-a121-329d84989dae_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\5fdb5d25-296b-4056-9278-40854cd22cef.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\5fdb5d25-296b-4056-9278-40854cd22cef_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\b59be8cc-b17a-422f-8de7-043806425be1.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\b59be8cc-b17a-422f-8de7-043806425be1_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\b6fd0dcf-bbad-4558-91f4-c81ec2bd042d.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\b6fd0dcf-bbad-4558-91f4-c81ec2bd042d_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\c16c7632-53e1-4cf6-bbba-a6c6e5047bcd.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\c16c7632-53e1-4cf6-bbba-a6c6e5047bcd_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\c69e3190-3bc3-46b7-81c6-ff094679f1fa.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\c69e3190-3bc3-46b7-81c6-ff094679f1fa_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\cdb91c97-3ff3-4370-ad4a-b558081df332.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\cdb91c97-3ff3-4370-ad4a-b558081df332_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\cf2c84b0-ff1d-4c01-af46-7f33e334eafc.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\cf2c84b0-ff1d-4c01-af46-7f33e334eafc_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\d0cb5cb9-7eed-4587-a0cd-8ec980487339.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\d0cb5cb9-7eed-4587-a0cd-8ec980487339_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\eb16a691-ff22-446e-9877-9616a66cf2e2.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\eb16a691-ff22-446e-9877-9616a66cf2e2_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f04b2f53-e46a-420f-9a0e-8093d659fa38.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f04b2f53-e46a-420f-9a0e-8093d659fa38_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f0f7d495-d264-450f-8f8e-5e34c8369702.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f0f7d495-d264-450f-8f8e-5e34c8369702_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f4371961-9e6f-4221-a8d5-4a9b07ae13fd.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f4371961-9e6f-4221-a8d5-4a9b07ae13fd_nail.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f53d0d7f-34d8-4977-8295-67c374c17748.jpg" />
+    <Content Include="Images\FOOD_IMAGE_PATH\f53d0d7f-34d8-4977-8295-67c374c17748_nail.jpg" />
     <Content Include="Images\OriginalImages\menu_bg.png" />
+    <Content Include="Images\RESTAURANT_MAP_PATH\cc39e68e-e4b3-4383-85cd-0ee937918d9f.jpg" />
     <Content Include="OrderDetail.aspx" />
     <Content Include="OrderList.aspx" />
     <Content Include="Images\OriginalImages\pic-none.png" />
@@ -280,11 +311,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FrontShow\" />
     <Folder Include="Images\NailImages\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataAccess.config" />
+    <Content Include="DataAccess.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="assets\fonts\fontawesome-webfont.eot" />
     <Content Include="assets\fonts\fontawesome-webfont.ttf" />
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
@@ -298,6 +330,7 @@
     <Content Include="Master\Background.master" />
     <Content Include="Master\TheFront.master" />
     <None Include="Properties\PublishProfiles\Dian.pubxml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

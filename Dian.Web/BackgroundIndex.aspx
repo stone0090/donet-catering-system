@@ -14,7 +14,7 @@
             <div class="am-u-sm-12 am-u-sm-centered">
                 <hr />
                 <h3>Bug 反馈</h3>
-                <p>如遇到 Bug 或者使用问题，请发送问题到邮箱 shijiajie0090@qq.com 。</p>
+                <p>如遇到 Bug 或者使用问题，请发送问题到邮箱 stone0090@hotmail.com 。</p>
                 <h3>反馈注意事项</h3>
                 <p>为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。</p>
                 <br />

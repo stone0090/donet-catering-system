@@ -4,7 +4,7 @@
 
     <header class="am-topbar admin-header" id="divHeader">
         <div class="am-topbar-brand">
-            <strong>XX系统</strong> <small id="sTitle" runat="server">登陆</small>
+            <strong>点餐系统</strong> <small id="sTitle" runat="server">登陆</small>
         </div>
 
         <button type="button" class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
