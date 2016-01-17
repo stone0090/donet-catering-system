@@ -54,7 +54,7 @@
         <hr />
         <div class="am-footer-switch">
             <div class="am-footer-miscs ">
-                <p>Copyright &copy; 2013 - <span id="sCurrentYear"></span>by stone. All rights reserved.</p>
+                <p>Copyright &copy; 2013 - <span id="sCurrentYear"></span> by stone. All rights reserved.</p>
             </div>
         </div>
     </footer>
