@@ -38,9 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSN.DotNetLibrary.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=225c7054730e8a94, processorArchitecture=MSIL">
+    <Reference Include="DoNet.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Output\CSN.DotNetLibrary.Common.dll</HintPath>
+      <HintPath>..\Output\DoNet.Utility.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -314,9 +314,6 @@
     <Folder Include="Images\NailImages\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataAccess.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="assets\fonts\fontawesome-webfont.eot" />
     <Content Include="assets\fonts\fontawesome-webfont.ttf" />
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
@@ -343,13 +340,13 @@
       <Project>{3c5dad5d-6810-4339-8306-e2396725e182}</Project>
       <Name>Dian.Biz</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Dian.Common.Interface\Dian.Common.Interface.csproj">
-      <Project>{ee09a7fe-2ddb-47a0-af2c-c9fac1d56b88}</Project>
-      <Name>Dian.Common.Interface</Name>
+    <ProjectReference Include="..\Dian.Entity\Dian.Entity.csproj">
+      <Project>{17e9e9e9-e431-4a54-a961-296732379f49}</Project>
+      <Name>Dian.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Dian.Common\Dian.Common.Entity.csproj">
-      <Project>{27e879b2-d7b3-45ef-b5d8-43a311caf829}</Project>
-      <Name>Dian.Common.Entity</Name>
+    <ProjectReference Include="..\Dian.Interface\Dian.Interface.csproj">
+      <Project>{ee09a7fe-2ddb-47a0-af2c-c9fac1d56b88}</Project>
+      <Name>Dian.Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

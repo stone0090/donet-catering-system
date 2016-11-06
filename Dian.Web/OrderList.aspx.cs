@@ -1,6 +1,6 @@
 ﻿using Dian.Biz;
-using Dian.Common.Entity;
-using Dian.Common.Interface;
+using Dian.Entity;
+using Dian.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace Dian.Web
             if (type == "0") type = null;
             int? restaurantId = base.ParseInt(this.ddlRestaurant.SelectedValue);
             if (restaurantId == 0) restaurantId = null;
-            IOrder2 biz = new Order2Biz();
+            IOrder biz = new OrderBiz();
             DataTable dt = (bool)base.CurEmployeeEntity.IS_ADMIN ?
                 biz.GetOrderMainDataTable(restaurantId, type) :
                 biz.GetOrderMainDataTable(base.CurEmployeeEntity.RESTAURANT_ID, type);
@@ -71,8 +71,8 @@ namespace Dian.Web
                 {
                     var op = this.hOperationId.Value.Split('|')[0];
                     var id = base.ParseInt(this.hOperationId.Value.Split('|')[1]);
-                    IOrder2 biz = new Order2Biz();
-                    var condition = new OrderMainEntity2();
+                    IOrder biz = new OrderBiz();
+                    var condition = new OrderMainEntity();
                     condition.ORDER_ID = id;
                     if (op == "finish")
                     {

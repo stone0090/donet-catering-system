@@ -4,27 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.Common;
-using Dian.Common.Entity;
-using Dian.Common.Interface;
-using Dian.Dao;
-using CSN.DotNetLibrary.EntityExpressions.Entitys;
+using Dian.Entity;
+using Dian.Interface;
+
+using DoNet.Utility.Database;
+using DoNet.Utility.Database.EntitySql;
+using DoNet.Utility.Database.EntitySql.Entity;
 
 namespace Dian.Biz
 {
     public class FoodTypeBiz : System.MarshalByRefObject, IFoodType
     {
-        private DianManual _manual_dao = null;
-        public DianManual manual_dao
+        private DbHelper _db;
+        private DbHelper Db
         {
-            get
-            {
-                return _manual_dao == null ? _manual_dao = new DianManual() : _manual_dao;
-            }
+            get { return _db ?? (_db = DbFactory.CreateDatabase()); }
         }
-
+        
         public DataTable GetFoodTypeDataTable(int? restaurantId = null)
         {
-            return manual_dao.GetFoodTypeDataTable(restaurantId);
+            string sql = @"SELECT A.*,B.RESTAURANT_NAME FROM FOOD_TYPE A
+                                LEFT JOIN RESTAURANT B ON A.RESTAURANT_ID = B.RESTAURANT_ID
+                                WHERE 1=1 ";
+            if (restaurantId != null)
+                sql += " AND B.RESTAURANT_ID = @RESTAURANT_ID ";
+            using (DbCommand dc = Db.GetSqlStringCommand(sql))
+            {
+                if (restaurantId != null)
+                    Db.AddInParameter(dc, "@RESTAURANT_ID", DbType.Int32, restaurantId);
+                return Db.ExecuteDataTable(dc);
+            }
         }
         public List<FoodTypeEntity> GetFoodTypeEntityList(FoodTypeEntity condition_entity)
         {
@@ -33,28 +42,23 @@ namespace Dian.Biz
                 where_entity.Where(n => (n.FOOD_TYPE_ID == condition_entity.FOOD_TYPE_ID));
             if (condition_entity.FOOD_TYPE_NAME != null)
                 where_entity.Where(n => (n.FOOD_TYPE_NAME == condition_entity.FOOD_TYPE_NAME));
-            return DianDao.ReadEntityList(where_entity);
+            return EntityExecution.SelectAll(where_entity);
         }
         public void InsertFoodTypeEntity(FoodTypeEntity condition_entity)
         {
-            DianDao.InsertEntity(condition_entity);
+            condition_entity.Insert();
         }
         public void UpdateFoodTypeEntity(FoodTypeEntity condition_entity)
         {
-            DianDao.UpdateEntity(condition_entity);
+            condition_entity.Update();
         }
         public void DeleteFoodTypeEntity(FoodTypeEntity condition_entity)
         {
-            DianDao.DeleteEntity(condition_entity);
+            condition_entity.Delete();
         }
         public FoodTypeEntity GetFoodTypeEntity(int? id)
         {
-            return DianDao.ReadEntity2<FoodTypeEntity>(n => n.FOOD_TYPE_ID == id);
-        }
-
-        public int TestCallAble()
-        {
-            throw new NotImplementedException();
+            return EntityExecution.SelectOne<FoodTypeEntity>(n => n.FOOD_TYPE_ID == id);
         }
     }
 }

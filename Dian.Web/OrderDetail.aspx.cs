@@ -1,6 +1,6 @@
 ﻿using Dian.Biz;
-using Dian.Common.Entity;
-using Dian.Common.Interface;
+using Dian.Entity;
+using Dian.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
@@ -40,14 +40,14 @@ namespace Dian.Web
 
         private void BindControlData()
         {
-            IOrder2 orderBiz = new Order2Biz();
+            IOrder orderBiz = new OrderBiz();
             var entity = orderBiz.GetOrderMainEntity(OrderId);
             this.hOrderStatus.Value = entity.ORDER_FLAG;
             this.lTableId.InnerText = "桌号为：" + entity.TABLE_ID;
         }
         private void BindTableData()
         {
-            IOrder2 orderBiz = new Order2Biz();
+            IOrder orderBiz = new OrderBiz();
             var dt = orderBiz.GetOrderData(OrderId);
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -104,7 +104,7 @@ namespace Dian.Web
             {
                 if (!string.IsNullOrEmpty(this.hOperation.Value))
                 {
-                    IOrder2 orderBiz = new Order2Biz();
+                    IOrder orderBiz = new OrderBiz();
                     if (this.hOperation.Value.IndexOf('|') > -1)
                     {
                         var op = this.hOperation.Value.Split('|')[0];
@@ -116,14 +116,14 @@ namespace Dian.Web
                         }
                         if (op == "cancel")
                         {
-                            var condition = new OrderListEntity2();
+                            var condition = new OrderListEntity();
                             condition.LIST_ID = listId;
                             condition.CANCEL_TIME = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
                             orderBiz.UpdateOrderListEntity(condition);
                         }
                         if (op == "confirm")
                         {
-                            var condition = new OrderListEntity2();
+                            var condition = new OrderListEntity();
                             condition.LIST_ID = listId;
                             condition.CONFIRM_TIME = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
                             orderBiz.UpdateOrderListEntity(condition);
@@ -132,7 +132,7 @@ namespace Dian.Web
                         {
                             //假如存在已完成同样的菜单，更新原有的数量
                             var curOrderListEntity = orderBiz.GetOrderListEntity(listId);
-                            var condition = new OrderListEntity2();
+                            var condition = new OrderListEntity();
                             condition.FOOD_ID = curOrderListEntity.FOOD_ID;
                             condition.ORDER_ID = OrderId;
                             var list = orderBiz.GetOrderListEntityList(condition);
@@ -140,11 +140,11 @@ namespace Dian.Web
                             condition = null;
                             if (list != null && list.Count > 0)
                             {
-                                foreach (OrderListEntity2 e in list)
+                                foreach (OrderListEntity e in list)
                                 {
                                     if (!string.IsNullOrEmpty(e.FINISH_TIME) && string.IsNullOrEmpty(e.CANCEL_TIME))
                                     {
-                                        condition = new OrderListEntity2();
+                                        condition = new OrderListEntity();
                                         condition.LIST_ID = e.LIST_ID;
                                         condition.COUNT = e.COUNT;
                                     }
@@ -155,11 +155,11 @@ namespace Dian.Web
                             {
                                 condition.COUNT += curOrderListEntity.COUNT;
                                 orderBiz.UpdateOrderListEntity(condition);
-                                orderBiz.DeleteOrderListEntity(new OrderListEntity2() { LIST_ID = curOrderListEntity.LIST_ID });
+                                orderBiz.DeleteOrderListEntity(new OrderListEntity() { LIST_ID = curOrderListEntity.LIST_ID });
                             }
                             else
                             {
-                                condition = new OrderListEntity2();
+                                condition = new OrderListEntity();
                                 condition.LIST_ID = listId;
                                 condition.FINISH_TIME = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
                                 orderBiz.UpdateOrderListEntity(condition);
@@ -169,7 +169,7 @@ namespace Dian.Web
                         {
                             //假如存在已完成同样的菜单，更新原有的数量
                             var curOrderListEntity = orderBiz.GetOrderListEntity(listId);
-                            var condition = new OrderListEntity2();
+                            var condition = new OrderListEntity();
                             condition.FOOD_ID = curOrderListEntity.FOOD_ID;
                             condition.ORDER_ID = OrderId;
                             var list = orderBiz.GetOrderListEntityList(condition);
@@ -177,11 +177,11 @@ namespace Dian.Web
                             condition = null;
                             if (list != null && list.Count > 0)
                             {
-                                foreach (OrderListEntity2 e in list)
+                                foreach (OrderListEntity e in list)
                                 {
                                     if (!string.IsNullOrEmpty(e.CONFIRM_TIME) && string.IsNullOrEmpty(e.FINISH_TIME) && string.IsNullOrEmpty(e.CANCEL_TIME))
                                     {
-                                        condition = new OrderListEntity2();
+                                        condition = new OrderListEntity();
                                         condition.LIST_ID = e.LIST_ID;
                                         condition.COUNT = e.COUNT;
                                     }
@@ -192,11 +192,11 @@ namespace Dian.Web
                             {
                                 condition.COUNT += curOrderListEntity.COUNT;
                                 orderBiz.UpdateOrderListEntity(condition);
-                                orderBiz.DeleteOrderListEntity(new OrderListEntity2() { LIST_ID = curOrderListEntity.LIST_ID });
+                                orderBiz.DeleteOrderListEntity(new OrderListEntity() { LIST_ID = curOrderListEntity.LIST_ID });
                             }
                             else
                             {
-                                condition = new OrderListEntity2();
+                                condition = new OrderListEntity();
                                 condition.LIST_ID = listId;
                                 condition.FINISH_TIME = string.Empty;
                                 orderBiz.UpdateOrderListEntity(condition);

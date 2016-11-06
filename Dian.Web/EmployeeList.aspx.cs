@@ -1,6 +1,6 @@
 ﻿using Dian.Biz;
-using Dian.Common.Entity;
-using Dian.Common.Interface;
+using Dian.Entity;
+using Dian.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Dian.Web
         private void BindData()
         {
             IEmployee biz = new EmployeeBiz();
-            repeater1.DataSource = GetPagedDataSource(biz.GetEmployeesDataTable().DefaultView);
+            repeater1.DataSource = GetPagedDataSource(biz.GetEmployeeDataTable().DefaultView);
             repeater1.DataBind();
         }
         private void DeleteData()

@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Web", "Dian.Web\Dian.Web.csproj", "{1E62FDDF-2E1D-4EAD-9B2B-0641A1EE4147}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Biz", "Dian.Biz\Dian.Biz.csproj", "{3C5DAD5D-6810-4339-8306-E2396725E182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Common.Entity", "Dian.Common\Dian.Common.Entity.csproj", "{27E879B2-D7B3-45EF-B5D8-43A311CAF829}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Entity", "Dian.Entity\Dian.Entity.csproj", "{17E9E9E9-E431-4A54-A961-296732379F49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Dao", "Dian.Dao\Dian.Dao.csproj", "{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Common.Interface", "Dian.Common.Interface\Dian.Common.Interface.csproj", "{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dian.Interface", "Dian.Interface\Dian.Interface.csproj", "{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,14 +25,10 @@ Global
 		{3C5DAD5D-6810-4339-8306-E2396725E182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C5DAD5D-6810-4339-8306-E2396725E182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C5DAD5D-6810-4339-8306-E2396725E182}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27E879B2-D7B3-45EF-B5D8-43A311CAF829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27E879B2-D7B3-45EF-B5D8-43A311CAF829}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27E879B2-D7B3-45EF-B5D8-43A311CAF829}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27E879B2-D7B3-45EF-B5D8-43A311CAF829}.Release|Any CPU.Build.0 = Release|Any CPU
-		{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{415BBDD8-92AF-405B-A43F-4D3705C8CCAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E9E9E9-E431-4A54-A961-296732379F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E9E9E9-E431-4A54-A961-296732379F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E9E9E9-E431-4A54-A961-296732379F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E9E9E9-E431-4A54-A961-296732379F49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE09A7FE-2DDB-47A0-AF2C-C9FAC1D56B88}.Release|Any CPU.ActiveCfg = Release|Any CPU

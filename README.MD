@@ -1,10 +1,12 @@
 # 点餐系统
 帮朋友做的点餐系统，主要是为了让顾客在餐桌上，使用微信扫描二维码，就可以直接点菜，吃完使用微信付款。  
 
-- [系统演示地址](http://dian.shijiajie.com)，账户名和密码均为：admin。（**请不要删除admin用户**）  
+- 账户名和密码均为：admin。（**请不要删除admin用户**）  
 - [GitHub Clone 地址](https://github.com/stone0090/Dian)
-- [系统源码 百度网盘 下载地址](http://pan.baidu.com/s/1qWXrkks)
-- [IIS发布包 百度网盘 下载地址](http://pan.baidu.com/s/1o6VZtqi)
+
+## 更新
+
+- 20161106：移除外部类库的引用，改用[stone0090/s-donet](https://github.com/stone0090/s-donet)中的方法。
 
 ## 简介
 餐厅系统分为前台和后台两个部分：
@@ -28,7 +30,7 @@
 - 在 Sql Server 中新建一个数据库 `DIAN`。
 - 在 `DIAN` 数据库中执行脚本 `dian.sql`。
 - 在 IIS 中新建一个网站 `dian`，物理路径指向 dian 文件夹。
-- 修改 dian 文件夹中 `DataAccess.config` 中的链接字符串。
+- 修改 dian 文件夹中 `Web.config` 中的链接字符串。
 - 网站部署完毕，请启动您的网站。
 
 ## 答疑解惑

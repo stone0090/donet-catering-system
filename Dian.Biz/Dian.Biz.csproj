@@ -33,17 +33,12 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>DIAN.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSN.DotNetLibrary.Common">
-      <HintPath>..\Output\CSN.DotNetLibrary.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="CSN.DotNetLibrary.EntityExpressions.Entitys">
-      <HintPath>..\Output\CSN.DotNetLibrary.EntityExpressions.Entitys.dll</HintPath>
-    </Reference>
-    <Reference Include="CSN.DotNetLibrary.RemoteAccess.Client">
-      <HintPath>..\Output\CSN.DotNetLibrary.RemoteAccess.Client.dll</HintPath>
+    <Reference Include="DoNet.Utility">
+      <HintPath>..\Output\DoNet.Utility.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,27 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeBiz.cs" />
-    <Compile Include="Order2Biz.cs" />
+    <Compile Include="OrderBiz.cs" />
     <Compile Include="FoodTypeBiz.cs" />
     <Compile Include="FoodBiz.cs" />
     <Compile Include="RestaurantBiz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DIAN.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dian.Common.Interface\Dian.Common.Interface.csproj">
+    <ProjectReference Include="..\Dian.Entity\Dian.Entity.csproj">
+      <Project>{17e9e9e9-e431-4a54-a961-296732379f49}</Project>
+      <Name>Dian.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dian.Interface\Dian.Interface.csproj">
       <Project>{ee09a7fe-2ddb-47a0-af2c-c9fac1d56b88}</Project>
-      <Name>Dian.Common.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dian.Common\Dian.Common.Entity.csproj">
-      <Project>{27e879b2-d7b3-45ef-b5d8-43a311caf829}</Project>
-      <Name>Dian.Common.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dian.Dao\Dian.Dao.csproj">
-      <Project>{415bbdd8-92af-405b-a43f-4d3705c8ccad}</Project>
-      <Name>Dian.Dao</Name>
+      <Name>Dian.Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

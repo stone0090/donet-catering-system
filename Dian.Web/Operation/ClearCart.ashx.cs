@@ -1,6 +1,6 @@
 ﻿using Dian.Biz;
-using Dian.Common.Entity;
-using Dian.Common.Interface;
+using Dian.Entity;
+using Dian.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Dian.Web.Operation
             {
                 var orderId = Helper.ParseInt(context.Request.Form["oid"]);
 
-                IOrder2 orderBiz = new Order2Biz();
+                IOrder orderBiz = new OrderBiz();
                 orderBiz.ClearCart(orderId);
                 context.Response.Write("{\"success\":1}");
             }

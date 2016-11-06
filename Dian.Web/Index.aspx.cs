@@ -1,6 +1,6 @@
 ﻿using Dian.Biz;
-using Dian.Common.Entity;
-using Dian.Common.Interface;
+using Dian.Entity;
+using Dian.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
@@ -71,8 +71,8 @@ namespace Dian.Web
             repeater1.DataBind();
 
             //获取是否已经点过菜
-            IOrder2 orderBiz = new Order2Biz();
-            var condition = new OrderMainEntity2();
+            IOrder orderBiz = new OrderBiz();
+            var condition = new OrderMainEntity();
             condition.RESTAURANT_ID = RestaurantId;
             condition.TABLE_ID = TableId;
             condition.ORDER_FLAG = "1";

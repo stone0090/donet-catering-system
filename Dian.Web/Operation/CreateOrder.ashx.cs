@@ -1,6 +1,6 @@
 ﻿using Dian.Biz;
-using Dian.Common.Entity;
-using Dian.Common.Interface;
+using Dian.Entity;
+using Dian.Interface;
 using Dian.Web.Utility;
 using System;
 using System.Collections.Generic;
@@ -26,8 +26,8 @@ namespace Dian.Web.Operation
                 var orderData = context.Request.Form["orderData"];
                 var price = Helper.ParseDecimal(context.Request.Form["price"]);
 
-                IOrder2 orderBiz = new Order2Biz();
-                var condition = new OrderMainEntity2();
+                IOrder orderBiz = new OrderBiz();
+                var condition = new OrderMainEntity();
                 condition.RESTAURANT_ID = restaurantId;
                 condition.TABLE_ID = tableId;
                 condition.ORDER_FLAG = "1";
@@ -59,10 +59,10 @@ namespace Dian.Web.Operation
             }
         }
 
-        private List<OrderListEntity2> JsonToObjects(string strJson)
+        private List<OrderListEntity> JsonToObjects(string strJson)
         {
             if (string.IsNullOrEmpty(strJson))
-                return new List<OrderListEntity2>();
+                return new List<OrderListEntity>();
 
             DataTable dt = null;
 
@@ -103,9 +103,9 @@ namespace Dian.Web.Operation
             }
 
             if (dt != null)
-                return DataTableHepler.DataTableToList<OrderListEntity2>(dt);
+                return DataTableHepler.DataTableToList<OrderListEntity>(dt);
 
-            return new List<OrderListEntity2>();
+            return new List<OrderListEntity>();
         }
 
 
