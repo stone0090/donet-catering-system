@@ -37,7 +37,7 @@
 本系统完成度80%，但由于朋友后来不需要了，就没有继续开发了。如果大家感兴趣，可以通过以下方式联系我，我再继续更新、维护这个项目。
 
 - 在文章[《DoNet开源项目-基于Amaze UI的点餐系统》](http://shijiajie.com/2016/01/17/donet-opensource-dian-introduction/#ds-thread)的评论区给我留言。
-- 发送邮件到 <a href="mailto:stone0090@hotmail.com">stone0090@hotmail.com</a> 给我留言。
+- 发送邮件到 <a href="mailto:stone0090@126.com">stone0090@126.com</a> 给我留言。
 - 如有bug可到 [issues页面](https://github.com/stone0090/Dian/issues/new) 进行反馈。
 
 ## LICENSE
